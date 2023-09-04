@@ -5,13 +5,6 @@ void sayHello();
 void affichageVariables();
 void recuperationValeurs();
 
-int main() {
-    //sayHello();
-    //affichageVariables();
-    recuperationValeurs();
-
-    return 0;
-}
 
 void sayHello() {
     printf("\n -> \t Hello World ! \n");
