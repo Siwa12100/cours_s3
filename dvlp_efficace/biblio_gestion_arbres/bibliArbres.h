@@ -6,11 +6,15 @@
 
 typedef struct noeud {
 
-    Int val;
-    Noeud * fg;
-    Noeud * f;
+    int val;
+    struct noeud * fg;
+    struct noeud * fd;
 } Noeud;
 typedef Noeud * ArbreBin;
+
+typedef enum booleen {
+    FAUX, VRAI
+} Booleen;
 
 ArbreBin creerArbreVide(void);
 Booleen arbreEstVide(ArbreBin b);
@@ -19,12 +23,10 @@ int tailleArbre(ArbreBin a);
 int hauteurArbre(ArbreBin a);
 void viderArbre(ArbreBin * pta);
 void afficherCouche(ArbreBin a);
-
-typedef struct booleen {
-
-    FAUX, VRAI
-} Booleen;
-
 Booleen rechercher(ArbreBin a, int val);
 
+// Fonctions pour arbres binaires de recherche
+typedef ArbreBin Abr;
+Noeud * creerNoeud(int val);
+void insererEnFeuille(Abr * pta, int val);
 #endif

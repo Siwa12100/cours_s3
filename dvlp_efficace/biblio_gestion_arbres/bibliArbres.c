@@ -61,7 +61,7 @@ void afficherNtab(int val) {
 void afficherCoucheRec(ArbreBin a, int retrait) {
 
     if (a -> fd != NULL){
-        afficherCoucheRec(a -< fd, retrait + 1);
+        afficherCoucheRec(a -> fd, retrait + 1);
         afficherNtab(retrait);
         printf("\t/ \n");
     }
@@ -80,7 +80,7 @@ void afficherCouche(ArbreBin a) {
     if (a != NULL) afficherCoucheRec(a, 0);
 }
 
-Booleen rechercher(int val) {
+Booleen rechercher(ArbreBin a, int val) {
 
     Booleen rep = 0;
     // Si l'arbre est vide, on renvoie faux 
@@ -96,4 +96,31 @@ Booleen rechercher(int val) {
     // Si on l'a pas dans la sous branche droite, on renvoie le résultat 
     // de la sous branche gauche quel qu'il soit...
     return rechercher(a -> fg, a -> val);
+}
+
+Noeud * creerNoeud(int val) {
+
+    ArbreBin tmp = (ArbreBin)malloc(sizeof(ArbreBin));
+    if (tmp == NULL){
+        printf("\n [Erreur bibliArbres] : Soucis d'allocation memoire ! \n");
+        exit(1);
+    }
+
+    tmp -> fg = NULL;
+    tmp -> fd = NULL;
+    tmp -> val = val;
+}
+
+void insererEnFeuille(Abr * pta, int val) {
+
+    // Si la feuille est vide, on la créée et on y met val...
+    if (*pta == NULL){
+            *pta = creerNoeud(val);
+    }
+    else if(val <= (*pta) -> val){
+        insererEnFeuille(&(*pta) -> fg, val);
+    }
+    else{
+        insererEnFeuille(&(*pta) -> fd, val);
+    }
 }
