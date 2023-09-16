@@ -18,5 +18,7 @@ ArbreBin creerArbreVide();
 Booleen estArbreVide(ArbreBin b);
 void insererEnFeuille(Abr * pta, int val);
 Noeud * creerNoeud(int val);
-
+void viderArbre(ArbreBin * pta);
+void afficherCroissant(Abr b);
+void afficherDecroissant(Abr b);
 #endif 
