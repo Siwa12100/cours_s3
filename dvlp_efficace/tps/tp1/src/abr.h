@@ -21,4 +21,5 @@ Noeud * creerNoeud(int val);
 void viderArbre(ArbreBin * pta);
 void afficherCroissant(Abr b);
 void afficherDecroissant(Abr b);
+void afficherCouche(ArbreBin a);
 #endif 

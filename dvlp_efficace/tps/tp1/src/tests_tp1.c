@@ -11,6 +11,7 @@ int testViderArbre();
 int testAfficherCroissant();
 int testAfficherDecroissant();
 void effacerTerminal();
+int testAfficherCouche();
 
 int main(void) {
     effacerTerminal();
@@ -54,6 +55,7 @@ int lancementTests() {
 
     // testAfficherCroissant();
     // testAfficherDecroissant();
+    testAfficherCouche();
 
     printf("[Infos]  : Tests unitaires exécutés avec succès ! \n");
     return 0;
@@ -171,5 +173,23 @@ int testAfficherDecroissant(void) {
     insererEnFeuille(&a, 9);
 
     afficherDecroissant(a);
+    return 0;
+}
+
+int testAfficherCouche(void) {
+
+    Abr a = creerArbreVide();
+    insererEnFeuille(&a, 13);
+    insererEnFeuille(&a, -524);
+    insererEnFeuille(&a,26 );
+    insererEnFeuille(&a, 17);
+    insererEnFeuille(&a,2 );
+    insererEnFeuille(&a, 8 );
+    insererEnFeuille(&a, 100);
+    insererEnFeuille(&a, 200);
+    insererEnFeuille(&a,1 );
+    insererEnFeuille(&a, 9);
+
+    afficherCouche(a);
     return 0;
 }

@@ -110,3 +110,34 @@ void afficherDecroissant(Abr b) {
     parcoursAffichageDecroissant(b);
     printf("\n");
 }
+
+void afficherNtab(int val) {
+    for (int i = 0; i < val; i++){
+        printf("\t");
+    }
+}
+
+void afficherCoucheRec(ArbreBin a, int retrait) {
+
+    if (a -> fd != NULL){
+        afficherCoucheRec(a -> fd, retrait + 1);
+        afficherNtab(retrait);
+        printf("\t/ \n");
+    }
+
+    afficherNtab(retrait);
+    printf("%d \n", a -> val);
+
+    if (a -> fg != NULL){
+        afficherNtab(retrait);
+        printf("\t\\ \n");
+        afficherCoucheRec(a -> fg, retrait + 1);
+    }
+}
+
+void afficherCouche(ArbreBin a) {
+    printf("\n Affichage de l'arbre en graphique : \n");
+    printf(  " -----------------------------------\n\n");
+    if (a != NULL) afficherCoucheRec(a, 0);
+    printf("\n\n");
+}
