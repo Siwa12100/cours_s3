@@ -16,5 +16,7 @@ typedef enum booleen {
 
 ArbreBin creerArbreVide();
 Booleen estArbreVide(ArbreBin b);
+void insererEnFeuille(Abr * pta, int val);
+Noeud * creerNoeud(int val);
 
 #endif 
