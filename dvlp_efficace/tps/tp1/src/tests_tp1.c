@@ -12,6 +12,8 @@ int testAfficherCroissant();
 int testAfficherDecroissant();
 void effacerTerminal();
 int testAfficherCouche();
+int testSupprimerVal();
+int testRechercherVal();
 
 int main(void) {
     effacerTerminal();
@@ -55,7 +57,17 @@ int lancementTests() {
 
     // testAfficherCroissant();
     // testAfficherDecroissant();
-    testAfficherCouche();
+    //testAfficherCouche();
+
+    if (testSupprimerVal() != 0){
+        printf("[infos] : Erreur dans le test unitaire de la suppression de valeur.\n");
+        return 1;
+    }
+
+    if (testRechercherVal() != 0){
+        printf("[infos] : Erreur dans le test unitaire de recherche d'une valeur.\n");
+        return 1;
+    }
 
     printf("[Infos]  : Tests unitaires exécutés avec succès ! \n");
     return 0;
@@ -191,5 +203,61 @@ int testAfficherCouche(void) {
     insererEnFeuille(&a, 9);
 
     afficherCouche(a);
+    return 0;
+}
+
+int testSupprimerVal(void) {
+
+    Abr a = creerArbreVide();
+    insererEnFeuille(&a, 13);
+    insererEnFeuille(&a, -524);
+    insererEnFeuille(&a,26 );
+    insererEnFeuille(&a, 17);
+    insererEnFeuille(&a,2 );
+    insererEnFeuille(&a, 8 );
+    insererEnFeuille(&a, 100);
+    insererEnFeuille(&a, 200);
+    insererEnFeuille(&a,1 );
+    insererEnFeuille(&a, 9);
+
+    insererEnFeuille(&a, 265);
+    insererEnFeuille(&a, 265);
+    insererEnFeuille(&a, 265);
+    insererEnFeuille(&a, 265);
+    //afficherCroissant(a);
+
+        
+    if (supprimerVal(&a, 265) != 1) return 1;
+    
+    int cpt = 0;
+    while (supprimerVal(&a, 265)){
+        cpt +=1;
+    }
+
+    if (cpt != 3) return 1;
+    if (supprimerVal(&a, 265)) return 1;
+
+    afficherCroissant(a);
+    
+    return 0;
+}
+
+int testRechercherVal(void) {
+
+    Abr a = creerArbreVide();
+    insererEnFeuille(&a, 13);
+    insererEnFeuille(&a, -524);
+    insererEnFeuille(&a,26 );
+    insererEnFeuille(&a, 17);
+    insererEnFeuille(&a,2 );
+    insererEnFeuille(&a, 8 );
+    insererEnFeuille(&a, 100);
+    insererEnFeuille(&a, 200);
+    insererEnFeuille(&a,1 );
+    insererEnFeuille(&a, 9);
+    insererEnFeuille(&a, 265);
+
+    if (rechercherVal(a, 8) != 1) return 1;
+    if (rechercherVal(a, 1000)  != 0) return 1;
     return 0;
 }

@@ -22,4 +22,6 @@ void viderArbre(ArbreBin * pta);
 void afficherCroissant(Abr b);
 void afficherDecroissant(Abr b);
 void afficherCouche(ArbreBin a);
+Booleen supprimerVal(Abr * pta, int val);
+Booleen rechercherVal(Abr a, int val);
 #endif 
