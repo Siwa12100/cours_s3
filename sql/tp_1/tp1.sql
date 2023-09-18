@@ -111,6 +111,6 @@ FROM GameDetail gd
 JOIN Player p ON p.id = gd.idPlayer
 JOIN Game g ON g.id = gd.idGame
 WHERE gd.assists = (SELECT MAX(gd1.assists) FROM GameDetail gd1)
-GROUP BY p.name;
+GROUP BY p.name, gd.assists;
 
 
