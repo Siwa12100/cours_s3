@@ -71,29 +71,26 @@
 
 /* Question 10 : 
 --------------- */
--- SELECT MAX(gd.threePointsMade) max_paniers, g.dateGame date
--- FROM GAMEDETAIL gd
--- JOIN GAME g ON gd.idGame = g.id
--- WHERE Extract(YEAR FROM g.dateGame) = 2012
--- GROUP BY g.dateGame;
-
--- SELECT gd1.threePointsMade max_paniers, g.dateGame date 
--- FROM GAMEDETAIL gd1 
--- JOIN GAME g ON g.id = gd.idGame
--- GROUP BY g.dateGame
--- HAVING gd.threePointsMade >= ALL(
---     SELECT MAX(gd.threePointsMade)
+/* 
+Dans la sous requête, on commence par récupérer le nombre maximal de paniers à 3 points 
+réalisés dans les parties en 2012. 
+Ensuite dans la requête principale, on récupère le max de cette valeur là, pour bien avoir 
+le nombre de paniers à 3 points le plus grand réalisé pendant 2012.  
+*/
+-- SELECT MAX(max_paniers) AS max_paniers_saison_2012
+-- FROM (
+--     SELECT MAX(gd.threePointsMade) AS max_paniers
+--     FROM GAMEDETAIL gd
 --     JOIN GAME g ON gd.idGame = g.id
 --     WHERE Extract(YEAR FROM g.dateGame) = 2012
---     GROUP BY g.dateGame;
--- )
+--     GROUP BY g.dateGame
+-- ) AS max_paniers_par_date;
 
-SELECT MAX(max_paniers_par_date.max_paniers) AS max_paniers_saison_2012
-FROM (
-    SELECT MAX(gd.threePointsMade) AS max_paniers
-    FROM GAMEDETAIL gd
-    JOIN GAME g ON gd.idGame = g.id
-    WHERE Extract(YEAR FROM g.dateGame) = 2012
-    GROUP BY g.dateGame
-) AS max_paniers_par_date;
+
+/* Question 11 : 
+---------------- */
+SELECT t.city as ville, t.nickname as nom 
+FROM Team t
+GROUP BY t.city, t.nickname
+HAVING t.yearFounded = (SELECT t1.yearFounded FROM Team t1 WHERE t1.conference = t.conference);
 
