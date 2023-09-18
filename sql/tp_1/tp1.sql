@@ -75,7 +75,7 @@ SELECT gd.threePointsMade max_paniers, g.dateGame date
 FROM GAMEDETAIL gd
 JOIN GAME g ON gd.idGame = g.id
 WHERE Extract(YEAR FROM g.dateGame) = 2012
-GROUP BY g.dateGame
+GROUP BY g.dateGame, gd.threePointsMade
 HAVING gd.threePointsMade >= ALL(SELECT gd1.threePointsMade
                                  FROM GAMEDETAIL gd1
                                  JOIN GAME g1 ON gd1.idGame = g1.id
