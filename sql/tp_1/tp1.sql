@@ -76,7 +76,4 @@ FROM GAMEDETAIL gd
 JOIN GAME g ON gd.idGame = g.id
 WHERE Extract(YEAR FROM g.dateGame) = 2012
 GROUP BY g.dateGame, gd.threePointsMade
-HAVING gd.threePointsMade >= ALL(SELECT gd1.threePointsMade
-                                 FROM GAMEDETAIL gd1
-                                 JOIN GAME g1 ON gd1.idGame = g1.id
-                                 WHERE EXTRACT (YEAR FROM g1.dateGame) = 2012);
+HAVING gd.threePointsMade = MAX(gd.threePointsMade);
