@@ -88,7 +88,7 @@
 --     GROUP BY g.dateGame;
 -- )
 
-SELECT MAX(max_paniers) AS max_paniers_saison_2012
+SELECT MAX(max_paniers_par_date.max_paniers) AS max_paniers_saison_2012
 FROM (
     SELECT MAX(gd.threePointsMade) AS max_paniers
     FROM GAMEDETAIL gd
