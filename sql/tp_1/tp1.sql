@@ -57,12 +57,21 @@
 
 /* Question 9 : 
 --------------- */
-SELECT p.name 
-FROM GameDetail gd 
-JOIN Player p ON p.id = gd.idPlayer
-WHERE gd.threePointsPrctage IS NOT NULL
-GROUP BY gd.idPlayer, p.name
-HAVING AVG(gd.threePointsPrctage) >= ALL(SELECT AVG(gd1.threePointsPrctage)
-                                  FROM GameDetail gd1
-                                  WHERE gd1.threePointsPrctage IS NOT NULL
-                                  GROUP BY gd1.idPlayer);
+-- SELECT p.name 
+-- FROM GameDetail gd 
+-- JOIN Player p ON p.id = gd.idPlayer
+-- WHERE gd.threePointsPrctage IS NOT NULL
+-- GROUP BY gd.idPlayer, p.name
+-- HAVING AVG(gd.threePointsPrctage) >= ALL(SELECT AVG(gd1.threePointsPrctage)
+--                                   FROM GameDetail gd1
+--                                   WHERE gd1.threePointsPrctage IS NOT NULL
+--                                   GROUP BY gd1.idPlayer);
+
+
+
+/* Question 10 : 
+--------------- */
+SELECT MAX(gd.threePointsMade) max_paniers, g.dateGame date
+FROM GAMEDETAIL gd
+JOIN GAME g ON gd.idGame = g.id
+WHERE Extract(YEAR FROM g.dateGame) = 2012;
