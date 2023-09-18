@@ -89,17 +89,28 @@ le nombre de paniers à 3 points le plus grand réalisé pendant 2012.
 
 /* Question 11 : 
 ---------------- */
-SELECT t.city as ville, t.nickname as nom, t.conference, t.yearFounded
-FROM Team t
-WHERE t.yearFounded = (SELECT MAX(t1.yearFounded) FROM Team t1 WHERE t1.conference = 'E' GROUP BY t1.conference)
-AND t.conference = 'E'
-GROUP BY t.city, t.nickname, t.conference, t.yearFounded;
+-- Equipe la plus jeune pour la conférence de l'est 
+-- SELECT t.city as ville, t.nickname as nom, t.conference, t.yearFounded
+-- FROM Team t
+-- WHERE t.yearFounded = (SELECT MAX(t1.yearFounded) FROM Team t1 WHERE t1.conference = 'E' GROUP BY t1.conference)
+-- AND t.conference = 'E'
+-- GROUP BY t.city, t.nickname, t.conference, t.yearFounded;
 
-SELECT t.city as ville, t.nickname as nom, t.conference, t.yearFounded
-FROM Team t
-WHERE t.yearFounded = (SELECT MAX(t1.yearFounded) FROM Team t1 WHERE t1.conference = 'W' GROUP BY t1.conference)
-AND t.conference = 'W'
-GROUP BY t.city, t.nickname, t.conference, t.yearFounded;
+-- -- Equipe la plus jeune pour la conférence de l'ouest 
+-- SELECT t.city as ville, t.nickname as nom, t.conference, t.yearFounded
+-- FROM Team t
+-- WHERE t.yearFounded = (SELECT MAX(t1.yearFounded) FROM Team t1 WHERE t1.conference = 'W' GROUP BY t1.conference)
+-- AND t.conference = 'W'
+-- GROUP BY t.city, t.nickname, t.conference, t.yearFounded;
 
+
+/* Question 12 : 
+---------------- */ 
+SELECT p.name as nom 
+FROM GameDetail gd
+JOIN Player ON p.id = gd.idPlayer
+JOIN Game g ON g.id = gd.idGame
+WHERE gd.assists = (SELECT MAX(gd1.assists) FROM GameDetail gd1)
+GROUP BY g.name;
 
 
