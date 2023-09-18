@@ -88,8 +88,12 @@
 --     GROUP BY g.dateGame;
 -- )
 
-SELECT MAX(MAX(gd.threePointsMade)) AS max_paniers_saison_2012
-FROM GAMEDETAIL gd
-JOIN GAME g ON gd.idGame = g.id
-WHERE EXTRACT(YEAR FROM g.dateGame) = 2012
-GROUP BY g.dateGame;
+SELECT MAX(max_paniers) AS max_paniers_saison_2012
+FROM (
+    SELECT MAX(gd.threePointsMade) AS max_paniers
+    FROM GAMEDETAIL gd
+    JOIN GAME g ON gd.idGame = g.id
+    WHERE Extract(YEAR FROM g.dateGame) = 2012
+    GROUP BY g.dateGame
+) AS max_paniers_par_date;
+
