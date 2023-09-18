@@ -77,7 +77,7 @@
 -- WHERE Extract(YEAR FROM g.dateGame) = 2012
 -- GROUP BY g.dateGame;
 
-SELECT gd1.threePointsMade max_paniers, g.dateGame date date
+SELECT gd1.threePointsMade max_paniers, g.dateGame date 
 FROM GAMEDETAIL gd1 
 JOIN GAME g ON g.id = gd.idGame
 GROUP BY g.dateGame
