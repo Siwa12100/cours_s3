@@ -147,7 +147,7 @@ le nombre de paniers à 3 points le plus grand réalisé pendant 2012.
 ---------------- */ 
 SELECT p.name, gd.steals as balles_interceptees,
          gd.turnovers as balles_perdues
-FROM GameDetails gd 
+FROM GameDetail gd 
 JOIN Game g ON g.id = gd.idGame
 JOIN Player p ON p.id = gd.idPlayer
 WHERE gd.steals > gd.turnovers
