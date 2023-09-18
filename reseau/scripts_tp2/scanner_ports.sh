@@ -36,4 +36,6 @@ done
 # Socat -t 1 : fait en sorte que si la connexion n'est pas établie au bout de 1 seconde, on arrête 
 # TCP:&host:&port : pour envoyer une demande de connexion au port de la machine distante 
 # OPEN:/dev/null : pour rediriger toutes les informations récupérées lors de cette connexion dans /dev/null
-# 2>/dev/null : redirige la sortie d'erreur vers /dev/null 
+# >/dev/null : redirige la sortie standard  vers /dev/null 
+#2>&1 : redirige la sortie d'erreur vers la sortie standard
+# awk '{print &1}' = affiche le premier champ de la ligne récupérée depuis le | 
