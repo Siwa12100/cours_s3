@@ -89,7 +89,7 @@ le nombre de paniers à 3 points le plus grand réalisé pendant 2012.
 
 /* Question 11 : 
 ---------------- */
-SELECT t.city as ville, t.nickname as nom 
+SELECT t.city as ville, t.nickname as nom, t.conference, t.yearFounded
 FROM Team t
 WHERE t.yearFounded = (SELECT MIN(t1.yearFounded) FROM Team t1 WHERE t1.conference = 'E' GROUP BY t1.conference)
 GROUP BY t.city, t.nickname;
