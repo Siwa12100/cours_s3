@@ -16,7 +16,7 @@ ports=$(seq 0 1024) # Plage de ports à scanner (0 à 1024 dans ce cas)
 for port in $ports
 do
   # On commence par essayer d'établir une connexion avec le port via soccat 
-  (socat -v -t 1 TCP:$host:$port >/dev/null 2>&1) && {
+  (socat -v -t 1 TCP:$host:$port OPEN:/dev/null >/dev/null 2>&1) && {
     # Si on a réussit, on récupère le nom du service associé à ce port 
     # On récupère dans /etc/services les lignes avec écrit port/tcp 
     # Et dans ces lignes ci on prend le premier mot avec le awk 
@@ -36,4 +36,4 @@ done
 # Socat -t 1 : fait en sorte que si la connexion n'est pas établie au bout de 1 seconde, on arrête 
 # TCP:&host:&port : pour envoyer une demande de connexion au port de la machine distante 
 # OPEN:/dev/null : pour rediriger toutes les informations récupérées lors de cette connexion dans /dev/null
-
+# 2>/dev/null : redirige la sortie d'erreur vers /dev/null 
