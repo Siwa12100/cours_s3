@@ -124,5 +124,33 @@ WHERE gd.personnalFoul = 6
 ORDER BY gd.playingTime
 LIMIT 1;
 
+SELECT g.id
+FROM GameDetail gd
+JOIN Player p ON gd.idPlayer = p.id
+JOIN Game g ON gd.idGame = g.id
+WHERE gd.personnalFoul = 6
+ORDER BY gd.playingTime
+LIMIT 1;
 
 
+/* Question 14 : 
+---------------- */ 
+SELECT t.nickname, t.city, g.dateGame, p.name as joueur_en_question
+FROM GameDetail gd
+JOIN Player p ON gd.idPlayer = p.id
+JOIN Game g ON gd.idGame = g.id
+JOIN Team t ON t.id = gd.idTeam
+WHERE gd.idGame = (SELECT g.id
+                FROM GameDetail gd
+                JOIN Player p ON gd.idPlayer = p.id
+                JOIN Game g ON gd.idGame = g.id
+                WHERE gd.personnalFoul = 6
+                ORDER BY gd.playingTime
+                LIMIT 1)
+AND gd.idPlayer = (SELECT p.id
+                    FROM GameDetail gd
+                    JOIN Player p ON gd.idPlayer = p.id
+                    JOIN Game g ON gd.idGame = g.id
+                    WHERE gd.personnalFoul = 6
+                    ORDER BY gd.playingTime
+                    LIMIT 1;)
