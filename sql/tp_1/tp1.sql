@@ -95,3 +95,9 @@ WHERE t.yearFounded = (SELECT MIN(t1.yearFounded) FROM Team t1 WHERE t1.conferen
 AND t.conference = 'E'
 GROUP BY t.city, t.nickname, t.conference, t.yearFounded;
 
+SELECT t.city as ville, t.nickname as nom, t.conference, t.yearFounded
+FROM Team t
+WHERE t.yearFounded = (SELECT MIN(t1.yearFounded) FROM Team t1 WHERE t1.conference = 'W' GROUP BY t1.conference)
+AND t.conference = 'W'
+GROUP BY t.city, t.nickname, t.conference, t.yearFounded;
+
