@@ -13,6 +13,14 @@ ports=$(seq 0 1024) # Plage de ports à scanner (0 à 1024 dans ce cas)
 
 for port in $ports
 do
-  (socat -v -t 1 TCP:$host:$port OPEN:/dev/null 2>/dev/null) && echo "Port $port ouvert"
+  (socat -v -t 1 TCP:$host:$port OPEN:/dev/null 2>/dev/null) && {
+    service_name=$(grep -w "$port/tcp" /etc/services | awk '{print $1}')
+    if [ -n "$service_name" ]; then
+      echo "Port $port ouvert : $service_name"
+    else
+      echo "Port $port ouvert"
+    fi
+  }
 done
+
 
