@@ -116,40 +116,57 @@ le nombre de paniers à 3 points le plus grand réalisé pendant 2012.
 
 /* Question 13 :
 ---------------- */
-SELECT p.name AS nom_joueur,g.dateGame AS date_performance, gd.playingTime AS temps_de_jeu, gd.personnalFoul AS personnum, g.dateGame AS date_de_la_partie
-FROM GameDetail gd
-JOIN Player p ON gd.idPlayer = p.id
-JOIN Game g ON gd.idGame = g.id
-WHERE gd.personnalFoul = 6
-ORDER BY gd.playingTime
-LIMIT 1;
+-- SELECT p.name AS nom_joueur,g.dateGame AS date_performance, gd.playingTime AS temps_de_jeu, gd.personnalFoul AS personnum, g.dateGame AS date_de_la_partie
+-- FROM GameDetail gd
+-- JOIN Player p ON gd.idPlayer = p.id
+-- JOIN Game g ON gd.idGame = g.id
+-- WHERE gd.personnalFoul = 6
+-- ORDER BY gd.playingTime
+-- LIMIT 1;
 
 
 /* Question 14 : 
 ---------------- */ 
+-- A reprendre 
 
-SELECT t.nickname, t.city, g.dateGame
+SELECT
+    home_team.nickname AS equipe_domicile,
+    visitor_team.nickname AS equipe_visiteur,
+    g.dateGame AS date_de_la_partie
 FROM GameDetail gd
-JOIN Team t ON t.id = gd.idTeam 
-JOIN Game g ON g.id = gd.idGame
-WHERE g.dateGame = (SELECT g1.dateGame
-                        FROM GameDetail gd1
-                        JOIN Player p1 ON gd1.idPlayer = p1.id 
-                        JOIN Game g1 ON g1.id = gd1.idGame 
-                        WHERE gd1.personnalFoul = 6
-                        ORDER BY gd1.playingTime
-                        LIMIT 1);
-AND (g.idHomeTeam = (SELECT gd2.idTeam 
-                        FROM GameDetail gd2
-                        JOIN Player p2 ON gd2.idPlayer = p2.id 
-                        JOIN Game g2 ON g2.id = gd2.idGame 
-                        WHERE gd2.personnalFoul = 6
-                        ORDER BY gd2.playingTime
-                        LIMIT 1)
-OR g.idVisitorTeam = (SELECT gd2.idTeam 
-                        FROM GameDetail gd2
-                        JOIN Player p2 ON gd2.idPlayer = p2.id 
-                        JOIN Game g2 ON g2.id = gd2.idGame 
-                        WHERE gd2.personnalFoul = 6
-                        ORDER BY gd2.playingTime
-                        LIMIT 1));
+JOIN Game g ON gd.idGame = g.id
+JOIN Team home_team ON g.idHomeTeam = home_team.id
+JOIN Team visitor_team ON g.idVisitorTeam = visitor_team.id
+WHERE gd.personnalFoul = 6
+ORDER BY gd.playingTime
+LIMIT 1;
+
+-- SELECT t.nickname, t.city, g.dateGame
+-- FROM GameDetail gd
+-- JOIN Team t ON t.id = gd.idTeam 
+-- JOIN Game g ON g.id = gd.idGame
+-- WHERE g.dateGame = (SELECT g1.dateGame
+--                         FROM GameDetail gd1
+--                         JOIN Player p1 ON gd1.idPlayer = p1.id 
+--                         JOIN Game g1 ON g1.id = gd1.idGame 
+--                         WHERE gd1.personnalFoul = 6
+--                         ORDER BY gd1.playingTime
+--                         LIMIT 1);
+-- AND (g.idHomeTeam = (SELECT gd2.idTeam 
+--                         FROM GameDetail gd2
+--                         JOIN Player p2 ON gd2.idPlayer = p2.id 
+--                         JOIN Game g2 ON g2.id = gd2.idGame 
+--                         WHERE gd2.personnalFoul = 6
+--                         ORDER BY gd2.playingTime
+--                         LIMIT 1)
+-- OR g.idVisitorTeam = (SELECT gd2.idTeam 
+--                         FROM GameDetail gd2
+--                         JOIN Player p2 ON gd2.idPlayer = p2.id 
+--                         JOIN Game g2 ON g2.id = gd2.idGame 
+--                         WHERE gd2.personnalFoul = 6
+--                         ORDER BY gd2.playingTime
+--                         LIMIT 1));
+
+
+/* Question 15 : 
+---------------- */
