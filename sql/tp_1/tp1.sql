@@ -116,7 +116,7 @@ le nombre de paniers à 3 points le plus grand réalisé pendant 2012.
 
 /* Question 13 :
 ---------------- */
-SELECT p.name, g.dateGame, gd.personnalFoul as fautes_personnelles, p.playingTime 
+SELECT p.name, g.dateGame, gd.personnalFoul as fautes_personnelles, gd.playingTime 
 FROM GameDetail gd
 JOIN Game g ON g.id = gd.idGame
 JOIN Player p ON p.id = gd.idPlayer
