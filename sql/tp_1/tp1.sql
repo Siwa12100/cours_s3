@@ -116,13 +116,13 @@ le nombre de paniers à 3 points le plus grand réalisé pendant 2012.
 
 /* Question 13 :
 ---------------- */
-SELECT p.name AS nom_joueur,g.dateGame AS date_performance, gd.playingTime AS temps_de_jeu, gd.personnalFoul AS personnum, g.dateGame AS date_de_la_partie
-FROM GameDetail gd
-JOIN Player p ON gd.idPlayer = p.id
-JOIN Game g ON gd.idGame = g.id
-WHERE gd.personnalFoul = 6
-ORDER BY gd.playingTime
-LIMIT 1;
+-- SELECT p.name AS nom_joueur,g.dateGame AS date_performance, gd.playingTime AS temps_de_jeu, gd.personnalFoul AS personnum, g.dateGame AS date_de_la_partie
+-- FROM GameDetail gd
+-- JOIN Player p ON gd.idPlayer = p.id
+-- JOIN Game g ON gd.idGame = g.id
+-- WHERE gd.personnalFoul = 6
+-- ORDER BY gd.playingTime
+-- LIMIT 1;
 
 
 /* Question 14 : 
@@ -136,13 +136,13 @@ WHERE g.dateGame = (SELECT g1.dateGame
                         FROM GameDetail gd1
                         JOIN Player p1 ON gd1.idPlayer = p1.id 
                         JOIN Game g1 ON g1.id = gd1.idGame 
-                        WHERE gd1.personnalFouls = 6
+                        WHERE gd1.personnalFoul = 6
                         ORDER BY gd1.playingTime
                         LIMIT 1)
 AND gd.idPlayer = (SELECT p2.id
                         FROM GameDetail gd2
                         JOIN Player p2 ON gd2.idPlayer = p2.id 
                         JOIN Game g2 ON g2.id = gd2.idGame 
-                        WHERE gd2.personnalFouls = 6
+                        WHERE gd2.personnalFoul = 6
                         ORDER BY gd2.playingTime
                         LIMIT 1)
