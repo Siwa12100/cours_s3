@@ -77,13 +77,19 @@
 -- WHERE Extract(YEAR FROM g.dateGame) = 2012
 -- GROUP BY g.dateGame;
 
-SELECT gd1.threePointsMade max_paniers, g.dateGame date 
-FROM GAMEDETAIL gd1 
-JOIN GAME g ON g.id = gd.idGame
-GROUP BY g.dateGame
-HAVING gd.threePointsMade >= ALL(
-    SELECT MAX(gd.threePointsMade)
-    JOIN GAME g ON gd.idGame = g.id
-    WHERE Extract(YEAR FROM g.dateGame) = 2012
-    GROUP BY g.dateGame;
-)
+-- SELECT gd1.threePointsMade max_paniers, g.dateGame date 
+-- FROM GAMEDETAIL gd1 
+-- JOIN GAME g ON g.id = gd.idGame
+-- GROUP BY g.dateGame
+-- HAVING gd.threePointsMade >= ALL(
+--     SELECT MAX(gd.threePointsMade)
+--     JOIN GAME g ON gd.idGame = g.id
+--     WHERE Extract(YEAR FROM g.dateGame) = 2012
+--     GROUP BY g.dateGame;
+-- )
+
+SELECT MAX(MAX(gd.threePointsMade)) AS max_paniers_saison_2012
+FROM GAMEDETAIL gd
+JOIN GAME g ON gd.idGame = g.id
+WHERE EXTRACT(YEAR FROM g.dateGame) = 2012
+GROUP BY g.dateGame;
