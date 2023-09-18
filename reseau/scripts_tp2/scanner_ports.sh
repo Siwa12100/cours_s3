@@ -16,7 +16,7 @@ ports=$(seq 0 1024) # Plage de ports à scanner (0 à 1024 dans ce cas)
 for port in $ports
 do
   # On commence par essayer d'établir une connexion avec le port via soccat 
-  (socat -v -t 1 TCP:$host:$port >/dev/null) && {
+  (socat -v -t 1 TCP:$host:$port >/dev/null 2>&1) && {
     # Si on a réussit, on récupère le nom du service associé à ce port 
     # On récupère dans /etc/services les lignes avec écrit port/tcp 
     # Et dans ces lignes ci on prend le premier mot avec le awk 
