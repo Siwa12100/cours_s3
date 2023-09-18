@@ -116,35 +116,34 @@ le nombre de paniers à 3 points le plus grand réalisé pendant 2012.
 
 /* Question 13 :
 ---------------- */
--- SELECT p.name AS nom_joueur,g.dateGame AS date_performance, gd.playingTime AS temps_de_jeu, gd.personnalFoul AS personnum
--- FROM GameDetail gd
--- JOIN Player p ON gd.idPlayer = p.id
--- JOIN Game g ON gd.idGame = g.id
--- WHERE gd.personnalFoul = 6
--- ORDER BY gd.playingTime
--- LIMIT 1;
+SELECT p.name AS nom_joueur,g.dateGame AS date_performance, gd.playingTime AS temps_de_jeu, gd.personnalFoul AS personnum
+FROM GameDetail gd
+JOIN Player p ON gd.idPlayer = p.id
+JOIN Game g ON gd.idGame = g.id
+WHERE gd.personnalFoul = 6
+ORDER BY gd.playingTime
+LIMIT 3;
 
 
 /* Question 14 : 
 ---------------- */ 
 -- Pas encore juste 
-SELECT t.nickname, t.city, g.dateGame, p.name as joueur_en_question
-FROM GameDetail gd
-JOIN Player p ON gd.idPlayer = p.id
-JOIN Game g ON gd.idGame = g.id
-JOIN Team t ON t.id = gd.idTeam
-WHERE gd.idGame = (SELECT g.id
-                FROM GameDetail gd
-                JOIN Player p ON gd.idPlayer = p.id
-                JOIN Game g ON gd.idGame = g.id
-                WHERE gd.personnalFoul = 6
-                ORDER BY gd.playingTime
-                LIMIT 1)
-AND gd.idPlayer = (SELECT p.id
-                    FROM GameDetail gd
-                    JOIN Player p ON gd.idPlayer = p.id
-                    JOIN Game g ON gd.idGame = g.id
-                    WHERE gd.personnalFoul = 6
-                    ORDER BY gd.playingTime
-                    LIMIT 1)
-# --- 
+-- SELECT t.nickname, t.city, g.dateGame, p.name as joueur_en_question
+-- FROM GameDetail gd
+-- JOIN Player p ON gd.idPlayer = p.id
+-- JOIN Game g ON gd.idGame = g.id
+-- JOIN Team t ON t.id = gd.idTeam
+-- WHERE gd.idGame = (SELECT g.id
+--                 FROM GameDetail gd
+--                 JOIN Player p ON gd.idPlayer = p.id
+--                 JOIN Game g ON gd.idGame = g.id
+--                 WHERE gd.personnalFoul = 6
+--                 ORDER BY gd.playingTime
+--                 LIMIT 1)
+-- AND gd.idPlayer = (SELECT p.id
+--                     FROM GameDetail gd
+--                     JOIN Player p ON gd.idPlayer = p.id
+--                     JOIN Game g ON gd.idGame = g.id
+--                     WHERE gd.personnalFoul = 6
+--                     ORDER BY gd.playingTime
+--                     LIMIT 1)
