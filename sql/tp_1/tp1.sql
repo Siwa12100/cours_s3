@@ -121,7 +121,7 @@ FROM GameDetail gd
 JOIN Game g ON g.id = gd.idGame
 JOIN Player p ON p.id = gd.idPlayer
 WHERE gd.personnalFoul = 6 
-GROUP BY p.name, g.dateGame, gd.personnalFoul, gd.players, gd
+GROUP BY p.name, g.dateGame, gd.personnalFoul, gd.playingTime
 HAVING gd.playingTime = (SELECT MIN(gd.playingTime)
                       FROM GameDetail gd1
                       WHERE gd1.personnalFoul = 6 
