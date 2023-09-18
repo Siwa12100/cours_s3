@@ -145,7 +145,7 @@ AND (g.idHomeTeam = (SELECT gd2.idTeam
                         JOIN Game g2 ON g2.id = gd2.idGame 
                         WHERE gd2.personnalFoul = 6
                         ORDER BY gd2.playingTime
-                        LIMIT 1);
+                        LIMIT 1)
 OR g.idVisitorTeam = (SELECT gd2.idTeam 
                         FROM GameDetail gd2
                         JOIN Player p2 ON gd2.idPlayer = p2.id 
