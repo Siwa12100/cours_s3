@@ -152,3 +152,11 @@ JOIN Game g ON g.id = gd.idGame
 JOIN Player p ON p.id = gd.idPlayer
 WHERE gd.steals > gd.turnovers
 AND gd.steals >= 1001;
+
+SELECT p.id, p.name, SUM(gd.steals) as somme_des_interceptions, 
+        SUM(gd.turnovers) as somme_des_pertes_de_balles
+FROM GameDetail gd 
+JOIN Player p ON p.id = gd.idPlayer
+GROUP BY p.id, p.name
+HAVING SUM(gd.turnovers) < SUM(gd.steals) 
+AND SUM(gd.steals) >= 1000;
