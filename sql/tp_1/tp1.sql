@@ -106,11 +106,24 @@ le nombre de paniers à 3 points le plus grand réalisé pendant 2012.
 
 /* Question 12 : 
 ---------------- */ 
-SELECT p.name as nom, gd.assists as passes_decisives 
+-- SELECT p.name as nom, gd.assists as passes_decisives 
+-- FROM GameDetail gd
+-- JOIN Player p ON p.id = gd.idPlayer
+-- JOIN Game g ON g.id = gd.idGame
+-- WHERE gd.assists = (SELECT MAX(gd1.assists) FROM GameDetail gd1)
+-- GROUP BY p.name, gd.assists;
+
+
+/* Question 13 :
+---------------- */
+SELECT p.name, g.dateGame, p.personnalFoul as fautes_personnelles, p.playingTime 
 FROM GameDetail gd
-JOIN Player p ON p.id = gd.idPlayer
 JOIN Game g ON g.id = gd.idGame
-WHERE gd.assists = (SELECT MAX(gd1.assists) FROM GameDetail gd1)
-GROUP BY p.name, gd.assists;
+JOIN Player p ON p.id = gd.idPlayer
+WHERE gd.personnalFoul = 6 
+AND gd.playingTime = (SELECT MIN(gd.playingTime)
+                      FROM GameDetail gd1
+                      WHERE gd1.personnalFoul = 6 
+                      GROUP BY gd.playingTime);
 
 
