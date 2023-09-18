@@ -147,3 +147,4 @@ AND gd.idPlayer = (SELECT p.id
                     WHERE gd.personnalFoul = 6
                     ORDER BY gd.playingTime
                     LIMIT 1)
+# --- 
