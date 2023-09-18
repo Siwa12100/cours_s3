@@ -71,8 +71,19 @@
 
 /* Question 10 : 
 --------------- */
-SELECT MAX(gd.threePointsMade) max_paniers, g.dateGame date
-FROM GAMEDETAIL gd
-JOIN GAME g ON gd.idGame = g.id
-WHERE Extract(YEAR FROM g.dateGame) = 2012
-GROUP BY g.dateGame;
+-- SELECT MAX(gd.threePointsMade) max_paniers, g.dateGame date
+-- FROM GAMEDETAIL gd
+-- JOIN GAME g ON gd.idGame = g.id
+-- WHERE Extract(YEAR FROM g.dateGame) = 2012
+-- GROUP BY g.dateGame;
+
+SELECT gd1.threePointsMade max_paniers, g.dateGame date date
+FROM GAMEDETAIL gd1 
+JOIN GAME g ON g.id = gd.idGame
+GROUP BY g.dateGame
+HAVING gd.threePointsMade >= ALL(
+    SELECT MAX(gd.threePointsMade)
+    JOIN GAME g ON gd.idGame = g.id
+    WHERE Extract(YEAR FROM g.dateGame) = 2012
+    GROUP BY g.dateGame;
+)
