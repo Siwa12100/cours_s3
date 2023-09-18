@@ -108,7 +108,7 @@ le nombre de paniers à 3 points le plus grand réalisé pendant 2012.
 ---------------- */ 
 SELECT p.name as nom 
 FROM GameDetail gd
-JOIN Player ON p.id = gd.idPlayer
+JOIN Player p ON p.id = gd.idPlayer
 JOIN Game g ON g.id = gd.idGame
 WHERE gd.assists = (SELECT MAX(gd1.assists) FROM GameDetail gd1)
 GROUP BY g.name;
