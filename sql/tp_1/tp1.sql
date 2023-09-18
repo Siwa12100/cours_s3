@@ -91,24 +91,15 @@ le nombre de paniers à 3 points le plus grand réalisé pendant 2012.
 ---------------- */
 SELECT t.city as ville, t.nickname as nom, t.conference, t.yearFounded
 FROM Team t
-WHERE t.yearFounded = (SELECT MIN(t1.yearFounded) FROM Team t1 WHERE t1.conference = 'E' GROUP BY t1.conference)
+WHERE t.yearFounded = (SELECT MAX(t1.yearFounded) FROM Team t1 WHERE t1.conference = 'E' GROUP BY t1.conference)
 AND t.conference = 'E'
 GROUP BY t.city, t.nickname, t.conference, t.yearFounded;
 
 SELECT t.city as ville, t.nickname as nom, t.conference, t.yearFounded
 FROM Team t
-WHERE t.yearFounded = (SELECT MIN(t1.yearFounded) FROM Team t1 WHERE t1.conference = 'W' GROUP BY t1.conference)
+WHERE t.yearFounded = (SELECT MAX(t1.yearFounded) FROM Team t1 WHERE t1.conference = 'W' GROUP BY t1.conference)
 AND t.conference = 'W'
 GROUP BY t.city, t.nickname, t.conference, t.yearFounded;
 
-SELECT (SELECT t.city as ville, t.nickname as nom, t.conference, t.yearFounded
-        FROM Team t
-        WHERE t.yearFounded = (SELECT MIN(t1.yearFounded) FROM Team t1 WHERE t1.conference = 'E' GROUP BY t1.conference)
-        AND t.conference = 'E'
-        GROUP BY t.city, t.nickname, t.conference, t.yearFounded), 
-        (SELECT t.city as ville, t.nickname as nom, t.conference, t.yearFounded
-FROM Team t
-WHERE t.yearFounded = (SELECT MIN(t1.yearFounded) FROM Team t1 WHERE t1.conference = 'E' GROUP BY t1.conference)
-AND t.conference = 'E'
-GROUP BY t.city, t.nickname, t.conference, t.yearFounded);
+
 
