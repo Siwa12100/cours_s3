@@ -74,4 +74,5 @@
 SELECT MAX(gd.threePointsMade) max_paniers, g.dateGame date
 FROM GAMEDETAIL gd
 JOIN GAME g ON gd.idGame = g.id
-WHERE Extract(YEAR FROM g.dateGame) = 2012;
+WHERE Extract(YEAR FROM g.dateGame) = 2012
+GROUP BY g.dateGame;
