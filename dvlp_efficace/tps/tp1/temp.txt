@@ -1,0 +1,45 @@
+#ifndef def_abr_h
+#define def_abr_h
+
+/**
+ * \file abr.h
+ * \brief Header contenant structs & fonctions sur les abr 
+ * \author Jean Marcillac
+ * \date 19/09/2023
+ * 
+ * Ce fichier contient les structures des arbres binaires, des arbres binaires de recherche et des leurs noeuds,
+ * ainsi qu'un enum servant à représenter des booleens. 
+ * Il contient aussi tous les prototypes des fonctions de l'exercice 1 du tp, sur les abr. 
+*/
+
+typedef struct noeud {
+    int val; 
+    struct noeud * fg; 
+    struct noeud * fd;
+}Noeud;
+
+typedef Noeud * ArbreBin;
+typedef ArbreBin Abr;
+
+typedef enum booleen {
+    FAUX, VRAI
+}Booleen;
+
+/**
+ * \brief Créer un arbre binaire vide 
+ * \return La valeur NULL 
+*/
+ArbreBin creerArbreVide();
+/**
+ * \brief Vérifie si un arbre binaire est vide ou non 
+*/
+Booleen estArbreVide(ArbreBin b);
+void insererEnFeuille(Abr * pta, int val);
+Noeud * creerNoeud(int val);
+void viderArbre(ArbreBin * pta);
+void afficherCroissant(Abr b);
+void afficherDecroissant(Abr b);
+void afficherCouche(ArbreBin a);
+Booleen supprimerVal(Abr * pta, int val);
+Booleen rechercherVal(Abr a, int val);
+#endif 
