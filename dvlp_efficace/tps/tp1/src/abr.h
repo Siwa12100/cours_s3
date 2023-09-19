@@ -17,6 +17,7 @@
  * \brief Structure représentant un nœud d'un arbre binaire.
  */
 typedef struct noeud {
+    int h;
     int val; /**< Valeur stockée dans le nœud. */
     struct noeud *fg; /**< Pointeur vers le sous-arbre gauche. */
     struct noeud *fd; /**< Pointeur vers le sous-arbre droit. */
@@ -26,7 +27,7 @@ typedef struct noeud {
  * \typedef ArbreBin
  * \brief Type de données représentant un arbre binaire.
  */
-typedef Noeud *ArbreBin;
+typedef Noeud * ArbreBin;
 
 /**
  * \typedef Abr

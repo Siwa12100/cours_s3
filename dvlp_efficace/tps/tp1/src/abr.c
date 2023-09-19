@@ -36,7 +36,9 @@ Noeud * creerNoeud(int val) {
 
     tmp -> fd = creerArbreVide();
     tmp -> fg = creerArbreVide(); 
-    tmp -> val = val; 
+    tmp -> val = val;
+    // Pour l'exo 2 :
+    tmp -> h = 0;
     return tmp;
 }
 
@@ -127,7 +129,8 @@ void afficherCoucheRec(ArbreBin a, int retrait) {
     }
 
     afficherNtab(retrait);
-    printf("%d \n", a -> val);
+    // Mise à jour de l'affichage pour l'exo  2 (ajout de la hauteur...)
+    printf("%d (h : %d)\n", a -> val, a -> h);
 
     if (a -> fg != NULL){
         afficherNtab(retrait);

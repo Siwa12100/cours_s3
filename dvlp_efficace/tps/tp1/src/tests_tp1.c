@@ -1,4 +1,5 @@
 #include "abr.h"
+#include "avl.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -14,6 +15,7 @@ void effacerTerminal();
 int testAfficherCouche();
 int testSupprimerVal();
 int testRechercherVal();
+int testMettreAjourHauteur();
 
 int main(void) {
     effacerTerminal();
@@ -69,7 +71,31 @@ int lancementTests() {
         return 1;
     }
 
+    if (testMettreAjourHauteur() != 0){
+        printf("[infos] : Erreur dans le test unitaire de mise à jour de la hauteur.\n");
+        return 1;
+    }
+
     printf("[Infos]  : Tests unitaires exécutés avec succès ! \n");
+    return 0;
+}
+
+int testMettreAjourHauteur(void) {
+    Avl * v = creerArbreVide();
+    insererEnFeuille(&v, 13);
+    insererEnFeuille(&v, -524);
+    insererEnFeuille(&v,26 );
+    insererEnFeuille(&v, 17);
+    insererEnFeuille(&v,2 );
+    insererEnFeuille(&v, 8 );
+    insererEnFeuille(&v, 100);
+    insererEnFeuille(&v, 200);
+    insererEnFeuille(&v,1 );
+    insererEnFeuille(&v, 9);
+    afficherCouche(v);
+    printf("\n\n\n [temp] : Construction et affichage de l'arbre.\n\n\n");
+    mettreAjourHauteur(v); // ...
+    printf("\n\n\n [temp] : Passage après le mettre à jour hauteur.\n\n\n");
     return 0;
 }
 
