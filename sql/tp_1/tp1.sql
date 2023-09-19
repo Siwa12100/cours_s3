@@ -142,7 +142,8 @@ le nombre de paniers à 3 points le plus grand réalisé pendant 2012.
 
 /* Question 15 : 
 ---------------- */
-SELECT p.name, p.id, p.country
+SELECT p.name, p.id, gd.rebounds as rebonds, gd.assists as passes,
+ gd.steals as interceptions, gd.blockedShots as contres, gd.points as points
 FROM GameDetail gd
 JOIN Player p ON p.id = gd.idPlayer
 WHERE (gd.points >= 10 AND gd.rebounds >= 10 AND gd.assists >=10)
