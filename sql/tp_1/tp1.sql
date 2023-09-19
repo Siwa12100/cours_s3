@@ -1,4 +1,4 @@
-/* Question 2 : 
+_/* Question 2 : 
 --------------- */ 
 -- SELECT t.city 
 -- FROM Team t 
@@ -142,7 +142,19 @@ le nombre de paniers à 3 points le plus grand réalisé pendant 2012.
 
 /* Question 15 : 
 ---------------- */
-
+SELECT p.name, p.id, p.country
+FROM GameDetail gd
+JOIN Player p ON p.id = gd.idPlayer
+WHERE (gd.points >= 10 AND gd.rebounds >= 10 AND gd.assists >=10)
+OR (gd.points >= 10 AND gd.rebounds >= 10 AND gd.blockedShots >= 10)
+OR ( gd.points >= 10 AND gd.rebounds >= 10 AND gd.steals >= 10)
+OR ( gd.points >= 10 AND gd.assists >= 10 AND gd.blockedShots >= 10)
+OR ( gd.points >= 10 AND gd.assists >= 10 AND gd.steals >= 10)
+OR ( gd.points >= 10 AND gd.blockedShots >= 10 AND gd.steals >= 10)
+OR ( gd.rebounds >= 10 AND gd. blockedShots >= 10 AND gd.assists >= 10)
+OR ( gd.rebounds >= 10 AND gd.assists >= 10 AND gd.steals >= 10)
+OR ( gd.rebounds >= 10 AND gd.blockedShots >= 10 AND gd.steals >= 10)
+OR ( gd.assists >= 10 AND gd.blockedShots >= 10 AND gd.steals >= 10);
 
 
 /* Question 16 :
