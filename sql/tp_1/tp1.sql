@@ -1,4 +1,4 @@
-_/* Question 2 : 
+/* Question 2 : 
 --------------- */ 
 -- SELECT t.city 
 -- FROM Team t 
