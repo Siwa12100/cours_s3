@@ -1,6 +1,5 @@
 #ifndef def_avl_h
 #define dev_avl_h 
-//#include "abr.h"
 
 /**
  * \struct Noeud
@@ -39,9 +38,9 @@ void mettreAjourHauteur(Noeud * n);
 
 ArbreBin creerArbreVide();
 Booleen estArbreVide(ArbreBin b);
-void insererEnFeuille(Avl * pta, int val);
+void insererEnFeuille(Avl * ptv, int val);
 Noeud * creerNoeud(int val);
-void viderArbre(ArbreBin * tpa);
+void viderArbre(ArbreBin * ptv);
 void afficherCroissant(Avl v);
 void afficherDecroissant(Avl v);
 void afficherCouche(ArbreBin b);
