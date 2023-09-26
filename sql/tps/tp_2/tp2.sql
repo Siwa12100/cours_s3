@@ -264,44 +264,105 @@ plus rapide */
 
 /* Question 15 : 
 --------------- */
+-- EXPLAIN ANALYZE
+--     SELECT
+--         P.name AS joueur,
+--         COUNT(*) AS nombre_de_matchs
+--     FROM
+--         Player P
+--     JOIN
+--         GameDetail GD
+--         ON P.id = GD.idPlayer
+--     WHERE
+--         GD.points > 40
+--     GROUP BY
+--         P.name
+--     HAVING
+--         COUNT(*) > 0
+--     ORDER BY
+--         COUNT(*) DESC;
+
+-- -- Temps d'exécution : 76 ms 
+
+-- CREATE INDEX idx_points ON GameDetail (points);
+
+-- EXPLAIN ANALYZE
+--     SELECT
+--         P.name AS joueur,
+--         COUNT(*) AS nombre_de_matchs
+--     FROM
+--         Player P
+--     JOIN
+--         GameDetail GD
+--         ON P.id = GD.idPlayer
+--     WHERE
+--         GD.points > 40
+--     GROUP BY
+--         P.name
+--     HAVING
+--         COUNT(*) > 0
+--     ORDER BY
+--         COUNT(*) DESC;
+
+-- -- Temps d'exécution : 14 ms 
+
+
+/* Question 16 : 
+--------------- */ 
+SELECT
+    P.name AS joueur,
+    SUM(GD.assists) AS total_assists,
+    SUM(GD.steals) AS total_steals
+FROM
+    Player P
+JOIN
+    GameDetail GD
+    ON P.id = GD.idPlayer
+GROUP BY
+    P.name
+HAVING
+    SUM(GD.assists) + SUM(GD.steals) > 22
+ORDER BY
+    SUM(GD.assists) + SUM(GD.steals) DESC;
+
+
+
+/* Question 17 : 
+---------------- */ 
 EXPLAIN ANALYZE
     SELECT
         P.name AS joueur,
-        COUNT(*) AS nombre_de_matchs
+        SUM(GD.assists) AS total_assists,
+        SUM(GD.steals) AS total_steals
     FROM
         Player P
     JOIN
         GameDetail GD
         ON P.id = GD.idPlayer
-    WHERE
-        GD.points > 40
     GROUP BY
         P.name
     HAVING
-        COUNT(*) > 0
+        SUM(GD.assists) + SUM(GD.steals) > 22
     ORDER BY
-        COUNT(*) DESC;
+        SUM(GD.assists) + SUM(GD.steals) DESC;
 
 
-CREATE INDEX idx_points ON GameDetail (points);
+CREATE INDEX idx_player_id_name ON GameDetail (idPlayer);
+
 
 EXPLAIN ANALYZE
     SELECT
         P.name AS joueur,
-        COUNT(*) AS nombre_de_matchs
+        SUM(GD.assists) AS total_assists,
+        SUM(GD.steals) AS total_steals
     FROM
         Player P
     JOIN
         GameDetail GD
         ON P.id = GD.idPlayer
-    WHERE
-        GD.points > 40
     GROUP BY
         P.name
     HAVING
-        COUNT(*) > 0
+        SUM(GD.assists) + SUM(GD.steals) > 22
     ORDER BY
-        COUNT(*) DESC;
-
-
-
+        SUM(GD.assists) + SUM(GD.steals) DESC;
