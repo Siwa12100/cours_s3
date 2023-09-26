@@ -215,27 +215,50 @@ plus rapide */
 
 /* Question 13 : 
 ---------------- */ 
-EXPLAIN ANALYZE
-    SELECT t.nickname , t.city , count(*)
-    FROM Team t, Game g
-    WHERE (t.id = g. idHomeTeam AND g. homeTeamWins ) OR (t.id = g. idVisitorTeam
-    AND NOT g. homeTeamWins )
-    GROUP BY t.nickname , t.city
-    ORDER BY 3 DESC;
+-- EXPLAIN ANALYZE
+--     SELECT t.nickname , t.city , count(*)
+--     FROM Team t, Game g
+--     WHERE (t.id = g. idHomeTeam AND g. homeTeamWins ) OR (t.id = g. idVisitorTeam
+--     AND NOT g. homeTeamWins )
+--     GROUP BY t.nickname , t.city
+--     ORDER BY 3 DESC;
+
+--     -- Temps d'exécution : 147 ms 
 
 
-EXPLAIN ANALYZE
-    SELECT t.nickname , t.city , hw.nb+vw.nb
-    FROM Team t, (SELECT t.id , count(*) nb
-    FROM Team t, Game g
-    WHERE t.id = g. idHomeTeam
-    AND g. homeTeamWins
-    GROUP BY t.id) hw , (SELECT t.id , count(*) nb
-    FROM Team t, Game g
-    WHERE t.id = g. idVisitorTeam
-    AND NOT g. homeTeamWins
-    GROUP BY t.id) vw
-    WHERE t.id = hw.id AND t.id = vw.id
-    ORDER BY 3 DESC;
+-- EXPLAIN ANALYZE
+--     SELECT t.nickname , t.city , hw.nb+vw.nb
+--     FROM Team t, (SELECT t.id , count(*) nb
+--     FROM Team t, Game g
+--     WHERE t.id = g. idHomeTeam
+--     AND g. homeTeamWins
+--     GROUP BY t.id) hw , (SELECT t.id , count(*) nb
+--     FROM Team t, Game g
+--     WHERE t.id = g. idVisitorTeam
+--     AND NOT g. homeTeamWins
+--     GROUP BY t.id) vw
+--     WHERE t.id = hw.id AND t.id = vw.id
+--     ORDER BY 3 DESC;
+
+--   -- Temps d'exécution : 25 ms 
+
+/* Question 14 : 
+---------------- */ 
+SELECT
+    P.name AS joueur,
+    COUNT(*) AS nombre_de_matchs
+FROM
+    Player P
+JOIN
+    GameDetail GD
+    ON P.id = GD.idPlayer
+WHERE
+    GD.points > 40
+GROUP BY
+    P.name
+HAVING
+    COUNT(*) > 0
+ORDER BY
+    COUNT(*) DESC;
 
 
