@@ -244,21 +244,64 @@ plus rapide */
 
 /* Question 14 : 
 ---------------- */ 
-SELECT
-    P.name AS joueur,
-    COUNT(*) AS nombre_de_matchs
-FROM
-    Player P
-JOIN
-    GameDetail GD
-    ON P.id = GD.idPlayer
-WHERE
-    GD.points > 40
-GROUP BY
-    P.name
-HAVING
-    COUNT(*) > 0
-ORDER BY
-    COUNT(*) DESC;
+-- SELECT
+--     P.name AS joueur,
+--     COUNT(*) AS nombre_de_matchs
+-- FROM
+--     Player P
+-- JOIN
+--     GameDetail GD
+--     ON P.id = GD.idPlayer
+-- WHERE
+--     GD.points > 40
+-- GROUP BY
+--     P.name
+-- HAVING
+--     COUNT(*) > 0
+-- ORDER BY
+--     COUNT(*) DESC;
+
+
+/* Question 15 : 
+--------------- */
+EXPLAIN ANALYZE
+    SELECT
+        P.name AS joueur,
+        COUNT(*) AS nombre_de_matchs
+    FROM
+        Player P
+    JOIN
+        GameDetail GD
+        ON P.id = GD.idPlayer
+    WHERE
+        GD.points > 40
+    GROUP BY
+        P.name
+    HAVING
+        COUNT(*) > 0
+    ORDER BY
+        COUNT(*) DESC;
+
+
+CREATE INDEX idx_points ON GameDetail (points);
+
+EXPLAIN ANALYZE
+    SELECT
+        P.name AS joueur,
+        COUNT(*) AS nombre_de_matchs
+    FROM
+        Player P
+    JOIN
+        GameDetail GD
+        ON P.id = GD.idPlayer
+    WHERE
+        GD.points > 40
+    GROUP BY
+        P.name
+    HAVING
+        COUNT(*) > 0
+    ORDER BY
+        COUNT(*) DESC;
+
 
 
