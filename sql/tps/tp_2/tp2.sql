@@ -168,10 +168,21 @@
 
 /* Question 8 : 
 --------------- */
+-- EXPLAIN ANALYZE
+--     SELECT P.name
+--     FROM Player P
+--     INNER JOIN GameDetail GD ON P.id = GD.idPlayer
+--     WHERE GD.startPosition = 'C' AND GD.steals > 5;
+
+-- Execution time : 70 ms 
+
+/* Question 9 :
+--------------- */
+CREATE INDEX idx_steals ON GameDetail (steals);
+CREATE INDEX idx_idPlayer ON Player (id);
+
 EXPLAIN ANALYZE
     SELECT P.name
     FROM Player P
     INNER JOIN GameDetail GD ON P.id = GD.idPlayer
     WHERE GD.startPosition = 'C' AND GD.steals > 5;
-
-
