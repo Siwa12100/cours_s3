@@ -5,13 +5,13 @@
 /* Question 2 :
 -------------- */
 
--- EXPLAIN ANALYZE
---     SELECT p.name , t1.abbreviation , t2.abbreviation , g.dateGame
---     FROM Player p, Team t1, Team t2, GameDetail gd, Game g
---     WHERE p.id = gd.idPlayer AND g.id = gd.idGame AND t1.id = gd.idTeam
---     AND ((g.idHomeTeam = t1.id AND g.idVisitorTeam = t2.id)
---     OR (g.idVisitorTeam = t1.id AND g.idHomeTeam = t2.id))
---     AND gd.personnalFoul > 6;
+EXPLAIN ANALYZE
+    SELECT p.name , t1.abbreviation , t2.abbreviation , g.dateGame
+    FROM Player p, Team t1, Team t2, GameDetail gd, Game g
+    WHERE p.id = gd.idPlayer AND g.id = gd.idGame AND t1.id = gd.idTeam
+    AND ((g.idHomeTeam = t1.id AND g.idVisitorTeam = t2.id)
+    OR (g.idVisitorTeam = t1.id AND g.idHomeTeam = t2.id))
+    AND gd.personnalFoul > 6;
 
 
     -- Resultat : 
@@ -64,15 +64,15 @@
 --------------- */
 
 -- Création d'un index sur la colonne personnalFoul de la colonne Gamedetails 
--- CREATE INDEX idx_gdPersonnalFouls ON GameDetail(personnalFoul);
+CREATE INDEX idx_gdPersonnalFouls ON GameDetail(personnalFoul);
 
--- EXPLAIN ANALYZE
---     SELECT p.name , t1.abbreviation , t2.abbreviation , g.dateGame
---     FROM Player p, Team t1, Team t2, GameDetail gd, Game g
---     WHERE p.id = gd.idPlayer AND g.id = gd.idGame AND t1.id = gd.idTeam
---     AND ((g.idHomeTeam = t1.id AND g.idVisitorTeam = t2.id)
---     OR (g.idVisitorTeam = t1.id AND g.idHomeTeam = t2.id))
---     AND gd.personnalFoul > 6;
+EXPLAIN ANALYZE
+    SELECT p.name , t1.abbreviation , t2.abbreviation , g.dateGame
+    FROM Player p, Team t1, Team t2, GameDetail gd, Game g
+    WHERE p.id = gd.idPlayer AND g.id = gd.idGame AND t1.id = gd.idTeam
+    AND ((g.idHomeTeam = t1.id AND g.idVisitorTeam = t2.id)
+    OR (g.idVisitorTeam = t1.id AND g.idHomeTeam = t2.id))
+    AND gd.personnalFoul > 6;
 
 
     
@@ -119,25 +119,25 @@
 
 /* Question 4 :
 --------------- */ 
-    -- SELECT abs(g.ptsHome - g.ptsAway) as ecart_de_points, t.nickname as equipe
-    -- FROM Game g, Team t
-    -- WHERE (g.homeTeamWins = true AND t.id = g.idHomeTeam)
-    -- OR (g.homeTeamWins = false AND t.id = g.idVisitorTeam)
-    -- GROUP BY g.id, t.id
-    -- HAVING abs(g.ptsHome - g.ptsAway) = (SELECT MAX(abs(g1.ptsHome - g1.ptsAway))
-    --                                 FROM Game g1);
+    SELECT abs(g.ptsHome - g.ptsAway) as ecart_de_points, t.nickname as equipe
+    FROM Game g, Team t
+    WHERE (g.homeTeamWins = true AND t.id = g.idHomeTeam)
+    OR (g.homeTeamWins = false AND t.id = g.idVisitorTeam)
+    GROUP BY g.id, t.id
+    HAVING abs(g.ptsHome - g.ptsAway) = (SELECT MAX(abs(g1.ptsHome - g1.ptsAway))
+                                    FROM Game g1);
 
 
 /* Question 5 : 
 --------------- */ 
--- EXPLAIN ANALYZE 
---     SELECT abs(g.ptsHome - g.ptsAway) as ecart_de_points, t.nickname as equipe
---     FROM Game g, Team t
---     WHERE (g.homeTeamWins = true AND t.id = g.idHomeTeam)
---     OR (g.homeTeamWins = false AND t.id = g.idVisitorTeam)
---     GROUP BY g.id, t.id
---     HAVING abs(g.ptsHome - g.ptsAway) = (SELECT MAX(abs(g1.ptsHome - g1.ptsAway))
---                                     FROM Game g1);
+EXPLAIN ANALYZE 
+    SELECT abs(g.ptsHome - g.ptsAway) as ecart_de_points, t.nickname as equipe
+    FROM Game g, Team t
+    WHERE (g.homeTeamWins = true AND t.id = g.idHomeTeam)
+    OR (g.homeTeamWins = false AND t.id = g.idVisitorTeam)
+    GROUP BY g.id, t.id
+    HAVING abs(g.ptsHome - g.ptsAway) = (SELECT MAX(abs(g1.ptsHome - g1.ptsAway))
+                                    FROM Game g1);
 
 
 --> Temps d'exécution 30ms 
@@ -145,57 +145,57 @@
 
 /* Question 6 : 
 ---------------*/
--- DROP INDEX idx_gWinnerAndPoints IF EXISTS;
--- CREATE INDEX idx_gWinnerAndPoints ON Game(homeTeamWins, ptsAway, ptsHome);
+DROP INDEX idx_gWinnerAndPoints IF EXISTS;
+CREATE INDEX idx_gWinnerAndPoints ON Game(homeTeamWins, ptsAway, ptsHome);
 
--- EXPLAIN ANALYZE 
---     SELECT abs(g.ptsHome - g.ptsAway) as ecart_de_points, t.nickname as equipe
---     FROM Game g, Team t
---     WHERE (g.homeTeamWins = true AND t.id = g.idHomeTeam)
---     OR (g.homeTeamWins = false AND t.id = g.idVisitorTeam)
---     GROUP BY g.id, t.id
---     HAVING abs(g.ptsHome - g.ptsAway) = (SELECT MAX(abs(g1.ptsHome - g1.ptsAway))
---                                     FROM Game g1);
+EXPLAIN ANALYZE 
+    SELECT abs(g.ptsHome - g.ptsAway) as ecart_de_points, t.nickname as equipe
+    FROM Game g, Team t
+    WHERE (g.homeTeamWins = true AND t.id = g.idHomeTeam)
+    OR (g.homeTeamWins = false AND t.id = g.idVisitorTeam)
+    GROUP BY g.id, t.id
+    HAVING abs(g.ptsHome - g.ptsAway) = (SELECT MAX(abs(g1.ptsHome - g1.ptsAway))
+                                    FROM Game g1);
 
 
 /* Question 7 : 
 --------------- */
--- SELECT P.name
--- FROM Player P
--- INNER JOIN GameDetail GD ON P.id = GD.idPlayer
--- WHERE GD.startPosition = 'C' AND GD.steals > 5;
+SELECT P.name
+FROM Player P
+INNER JOIN GameDetail GD ON P.id = GD.idPlayer
+WHERE GD.startPosition = 'C' AND GD.steals > 5;
 
 
 /* Question 8 : 
 --------------- */
--- EXPLAIN ANALYZE
---     SELECT P.name
---     FROM Player P
---     INNER JOIN GameDetail GD ON P.id = GD.idPlayer
---     WHERE GD.startPosition = 'C' AND GD.steals > 5;
+EXPLAIN ANALYZE
+    SELECT P.name
+    FROM Player P
+    INNER JOIN GameDetail GD ON P.id = GD.idPlayer
+    WHERE GD.startPosition = 'C' AND GD.steals > 5;
 
 -- Execution time : 70 ms 
 
 /* Question 9 :
 --------------- */
--- CREATE INDEX idx_steals ON GameDetail (steals);
--- CREATE INDEX idx_idPlayer ON Player (id);
+CREATE INDEX idx_steals ON GameDetail (steals);
+CREATE INDEX idx_idPlayer ON Player (id);
 
--- EXPLAIN ANALYZE
---     SELECT P.name
---     FROM Player P
---     INNER JOIN GameDetail GD ON P.id = GD.idPlayer
---     WHERE GD.startPosition = 'C' AND GD.steals > 5;
+EXPLAIN ANALYZE
+    SELECT P.name
+    FROM Player P
+    INNER JOIN GameDetail GD ON P.id = GD.idPlayer
+    WHERE GD.startPosition = 'C' AND GD.steals > 5;
 
     -- Execution time : 6 ms
 
 /* Question 10 :
 ---------------- */ 
 -- Supprimer les index spécifiques
--- DROP INDEX IF EXISTS idx_gdpersonnalfouls;
--- DROP INDEX IF EXISTS idx_gwinnerandpoints;
--- DROP INDEX IF EXISTS idx_idplayer;
--- DROP INDEX IF EXISTS idx_steals;
+DROP INDEX IF EXISTS idx_gdpersonnalfouls;
+DROP INDEX IF EXISTS idx_gwinnerandpoints;
+DROP INDEX IF EXISTS idx_idplayer;
+DROP INDEX IF EXISTS idx_steals;
 
 
 /* Question 11 :
@@ -215,96 +215,96 @@ plus rapide */
 
 /* Question 13 : 
 ---------------- */ 
--- EXPLAIN ANALYZE
---     SELECT t.nickname , t.city , count(*)
---     FROM Team t, Game g
---     WHERE (t.id = g. idHomeTeam AND g. homeTeamWins ) OR (t.id = g. idVisitorTeam
---     AND NOT g. homeTeamWins )
---     GROUP BY t.nickname , t.city
---     ORDER BY 3 DESC;
+EXPLAIN ANALYZE
+    SELECT t.nickname , t.city , count(*)
+    FROM Team t, Game g
+    WHERE (t.id = g. idHomeTeam AND g. homeTeamWins ) OR (t.id = g. idVisitorTeam
+    AND NOT g. homeTeamWins )
+    GROUP BY t.nickname , t.city
+    ORDER BY 3 DESC;
 
---     -- Temps d'exécution : 147 ms 
+    -- Temps d'exécution : 147 ms 
 
 
--- EXPLAIN ANALYZE
---     SELECT t.nickname , t.city , hw.nb+vw.nb
---     FROM Team t, (SELECT t.id , count(*) nb
---     FROM Team t, Game g
---     WHERE t.id = g. idHomeTeam
---     AND g. homeTeamWins
---     GROUP BY t.id) hw , (SELECT t.id , count(*) nb
---     FROM Team t, Game g
---     WHERE t.id = g. idVisitorTeam
---     AND NOT g. homeTeamWins
---     GROUP BY t.id) vw
---     WHERE t.id = hw.id AND t.id = vw.id
---     ORDER BY 3 DESC;
+EXPLAIN ANALYZE
+    SELECT t.nickname , t.city , hw.nb+vw.nb
+    FROM Team t, (SELECT t.id , count(*) nb
+    FROM Team t, Game g
+    WHERE t.id = g. idHomeTeam
+    AND g. homeTeamWins
+    GROUP BY t.id) hw , (SELECT t.id , count(*) nb
+    FROM Team t, Game g
+    WHERE t.id = g. idVisitorTeam
+    AND NOT g. homeTeamWins
+    GROUP BY t.id) vw
+    WHERE t.id = hw.id AND t.id = vw.id
+    ORDER BY 3 DESC;
 
---   -- Temps d'exécution : 25 ms 
+  -- Temps d'exécution : 25 ms 
 
 /* Question 14 : 
 ---------------- */ 
--- SELECT
---     P.name AS joueur,
---     COUNT(*) AS nombre_de_matchs
--- FROM
---     Player P
--- JOIN
---     GameDetail GD
---     ON P.id = GD.idPlayer
--- WHERE
---     GD.points > 40
--- GROUP BY
---     P.name
--- HAVING
---     COUNT(*) > 0
--- ORDER BY
---     COUNT(*) DESC;
+SELECT
+    P.name AS joueur,
+    COUNT(*) AS nombre_de_matchs
+FROM
+    Player P
+JOIN
+    GameDetail GD
+    ON P.id = GD.idPlayer
+WHERE
+    GD.points > 40
+GROUP BY
+    P.name
+HAVING
+    COUNT(*) > 0
+ORDER BY
+    COUNT(*) DESC;
 
 
 /* Question 15 : 
 --------------- */
--- EXPLAIN ANALYZE
---     SELECT
---         P.name AS joueur,
---         COUNT(*) AS nombre_de_matchs
---     FROM
---         Player P
---     JOIN
---         GameDetail GD
---         ON P.id = GD.idPlayer
---     WHERE
---         GD.points > 40
---     GROUP BY
---         P.name
---     HAVING
---         COUNT(*) > 0
---     ORDER BY
---         COUNT(*) DESC;
+EXPLAIN ANALYZE
+    SELECT
+        P.name AS joueur,
+        COUNT(*) AS nombre_de_matchs
+    FROM
+        Player P
+    JOIN
+        GameDetail GD
+        ON P.id = GD.idPlayer
+    WHERE
+        GD.points > 40
+    GROUP BY
+        P.name
+    HAVING
+        COUNT(*) > 0
+    ORDER BY
+        COUNT(*) DESC;
 
--- -- Temps d'exécution : 76 ms 
+-- Temps d'exécution : 76 ms 
 
--- CREATE INDEX idx_points ON GameDetail (points);
+CREATE INDEX idx_points ON GameDetail (points);
 
--- EXPLAIN ANALYZE
---     SELECT
---         P.name AS joueur,
---         COUNT(*) AS nombre_de_matchs
---     FROM
---         Player P
---     JOIN
---         GameDetail GD
---         ON P.id = GD.idPlayer
---     WHERE
---         GD.points > 40
---     GROUP BY
---         P.name
---     HAVING
---         COUNT(*) > 0
---     ORDER BY
---         COUNT(*) DESC;
+EXPLAIN ANALYZE
+    SELECT
+        P.name AS joueur,
+        COUNT(*) AS nombre_de_matchs
+    FROM
+        Player P
+    JOIN
+        GameDetail GD
+        ON P.id = GD.idPlayer
+    WHERE
+        GD.points > 40
+    GROUP BY
+        P.name
+    HAVING
+        COUNT(*) > 0
+    ORDER BY
+        COUNT(*) DESC;
 
--- -- Temps d'exécution : 14 ms 
+-- Temps d'exécution : 14 ms 
 
 
 /* Question 16 : 
@@ -346,6 +346,7 @@ EXPLAIN ANALYZE
     ORDER BY
         SUM(GD.assists) + SUM(GD.steals) DESC;
 
+-- Temps d'exécution : 180 ms 
 
 CREATE INDEX idx_player_id_name ON GameDetail (idPlayer);
 
@@ -366,3 +367,5 @@ EXPLAIN ANALYZE
         SUM(GD.assists) + SUM(GD.steals) > 22
     ORDER BY
         SUM(GD.assists) + SUM(GD.steals) DESC;
+
+-- Temps d'exécution : 168 ms 
