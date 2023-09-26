@@ -178,11 +178,21 @@
 
 /* Question 9 :
 --------------- */
-CREATE INDEX idx_steals ON GameDetail (steals);
-CREATE INDEX idx_idPlayer ON Player (id);
+-- CREATE INDEX idx_steals ON GameDetail (steals);
+-- CREATE INDEX idx_idPlayer ON Player (id);
 
-EXPLAIN ANALYZE
-    SELECT P.name
-    FROM Player P
-    INNER JOIN GameDetail GD ON P.id = GD.idPlayer
-    WHERE GD.startPosition = 'C' AND GD.steals > 5;
+-- EXPLAIN ANALYZE
+--     SELECT P.name
+--     FROM Player P
+--     INNER JOIN GameDetail GD ON P.id = GD.idPlayer
+--     WHERE GD.startPosition = 'C' AND GD.steals > 5;
+
+    -- Execution time : 6 ms
+
+/* Question 10 :
+---------------- */ 
+-- Supprimer les index spécifiques
+DROP INDEX IF EXISTS idx_gdpersonnalfouls;
+DROP INDEX IF EXISTS idx_gwinnerandpoints;
+DROP INDEX IF EXISTS idx_idplayer;
+DROP INDEX IF EXISTS idx_steals;
