@@ -160,4 +160,8 @@
 
 /* Question 7 : 
 --------------- */
--- SELECT 
+SELECT P.name
+FROM Player P
+INNER JOIN GameDetail GD ON P.id = GD.idPlayer
+WHERE GD.startPosition = 'C' AND GD.steals > 5;
+
