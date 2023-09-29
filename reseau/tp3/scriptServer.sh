@@ -21,7 +21,7 @@ fi
 case "$@" in
         # Si on a bien le --script on fait : 
     	'--script')
-        # On lit la première ligne de la requête et on la met dans la variable requete
+        # On lit la première ligne de la requête et on la met dans la variable premiereLigneRequete
         read premiereLigneRequete
 
         # On récupère le premier mot de ligne 
@@ -84,3 +84,8 @@ case "$@" in
         fi
         ;;
 esac
+
+
+
+# echo -e : permet d'interpréter les caractères spéciaux comme \n ou \t 
+# echo -n : permet de revenir à la ligne à la fin de la commande 
