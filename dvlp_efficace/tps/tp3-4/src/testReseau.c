@@ -13,6 +13,8 @@ int testAffichageReseau();
 int testRechercherOrdi();
 int testAjouterConnexion();
 int testRechercherConnexion();
+int testDestructionConnexion();
+
 
 
 int main(void) {
@@ -53,6 +55,11 @@ int lancementTests(void) {
 
     if (testRechercherConnexion() != 0){
         printf("[tests] : Echec du test de recherche d'une connexion.\n");
+        return 1;
+    }
+
+    if (testDestructionConnexion() != 0){
+        printf("[tests] : Echec du test de destruction d'une connexion.\n"); 
         return 1;
     }
 
@@ -166,6 +173,27 @@ int testRechercherConnexion(void) {
     if (rechercherConnexion(r, 12, 326) == OUI) return 1;
     ajouterConnexion(&r, 12, 326);
     if (rechercherConnexion(r, 12, 326) != OUI) return 1;
+    
+    return 0;
+}
+
+
+int testDestructionConnexion(void) {
+
+    Reseau r = creerReseauVide();
+    ajouterOrdi(&r, 12);
+    ajouterOrdi(&r, 326);
+
+    if (rechercherConnexion(r, 12, 326) == OUI) return 1;
+    ajouterConnexion(&r, 12, 326);
+    if (rechercherConnexion(r, 12, 326) != OUI) return 1;
+
+    //affichageReseau(r);
+
+    //destructionConnexion(&r, 12, 326);
+    //printf("\n\n\n Passage après la destruction de la connexion....\n\n\n");
+
+    //affichageReseau(r);
     
     return 0;
 }

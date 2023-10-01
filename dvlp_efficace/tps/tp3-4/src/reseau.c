@@ -40,7 +40,7 @@ void affichageReseau(Reseau r) {
         }        
         
         tmpOrdi = tmpOrdi -> suiv;
-        
+
         if (tmpOrdi == NULL){
             printf("\n\n");
             return;
@@ -95,7 +95,7 @@ CodeRetour ajouterOrdi(Reseau * ptr, int id) {
     return (OK);
 }
 
-CodeRetour rechercherConnexionPt(Reseau r, int idDep, int idArr);
+CodeRetour  rechercherConnexionPt(Reseau r, int idDep, int idArr, Connexion * addrConnexion);
 
 CodeRetour rechercherConnexion(Reseau r, int idDep, int idArr) {
 
@@ -109,10 +109,10 @@ CodeRetour rechercherConnexion(Reseau r, int idDep, int idArr) {
         return PB_NOEUD_ARR_NON_EXISTANT;
     }
 
-    return rechercherConnexionPt(r, idDep, idArr);
+    return rechercherConnexionPt(r, idDep, idArr, NULL);
 }
 
-CodeRetour rechercherConnexionPt(Reseau r, int idDep, int idArr) {
+CodeRetour rechercherConnexionPt(Reseau r, int idDep, int idArr, Connexion * addrConnexion) {
 
     Ordi * tmpOrdiDep = rechercherOrdiPt(r, idDep);
     if (tmpOrdiDep == NULL){
@@ -130,10 +130,14 @@ CodeRetour rechercherConnexionPt(Reseau r, int idDep, int idArr) {
 
     while (tmpa != NULL){
         
-        if (tmpa -> extremite == tmpOrdiExtrem) return OUI;
+        if (tmpa -> extremite == tmpOrdiExtrem){
+            addrConnexion = tmpa;
+             return OUI;
+        }
         tmpa = tmpa -> suivant;
     }
 
+    addrConnexion = NULL;
     return NON;
 }
 
@@ -168,5 +172,53 @@ CodeRetour ajouterConnexion(Reseau * ptr, int idDep, int idArr) {
 
     return OK;
 }
+
+// CodeRetour destructionConnexion(Reseau * ptr, int idDep, int idArr) {
+
+//     Ordi * tmpOrdiDep = rechercherOrdiPt(*ptr, idDep);
+//     if (tmpOrdiDep == NULL){
+//         printf("[erreur] : L'ordinateur de départ %d est introuvable, échec de la suppression de la connexion.\n",idDep);
+//         return PB_NOEUD_DEP_NON_EXISTANT;
+//     }
+
+//     Ordi * tmpOrdiArr = rechercherOrdiPt(*ptr, idArr);
+//     if (tmpOrdiDep == NULL){
+//         printf("[erreur] : L'ordinateur d'arrivée %d est introuvable, échec de la suppresion de la connexion.\n", idArr); 
+//         return PB_NOEUD_ARR_NON_EXISTANT;
+//     }
+
+//     Connexion * tmpConnexionASupprimer;
+
+//     printf("\n - tmpConnexionASupprimer : %d \n\n\n", tmpConnexionASupprimer);
+
+//     if (rechercherConnexionPt(*ptr, idDep, idArr, tmpConnexionASupprimer) != OUI){
+//         printf("[erreur] : connexion entre %d et %d inexistante, suppression impossible.\n", idDep, idArr);
+//         return PB_ARC_NON_EXISTANT;
+//     }
+
+//     if (tmpConnexionASupprimer == NULL){
+//         printf("[erreur] : Connexion introuvable, erreur dans la fonction de recherche pointée.\n");
+//         return PB_ARC_NON_EXISTANT;
+//     }
+
+//     Connexion * tmpConnexion = tmpOrdiDep -> listeConnexions;
+    
+//     printf("\n\n - tmpConnexion : %d\n", tmpConnexion);
+//     printf("\n - tmpConnexionASupprimer : %d \n\n\n", tmpConnexionASupprimer);
+
+//     while (tmpConnexion != tmpConnexionASupprimer || tmpConnexion != NULL) tmpConnexion = tmpConnexion -> suivant;
+
+//     stopProgramme();
+
+//     if (tmpConnexion == NULL){
+//         printf("[erreur] : Impossible de trouver l'adresse de la connexion à supprimer, échec de la suppression.\n");
+//         return PB_ARC_NON_EXISTANT;
+//     }
+
+//     tmpConnexion = tmpConnexion -> suivant;
+//     free(tmpConnexionASupprimer);
+
+//     return OK;
+// }
 
 
