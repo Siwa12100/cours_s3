@@ -1,0 +1,6 @@
+J'en suis donc à la fonction de destruction d'une connexion. 
+J'ai commencé à faire la fonction de test de destruction du noeud, mais j'ai des soucis avec la récupération de l'adresse de la connexion à supprimer. 
+
+En gros, je passe un pointeur sur une connexion à la recherche de connexion pointée pour qu'elle me renvoie le noeud à supprimer, mais je bloque sur la manière de récupérer cette adresse. 
+
+Une fois que j'aurais réussi à la récupérer, le while ne devrait plus trop me poser de soucis et cela devrait marcher....
