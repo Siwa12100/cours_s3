@@ -10,6 +10,7 @@
 # On utilise le fork pour lancer un processus fils à chaque nouvelle connexion qui entre...
 if [ "$1" != "--script" ]; then
     socat TCP-LISTEN:"$1",fork,reuseaddr EXEC:"$0 --script"
+    exit 0
 fi
 
 
@@ -79,7 +80,7 @@ case "$@" in
                 echo -e -n "Connection: close\r\n"
                 echo -e -n "Content-Type: text/plain\r\n"
                 echo -e -n "\r\n"
-                echo "[ Erreur 404 ] : fichier introuvable..."
+                echo "[ Erreur 404 ] : fichier introuvable..."  > &2 
             fi
         fi
         ;;
