@@ -95,6 +95,9 @@ CodeRetour ajouterConnexion(Reseau * ptr, int idDep, int idArr);
 
 
 
-//CodeRetour destructionConnexion(Reseau * ptr, int idDep, int idArr);
+
+// ===================
+
+CodeRetour destructionConnexion(Reseau * ptr, int idDep, int idArr);
 
 #endif

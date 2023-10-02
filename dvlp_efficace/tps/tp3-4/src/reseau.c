@@ -95,7 +95,7 @@ CodeRetour ajouterOrdi(Reseau * ptr, int id) {
     return (OK);
 }
 
-CodeRetour  rechercherConnexionPt(Reseau r, int idDep, int idArr, Connexion * addrConnexion);
+CodeRetour  rechercherConnexionPt(Reseau r, int idDep, int idArr, Connexion ** addrConnexion);
 
 CodeRetour rechercherConnexion(Reseau r, int idDep, int idArr) {
 
@@ -112,7 +112,12 @@ CodeRetour rechercherConnexion(Reseau r, int idDep, int idArr) {
     return rechercherConnexionPt(r, idDep, idArr, NULL);
 }
 
-CodeRetour rechercherConnexionPt(Reseau r, int idDep, int idArr, Connexion * addrConnexion) {
+// On passe un pointeur sur un pointeur de connexion 
+CodeRetour rechercherConnexionPt(Reseau r, int idDep, int idArr, Connexion ** addrConnexion) {
+   
+   //stopProgramme();
+   *addrConnexion = NULL;
+   stopProgramme();
 
     Ordi * tmpOrdiDep = rechercherOrdiPt(r, idDep);
     if (tmpOrdiDep == NULL){
@@ -131,13 +136,13 @@ CodeRetour rechercherConnexionPt(Reseau r, int idDep, int idArr, Connexion * add
     while (tmpa != NULL){
         
         if (tmpa -> extremite == tmpOrdiExtrem){
-            addrConnexion = tmpa;
+            *addrConnexion = tmpa;
              return OUI;
         }
         tmpa = tmpa -> suivant;
     }
 
-    addrConnexion = NULL;
+    *addrConnexion = NULL;
     return NON;
 }
 
@@ -173,52 +178,90 @@ CodeRetour ajouterConnexion(Reseau * ptr, int idDep, int idArr) {
     return OK;
 }
 
-// CodeRetour destructionConnexion(Reseau * ptr, int idDep, int idArr) {
+CodeRetour destructionConnexion(Reseau * ptr, int idDep, int idArr) {
 
-//     Ordi * tmpOrdiDep = rechercherOrdiPt(*ptr, idDep);
-//     if (tmpOrdiDep == NULL){
-//         printf("[erreur] : L'ordinateur de départ %d est introuvable, échec de la suppression de la connexion.\n",idDep);
-//         return PB_NOEUD_DEP_NON_EXISTANT;
-//     }
+    stopProgramme();
 
-//     Ordi * tmpOrdiArr = rechercherOrdiPt(*ptr, idArr);
-//     if (tmpOrdiDep == NULL){
-//         printf("[erreur] : L'ordinateur d'arrivée %d est introuvable, échec de la suppresion de la connexion.\n", idArr); 
-//         return PB_NOEUD_ARR_NON_EXISTANT;
-//     }
+    // On stocke l'ordinateur de départ de la potentielle connexion
+    Ordi * tmpOrdiDep = rechercherOrdiPt(*ptr, idDep);
+    // Si on récupère NULL, c'est que l'ordinateur n'existe pas alors on quitte 
+    if (tmpOrdiDep == NULL){
+        printf("[erreur] : L'ordinateur de départ %d est introuvable, échec de la suppression de la connexion.\n",idDep);
+        return PB_NOEUD_DEP_NON_EXISTANT;
+    }
 
-//     Connexion * tmpConnexionASupprimer;
+    //stopProgramme();
 
-//     printf("\n - tmpConnexionASupprimer : %d \n\n\n", tmpConnexionASupprimer);
-
-//     if (rechercherConnexionPt(*ptr, idDep, idArr, tmpConnexionASupprimer) != OUI){
-//         printf("[erreur] : connexion entre %d et %d inexistante, suppression impossible.\n", idDep, idArr);
-//         return PB_ARC_NON_EXISTANT;
-//     }
-
-//     if (tmpConnexionASupprimer == NULL){
-//         printf("[erreur] : Connexion introuvable, erreur dans la fonction de recherche pointée.\n");
-//         return PB_ARC_NON_EXISTANT;
-//     }
-
-//     Connexion * tmpConnexion = tmpOrdiDep -> listeConnexions;
+    // On récupère l'adresse de l'ordinateur d'arrivée de la potentielle connexion
+    Ordi * tmpOrdiArr = rechercherOrdiPt(*ptr, idArr);
+    // Là encore, si on récupère NULL, c'est que l'ordi n'existe pas alors on quitte 
+    if (tmpOrdiDep == NULL){
+        printf("[erreur] : L'ordinateur d'arrivée %d est introuvable, échec de la suppresion de la connexion.\n", idArr); 
+        return PB_NOEUD_ARR_NON_EXISTANT;
+    }
+    // On déclare un pointeur qui va contenir l'adresse de la connexion à supprimer 
+    Connexion * tmpConnexionASupprimer = 6;
     
-//     printf("\n\n - tmpConnexion : %d\n", tmpConnexion);
-//     printf("\n - tmpConnexionASupprimer : %d \n\n\n", tmpConnexionASupprimer);
 
-//     while (tmpConnexion != tmpConnexionASupprimer || tmpConnexion != NULL) tmpConnexion = tmpConnexion -> suivant;
+    // =======================
+    // verif temporaire ... :
+    printf("\n - tmpConnexionASupprimer (1) : %p \n\n\n", tmpConnexionASupprimer);
 
-//     stopProgramme();
+    //stopProgramme();
 
-//     if (tmpConnexion == NULL){
-//         printf("[erreur] : Impossible de trouver l'adresse de la connexion à supprimer, échec de la suppression.\n");
-//         return PB_ARC_NON_EXISTANT;
-//     }
+    // On vérifie que la connexion à supprimer existe 
+    // le pointeur tmpConnexionASupprimer doit récupérer l'adresse de la connexion à supprimer 
+    // donc on le passe en paramètre 
+    if (rechercherConnexionPt(*ptr, idDep, idArr, &tmpConnexionASupprimer) != OUI){
+        // Si on ne récupère pas oui, c'est que la connexion d'existe pas alors on quitte 
+        printf("[erreur] : connexion entre %d et %d inexistante, suppression impossible.\n", idDep, idArr);
+        return PB_ARC_NON_EXISTANT;
+    }
 
-//     tmpConnexion = tmpConnexion -> suivant;
-//     free(tmpConnexionASupprimer);
+    // Si la connexion à supprimer est nulle, alors on quitte 
+    // C'est simplement une mesure supplémentaire de sécurité...
+    if (tmpConnexionASupprimer == NULL){
+        printf("[erreur] : Connexion introuvable, erreur dans la fonction de recherche pointée.\n");
+        return PB_ARC_NON_EXISTANT;
+    }
 
-//     return OK;
-// }
+
+    // =========================
+    // verifications temporaires : 
+    // printf("\n\n tmpOrdiDep : %p \n\n", tmpOrdiDep);
+    // printf(" \n\n tmpOrdiDep -> listeConnexions : %p \n\n", tmpOrdiDep -> listeConnexions);
+
+
+    // On récupère la première connexion contenue dans l'ordinateur de départ 
+    Connexion * tmpConnexion = tmpOrdiDep -> listeConnexions;
+    
+
+
+    // =========================
+    // verifications temporaires :
+    printf("\n\n - tmpConnexion : %p\n", tmpConnexion);
+    printf("\n - tmpConnexionASupprimer : %p \n\n\n", tmpConnexionASupprimer);
+
+
+    // Tant que l'on arrive pas au bout de la liste de connexion 
+    // On bien tant que la connexion actuelle ne correspond pas à celle à supprimer 
+    // alors on passe à la connexion suivante dans la liste 
+    while (tmpConnexion != tmpConnexionASupprimer || tmpConnexion != NULL) tmpConnexion = tmpConnexion -> suivant;
+
+    // Si la dernière connexion est nulle, alors ce que l'on a pas trouvé la connexion à supprimer 
+    // donc on part.... (mais enfin normalement ce n'est pas censé arrivé....)
+    if (tmpConnexion == NULL){
+        printf("[erreur] : Impossible de trouver l'adresse de la connexion à supprimer, échec de la suppression.\n");
+        return PB_ARC_NON_EXISTANT;
+    }
+
+    // Sinon, le pointeur sur la connexion actuelle de l'ordinateur passe directement à la connexion suivante
+    tmpConnexion = tmpConnexion -> suivant;
+    // Et on supprimer la connexion à supprimer 
+    free(tmpConnexionASupprimer);
+
+    // On retourne que la connexion a bien été supprimée 
+    return OK;
+}
 
 
