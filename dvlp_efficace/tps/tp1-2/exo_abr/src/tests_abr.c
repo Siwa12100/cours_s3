@@ -57,7 +57,7 @@ int lancementTestsAbr() {
 
     // testAfficherCroissant();
     // testAfficherDecroissant();
-    //testAfficherCouche();
+    testAfficherCouche();
 
     if (testSupprimerVal() != 0){
         printf("[infos] : Erreur dans le test unitaire de la suppression de valeur.\n");

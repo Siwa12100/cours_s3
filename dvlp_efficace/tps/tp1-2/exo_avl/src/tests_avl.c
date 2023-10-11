@@ -39,7 +39,14 @@ int lancementTestsAvl(void){
         printf("[Tests] : Erreur dans le test de vidage de l'arbre.\n");
         return 1;
     }
+
+    if (testAfficherCroissantEtDecroissant() != 0){
+        printf("[Tests] : Erreur dans le test de fonctions d'affichage.\n");
+        return 1;
+    }
     
+
+    //afficherCouche(a);
     return 0;
 }
 
@@ -55,7 +62,7 @@ int testViderArbre(void) {
     viderArbre(&a);
     if (a != NULL) return 1;
 
-    a//fficherCroissant(a);
+    //afficherCroissant(a);
     
     return 0;
 }
@@ -92,6 +99,28 @@ int testInsererEnFeuille(void) {
     if (estArbreVide(a) != FAUX) return 1;
     if (a -> val != 118712) return 1;
     
+    return 0;
+}
+
+int testAfficherCroissantEtDecroissant(void) {
+
+    Avl a = creerArbreVide();
+
+    for (int i = 0; i < 13; i++){
+
+        if (i%2 == 0){
+            insererEnFeuille(&a, -i * i);
+        }
+        else
+        {
+            insererEnFeuille(&a, i * i);
+        }
+    }
+        
+
+    afficherCroissant(a);
+    afficherDecroissant(a);
+    afficherCouche(a);
     return 0;
 }
 
