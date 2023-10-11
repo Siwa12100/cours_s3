@@ -39,7 +39,7 @@ Noeud * creerNoeud(int val) {
 void insererEnFeuille(Avl * ptv, int val) {
 
     if (*ptv == NULL){
-        *pta = creerNoeud(val);
+        *ptv = creerNoeud(val);
         return;
     }
 
@@ -58,7 +58,7 @@ void viderArbre(ArbreBin * ptv) {
     if ((*ptv) -> fd != NULL) viderArbre(&(*ptv) -> fd); 
 
     free(*ptv); 
-    *ptv = NULL:
+    *ptv = NULL;
 }
 
 void parcoursAffichageCroissant(Avl v) {
@@ -96,51 +96,51 @@ void afficherDecroissant(Avl v) {
     printf("\n");
 }
 
-void rotationDroite(Avl * ptv){
-    // On déclare une variable allant devenir la nouvelle racine 
-    // de l'arbre. 
-    // Dans la rotation à droite, la nouvelle racine va devenir 
-    // la feuille gauche actuelle qui va donc remonter d'un cran
-    Noeud * racine = (*ptv) -> fg;
-    // Le sous arbre contenant les valeurs supérieures à celles de 
-    // la feuille gauche initiale vont être déplacées pour devenir 
-    // le sous arbre contenant les valeurs supérieures à la nouvelle racine, mais 
-    // inférieures à l'ancienne racine (donc ça va devenir le sous arbre gauche du 
-    // sous arbre droit)
-    (*ptv) -> fg = racine -> fd;
-    // Donénavant la feuille droite de la racine devient la racine itiale, qui 
-    // donc était supérieure à la valeur de la nouvelle racine 
-    racine -> fd = (*ptv);
-    // Ptv, qui est le pointeur passé en paramètre de base, prend la valeur de la 
-    // nouvelle racine 
-    *ptv = racine; 
+// void rotationDroite(Avl * ptv){
+//     // On déclare une variable allant devenir la nouvelle racine 
+//     // de l'arbre. 
+//     // Dans la rotation à droite, la nouvelle racine va devenir 
+//     // la feuille gauche actuelle qui va donc remonter d'un cran
+//     Noeud * racine = (*ptv) -> fg;
+//     // Le sous arbre contenant les valeurs supérieures à celles de 
+//     // la feuille gauche initiale vont être déplacées pour devenir 
+//     // le sous arbre contenant les valeurs supérieures à la nouvelle racine, mais 
+//     // inférieures à l'ancienne racine (donc ça va devenir le sous arbre gauche du 
+//     // sous arbre droit)
+//     (*ptv) -> fg = racine -> fd;
+//     // Donénavant la feuille droite de la racine devient la racine itiale, qui 
+//     // donc était supérieure à la valeur de la nouvelle racine 
+//     racine -> fd = (*ptv);
+//     // Ptv, qui est le pointeur passé en paramètre de base, prend la valeur de la 
+//     // nouvelle racine 
+//     *ptv = racine; 
 
-    // On met à jour la hauteur de la feuille droite qui vient de récupérer une
-    // nouvelle branche gauche
-    mettreAjourHauteur($(*ptv) -> fd);    
-    // On met à jour de la racine dont les deux feuilles viennent d'être
-    // modifiées
-    mettreAjourHauteur($(*ptv));
-}
+//     // On met à jour la hauteur de la feuille droite qui vient de récupérer une
+//     // nouvelle branche gauche
+//     mettreAjourHauteur($(*ptv) -> fd);    
+//     // On met à jour de la racine dont les deux feuilles viennent d'être
+//     // modifiées
+//     mettreAjourHauteur($(*ptv));
+// }
 
-void rotationGauche(Avl * ptv) {
-    // On déclare un noeud qui va devenir la nouvelle racine 
-    Noeud * racine = (*ptv) -> fd;
+// void rotationGauche(Avl * ptv) {
+//     // On déclare un noeud qui va devenir la nouvelle racine 
+//     Noeud * racine = (*ptv) -> fd;
     
-    // La racine initiale va devenir la feuille gauche de la nouvelle racine 
-    racine -> fg = (*ptv);
+//     // La racine initiale va devenir la feuille gauche de la nouvelle racine 
+//     racine -> fg = (*ptv);
 
-    // Le sous arbre qui contenait les valeurs supérieures à la racine initiale,
-    // mais avec des valeurs inférieures à la feuille droite, va maintenant devenir 
-    // le sous arbre droit de la feuille gauche, pour contenir les valeurs inférieures à la racine 
-    // mais supérieures à la feuille gauche de la racine 
-    racine -> fg -> fd = (*ptv) -> fg;
+//     // Le sous arbre qui contenait les valeurs supérieures à la racine initiale,
+//     // mais avec des valeurs inférieures à la feuille droite, va maintenant devenir 
+//     // le sous arbre droit de la feuille gauche, pour contenir les valeurs inférieures à la racine 
+//     // mais supérieures à la feuille gauche de la racine 
+//     racine -> fg -> fd = (*ptv) -> fg;
 
-    // La racine initiale passée en paramètres devient la nouvelle racine
-    (*ptv) = racine;
+//     // La racine initiale passée en paramètres devient la nouvelle racine
+//     (*ptv) = racine;
 
-    // On met à jour la hauteur de la nouvelle racine
-    mettreAjourHauteur((*ptv));
-    // On met à jour la hauteur du sous arbre gauche partant de la racine 
-    mettreAjourHauteur(&(*ptv) -> fg)
-}
+//     // On met à jour la hauteur de la nouvelle racine
+//     mettreAjourHauteur((*ptv));
+//     // On met à jour la hauteur du sous arbre gauche partant de la racine 
+//     mettreAjourHauteur(&(*ptv) -> fg)
+// }

@@ -1,0 +1,2 @@
+J'en suis à test l'affiche croissant et décroissant de l'avl. 
+Le prototype est déclaré, plus qu'à faire la fonction.

@@ -34,17 +34,42 @@ typedef enum booleen {
 } Booleen;
 
 
+// good 
 void mettreAjourHauteur(Noeud * n);
 
+// good 
 ArbreBin creerArbreVide();
+
+// good 
 Booleen estArbreVide(ArbreBin b);
+
+// good 
 void insererEnFeuille(Avl * ptv, int val);
+
+// good 
 Noeud * creerNoeud(int val);
+
+// good 
 void viderArbre(ArbreBin * ptv);
+
+// good 
 void afficherCroissant(Avl v);
+
+// good 
 void afficherDecroissant(Avl v);
+
+// good 
 void afficherCouche(ArbreBin b);
+
+// good 
 void supprimerVal(Avl * pta, int val);
+
+// good 
 Booleen rechercherVal(Avl v, int val);
+
+
+// Il manque : 
+// - rééquilibrer 
+// rotation Gauche & rotation Droite 
 
 #endif
