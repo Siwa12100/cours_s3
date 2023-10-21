@@ -32,7 +32,6 @@ void affiche(Reseau r){
   }
 }
 
-
 /************************ question 3 ************************/
 /* retourne un pointeur sur le noeud cherché ou NULL sinon */
 Noeud * rechercheNoeud(Reseau r, int num){
@@ -86,7 +85,6 @@ CodeRetour existenceArcPt(Noeud* dep, Noeud *arr){
   }
   return NON;
 }
-
 
 /************************/
 /*  retourne
@@ -220,8 +218,6 @@ CodeRetour destructionNoeud(Reseau *pr, int num){
   return OK;
 }
 
-
-
 /************************ question en plus ************************/
 void destructionReseau(Reseau *pr){
   while(*pr != NULL)
@@ -262,11 +258,6 @@ int compteArc(Reseau r){
   return cpt;
 }
 
-
-
-
-/*----------------------------------------------------*/
-
 /************************ question 11 - a)  ************************/
 /* fonction qui détermine si une machine donnée peut communiquer avec une autre également donnée
    utilise un parcours en profondeur
@@ -295,7 +286,7 @@ CodeRetour visitePourPeutCommuniquer(Noeud * pdep, Noeud * parr){
   while(tmpa !=NULL){
     if(tmpa->extremite->marque == 0)
       if(visitePourPeutCommuniquer(tmpa->extremite, parr)==OUI)
-	return OUI;  
+	      return OUI;  
     tmpa = tmpa->suivant;
   }
   return NON;
@@ -313,9 +304,6 @@ CodeRetour peutCommuniquer(Reseau r, int dep, int arr){
 
   return visitePourPeutCommuniquer(pdep, parr);
 }
-
-
-
 
 /************************ question 11 - b) ************************/
 /* fonction qui détermine  et affiche l'ensemble des noeuds avec 
@@ -361,6 +349,7 @@ void afficheAvecQuiCommuniquer(Reseau r, int dep){
     tmp = tmp->suiv;
   }
 }
+
 
 
 

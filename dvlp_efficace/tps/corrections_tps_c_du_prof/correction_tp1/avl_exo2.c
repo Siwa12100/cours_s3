@@ -10,7 +10,6 @@ Booleen estArbreVide(AVL a){
   return (a==NULL)? VRAI:FAUX ;
 }
 
-
 void viderArbre(AVL* pta){
   if(*pta != NULL){
     viderArbre(&(*pta)->fg);
@@ -54,13 +53,10 @@ void afficherCoucheRec(AVL a, int retrait){
   }
 }
 
-
 void afficherCouche(AVL a){
   if(a!=NULL)
     afficherCoucheRec(a,0);
 }
-
-
 
 Booleen rechercherVal(AVL a, int val){
   if(a==NULL) return FAUX;
@@ -68,8 +64,6 @@ Booleen rechercherVal(AVL a, int val){
   if(val < a->val) return rechercherVal(a->fg,val);
   else return rechercherVal(a->fd,val);
 }
-
-
 
 // précondition : a n'est pas vide
 void mettreAjourHauteur(AVL a){
@@ -118,18 +112,21 @@ void reequilibrer(AVL* pta){
   int hg, hd, hgf, hdf;
   hg = ((*pta)->fg != NULL)? (*pta)->fg->h : -1;
   hd = ((*pta)->fd != NULL)? (*pta)->fd->h : -1;
+
   if(hg - hd == 2){ // déséquilibre : hg > hd de 2
     hgf = ((*pta)->fg->fg != NULL)? (*pta)->fg->fg->h : -1;
     hdf = ((*pta)->fg->fd != NULL)? (*pta)->fg->fd->h : -1;
     if(hdf > hgf) rotationGauche(&(*pta)->fg);
     rotationDroite(pta);
   }
+
   else if(hd - hg == 2){ // déséquilibre : hd > hg de 2
     hgf = ((*pta)->fd->fg != NULL)? (*pta)->fd->fg->h : -1;    /////
     hdf = ((*pta)->fd->fd != NULL)? (*pta)->fd->fd->h : -1;    /////
     if(hgf > hdf) rotationDroite(&(*pta)->fd);
     rotationGauche(pta);
   }
+  
   else{ // pas de déséquilibre, on remet juste la hauteur à jour
     if(hd > hg) (*pta)->h = hd+1;
     else (*pta)->h = hg+1;
@@ -153,10 +150,7 @@ void insererEquilibre(AVL* pta, int val){
 }
   
   
-  
-
 // pour la suppression
-
 // supprime le noeud contenant la valeur max de l'arbre 
 // et retourne sa valeur.
 //  ATTENTION : *pta doit être un arbre non vide
