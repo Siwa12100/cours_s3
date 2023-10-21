@@ -84,7 +84,7 @@ END;
 
 $$LANGUAGE plpgsql;
 
-SELECT nbRebondsDebute('22100979');
+-- SELECT nbRebondsDebute('22100979');
 -- Résultat : 57 
 
 
@@ -92,14 +92,24 @@ SELECT nbRebondsDebute('22100979');
 -- Q.4 )
 -------
 -- A reprendre sans le limit 
--- SELECT g.id, tH.abbreviation, tV.abbreviation, g.dateGame, nbRebondsDebute(gd.idGame)
--- FROM Game g 
--- JOIN GameDetail gd ON g.id = gd.idGame
--- JOIN Team tH ON tH.id = g.idHomeTeam
--- JOIN Team tV ON tV.id = g.idVisitorTeam
--- WHERE nbRebondsDebute(gd.idGame) is NOT NULL
--- ORDER BY 5 DESC
--- LIMIT 1;
+SELECT g.id, tH.abbreviation, tV.abbreviation, g.dateGame, nbRebondsDebute(gd.idGame) 
+FROM Game g 
+JOIN GameDetail gd ON g.id = gd.idGame
+JOIN Team tH ON tH.id = g.idHomeTeam
+JOIN Team tV ON tV.id = g.idVisitorTeam
+WHERE nbRebondsDebute(gd.idGame) is NOT NULL
+ORDER BY 5 DESC
+LIMIT 1;
+
+SELECT g.id, tH.abbreviation, tV.abbreviation, g.dateGame, nbRebondsDebute(gd.idGame)
+FROM Game g 
+JOIN GameDetail gd ON g.id = gd.idGame
+JOIN Team tH ON tH.id = g.idHomeTeam
+JOIN Team tV ON tV.id = g.idVisitorTeam
+WHERE nbRebondsDebute(gd.idGame) is NOT NULL
+GROUP BY g.id, tH.abbreviation, tV.abbreviation, g.dateGame
+HAVING nbRebondsDebute(gd.idGame) = MAX(nbRebondsDebute(gd.idGame));
+
 
 -- Résultat : 
     -- id : 41800233
