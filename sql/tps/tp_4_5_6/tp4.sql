@@ -84,7 +84,7 @@ END;
 
 $$LANGUAGE plpgsql;
 
--- SELECT nbRebondsDebute('22100979');
+SELECT nbRebondsDebute('22100979');
 -- Résultat : 57 
 
 
@@ -120,18 +120,18 @@ $$LANGUAGE plpgsql;
 
 -- Q.6 )
 -------
-CREATE OR REPLACE FUNCTION totalPointsEquipe(game Game.id%TYPE, team Team.id%TYPE) RETURNS Integer AS $$
-DECLARE
+-- CREATE OR REPLACE FUNCTION totalPointsEquipe(game Game.id%TYPE, team Team.id%TYPE) RETURNS Integer AS $$
+-- DECLARE
 
-BEGIN
-    cpt integer := 0;
-    curs cursor FOR SELECT gd.points
-                    FROM GameDetail gd 
-                    JOIN Game g ON g.id = idGame
-                    WHERE 
-END;
+-- BEGIN
+--     cpt integer := 0;
+--     curs cursor FOR SELECT gd.points
+--                     FROM GameDetail gd 
+--                     JOIN Game g ON g.id = idGame
+--                     WHERE 
+-- END;
 
-$$LANGUAGE plpgsql;
+-- $$LANGUAGE plpgsql;
 
 
 
