@@ -107,7 +107,7 @@ JOIN GameDetail gd ON g.id = gd.idGame
 JOIN Team tH ON tH.id = g.idHomeTeam
 JOIN Team tV ON tV.id = g.idVisitorTeam
 WHERE nbRebondsDebute(gd.idGame) is NOT NULL
-GROUP BY g.id, tH.abbreviation, tV.abbreviation, g.dateGame
+GROUP BY g.id, tH.abbreviation, tV.abbreviation, g.dateGame, gd.idGame
 HAVING nbRebondsDebute(gd.idGame) = MAX(nbRebondsDebute(gd.idGame));
 
 
