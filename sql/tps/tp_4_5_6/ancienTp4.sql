@@ -92,34 +92,23 @@ $$LANGUAGE plpgsql;
 -- Q.4 )
 -------
 -- A reprendre sans le limit 
--- SELECT g.id, tH.abbreviation, tV.abbreviation, g.dateGame, nbRebondsDebute(gd.idGame) 
--- FROM Game g 
--- JOIN GameDetail gd ON g.id = gd.idGame
--- JOIN Team tH ON tH.id = g.idHomeTeam
--- JOIN Team tV ON tV.id = g.idVisitorTeam
--- WHERE nbRebondsDebute(gd.idGame) is NOT NULL
--- ORDER BY 5 DESC
--- LIMIT 1;
+SELECT g.id, tH.abbreviation, tV.abbreviation, g.dateGame, nbRebondsDebute(gd.idGame) 
+FROM Game g 
+JOIN GameDetail gd ON g.id = gd.idGame
+JOIN Team tH ON tH.id = g.idHomeTeam
+JOIN Team tV ON tV.id = g.idVisitorTeam
+WHERE nbRebondsDebute(gd.idGame) is NOT NULL
+ORDER BY 5 DESC
+LIMIT 1;
 
-SELECT g.dateGame, homeTeam.abbreviation AS homeTeamAbbreviation, visitorTeam.abbreviation AS visitorTeamAbbreviation
-FROM Game g
-JOIN Team homeTeam ON g.idHomeTeam = homeTeam.id
-JOIN Team visitorTeam ON g.idVisitorTeam = visitorTeam.id
-WHERE (
-    SELECT SUM(gd.rebounds)
-    FROM GameDetail gd
-    WHERE gd.startPosition IS NOT NULL
-    AND gd.idGame = g.id
-) = (
-    SELECT MAX(totalRebounds)
-    FROM (
-        SELECT gd.idGame, SUM(gd.rebounds) AS totalRebounds
-        FROM GameDetail gd
-        WHERE gd.startPosition IS NOT NULL
-        GROUP BY gd.idGame
-    ) AS Subquery
-);
-
+SELECT g.id, tH.abbreviation, tV.abbreviation, g.dateGame, nbRebondsDebute(gd.idGame)
+FROM Game g 
+JOIN GameDetail gd ON g.id = gd.idGame
+JOIN Team tH ON tH.id = g.idHomeTeam
+JOIN Team tV ON tV.id = g.idVisitorTeam
+WHERE nbRebondsDebute(gd.idGame) is NOT NULL
+GROUP BY g.id, tH.abbreviation, tV.abbreviation, g.dateGame, gd.idGame
+HAVING nbRebondsDebute(gd.idGame) = MAX(nbRebondsDebute(gd.idGame));
 
 
 -- Résultat : 
