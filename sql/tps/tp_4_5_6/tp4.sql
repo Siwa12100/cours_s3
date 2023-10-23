@@ -101,7 +101,7 @@ $$LANGUAGE plpgsql;
 -- ORDER BY 5 DESC
 -- LIMIT 1;
 
-SELECT g.dateGame, homeTeam.abbreviation AS homeTeamAbbreviation, visitorTeam.abbreviation AS visitorTeamAbbreviation
+SELECT g.dateGame, g.id, homeTeam.abbreviation AS homeTeamAbbreviation, visitorTeam.abbreviation AS visitorTeamAbbreviation
 FROM Game g
 JOIN Team homeTeam ON g.idHomeTeam = homeTeam.id
 JOIN Team visitorTeam ON g.idVisitorTeam = visitorTeam.id
