@@ -91,7 +91,7 @@ $$LANGUAGE plpgsql;
 
 -- Q.4 )
 -------
--- A reprendre sans le limit 
+-- Voilà ma première version, mais vous m'avez demandé de la reprendre sans y mettre le limit 1 à la fin....
 -- SELECT g.id, tH.abbreviation, tV.abbreviation, g.dateGame, nbRebondsDebute(gd.idGame) 
 -- FROM Game g 
 -- JOIN GameDetail gd ON g.id = gd.idGame
@@ -101,6 +101,7 @@ $$LANGUAGE plpgsql;
 -- ORDER BY 5 DESC
 -- LIMIT 1;
 
+-- Voici donc la seconde version pour cette question, sans le limit...
 SELECT g.dateGame, g.id, homeTeam.abbreviation AS homeTeamAbbreviation, visitorTeam.abbreviation AS visitorTeamAbbreviation
 FROM Game g
 JOIN Team homeTeam ON g.idHomeTeam = homeTeam.id
