@@ -1,0 +1,6 @@
+package interface;
+
+class Afficheur {
+
+    
+}
