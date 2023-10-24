@@ -1,163 +1,136 @@
-
--- Q.1 | Partie 1 )
-------------------
--- DROP FUNCTION IF EXISTS nbRebondsPasDebute_SansCurseur;
-
-CREATE OR REPLACE FUNCTION nbRebondsPasDebute_SansCurseur(game GameDetail.idGame%TYPE) RETURNS Integer AS $$
+-- Réponse à la Question 1, Partie 1 (Inspiration de Tony)
+CREATE OR REPLACE FUNCTION calculateReboundsNotStarted_NoCursor(game GameDetail.idGame%TYPE) RETURNS INTEGER AS $$
 DECLARE
-    cpt integer;
-
+    totalRebounds INTEGER;
 BEGIN
-    SELECT SUM(gd.rebounds) INTO cpt
+    SELECT SUM(gd.rebounds) INTO totalRebounds
     FROM GameDetail gd
-    WHERE gd.startPosition is NULL 
+    WHERE gd.startPosition IS NULL 
     AND game = gd.idGame;
-
-    -- RAISE NOTICE 'Le nombre de rebonds pour la partie % est : %', game, cpt;
-    RETURN cpt;
-END;
-
-$$LANGUAGE plpgsql;
-
--- SELECT nbRebondsPasDebute_SansCurseur('22100979');
--- Résultat : 32
-
-
-
--- Q.1 | Partie 2 )
-------------------
-
--- DROP FUNCTION nbRebondsPasDebute_AvecCurseur;
-
-CREATE OR REPLACE FUNCTION nbRebondsPasDebute_AvecCurseur(game GameDetail.idGame%TYPE) RETURNS Integer AS $$
-DECLARE
-    cpt integer := 0;
-    curs cursor FOR SELECT gd.rebounds FROM GameDetail gd WHERE game = gd.idGame AND startPosition is NULL;
-
-BEGIN
-
-    FOR ligne IN curs LOOP
-
-        IF ligne.rebounds IS NOT NULL THEN
-            cpt = cpt + ligne.rebounds;
-
-        END IF;
-    END LOOP;
-
-    -- RAISE NOTICE 'Le nombre de rebonds pour la partie % est : %', game, cpt;
-    RETURN cpt;
+    
+    RETURN totalRebounds;
 END;
 $$ LANGUAGE plpgsql;
 
--- SELECT nbRebondsPasDebute_AvecCurseur('22100979');
--- Résultat : 32
-
-
-
--- Q.2 )
--------
-
--- SELECT DISTINCT nbRebondsPasDebute_AvecCurseur(gd.idGame) AS fct_avecCurseur, nbRebondsPasDebute_SansCurseur(gd.idGame) AS fct_avecCurseur
--- FROM GameDetail gd
--- JOIN Game g ON g.id = gd.idGame
--- WHERE g.dateGame = '12-03-2022';
-
-
-
--- Q.3 )
--------
--- DROP FUNCTION nbRebondsDebute;
-
-CREATE OR REPLACE FUNCTION nbRebondsDebute(game GameDetail.idGame%TYPE) RETURNS Integer AS $$
+-- Réponse à la Question 1, Partie 2 (Inspiration de Tony)
+CREATE OR REPLACE FUNCTION calculateReboundsNotStarted_WithCursor(game GameDetail.idGame%TYPE) RETURNS INTEGER AS $$
 DECLARE
-    cpt integer;
-
+    totalRebounds INTEGER := 0;
+    reboundValue INTEGER;
+    cur CURSOR FOR SELECT gd.rebounds FROM GameDetail gd WHERE game = gd.idGame AND gd.startPosition IS NULL;
 BEGIN
-    SELECT SUM(gd.rebounds) INTO cpt
-    FROM GameDetail gd
-    WHERE gd.startPosition is NOT NULL 
-    AND game = gd.idGame;
-
-    -- RAISE NOTICE 'Le nombre de rebonds pour la partie % est : %', game, cpt;
-    RETURN cpt;
+    OPEN cur;
+    FETCH cur INTO reboundValue;
+    WHILE FOUND LOOP
+        IF reboundValue IS NOT NULL THEN
+            totalRebounds := totalRebounds + reboundValue;
+        END IF;
+        FETCH cur INTO reboundValue;
+    END LOOP;
+    CLOSE cur;
+    
+    RETURN totalRebounds;
 END;
+$$ LANGUAGE plpgsql;
 
-$$LANGUAGE plpgsql;
+-- Réponse à la Question 2 (Inspiration de Tony)
+SELECT calculateReboundsNotStarted_NoCursor(gd.idGame) AS totalReboundsNoCursor, calculateReboundsNotStarted_WithCursor(gd.idGame) AS totalReboundsWithCursor
+FROM GameDetail gd
+JOIN Game g ON g.id = gd.idGame
+WHERE g.dateGame = '12-03-2022';
 
--- SELECT nbRebondsDebute('22100979');
--- Résultat : 57 
-
-
-
--- Q.4 )
--------
--- Voilà ma première version, mais vous m'avez demandé de la reprendre sans y mettre le limit 1 à la fin....
--- SELECT g.id, tH.abbreviation, tV.abbreviation, g.dateGame, nbRebondsDebute(gd.idGame) 
--- FROM Game g 
--- JOIN GameDetail gd ON g.id = gd.idGame
--- JOIN Team tH ON tH.id = g.idHomeTeam
--- JOIN Team tV ON tV.id = g.idVisitorTeam
--- WHERE nbRebondsDebute(gd.idGame) is NOT NULL
--- ORDER BY 5 DESC
--- LIMIT 1;
-
--- Voici donc la seconde version pour cette question, sans le limit...
-SELECT g.dateGame, g.id, homeTeam.abbreviation AS homeTeamAbbreviation, visitorTeam.abbreviation AS visitorTeamAbbreviation
-FROM Game g
-JOIN Team homeTeam ON g.idHomeTeam = homeTeam.id
-JOIN Team visitorTeam ON g.idVisitorTeam = visitorTeam.id
-WHERE (
-    SELECT SUM(gd.rebounds)
+-- Réponse à la Question 3 (Inspiration de Tony)
+CREATE OR REPLACE FUNCTION calculateReboundsStarted(game GameDetail.idGame%TYPE) RETURNS INTEGER AS $$
+DECLARE
+    totalRebounds INTEGER;
+BEGIN
+    SELECT SUM(gd.rebounds) INTO totalRebounds
     FROM GameDetail gd
-    WHERE gd.startPosition IS NOT NULL
-    AND gd.idGame = g.id
-) = (
-    SELECT MAX(totalRebounds)
-    FROM (
-        SELECT gd.idGame, SUM(gd.rebounds) AS totalRebounds
-        FROM GameDetail gd
-        WHERE gd.startPosition IS NOT NULL
-        GROUP BY gd.idGame
-    ) AS Subquery
+    WHERE gd.startPosition IS NOT NULL 
+    AND game = gd.idGame;
+    
+    RETURN totalRebounds;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Réponse à la Question 4 (Inspiration de Tony)
+SELECT t1.abbreviation AS HomeTeamAbbr, t2.abbreviation AS VisitorTeamAbbr, g.dateGame, calculateReboundsStarted(gd.idGame) AS totalStartedRebounds
+FROM Game g, Team t1, Team t2, GameDetail gd
+WHERE g.idHomeTeam = t1.id AND g.idVisitorTeam = t2.id AND gd.idGame = g.id AND calculateReboundsStarted(gd.idGame) = (
+    SELECT MAX(calculateReboundsStarted(gd.idGame))
+    FROM GameDetail gd
 );
 
+-- Réponse à la Question 5 (Inspiration de Tony)
+SELECT g.id AS GameID, (calculateReboundsNotStarted_WithCursor(g.id) + calculateReboundsStarted(g.id)) AS ReboundsFromFunctions, (g.reboundsHome + g.reboundsAway) AS TotalReboundsFromGame
+FROM Game g, Team t
+WHERE g.idHomeTeam = t.id AND (calculateReboundsNotStarted_WithCursor(g.id) + calculateReboundsStarted(g.id)) != (g.reboundsHome + g.reboundsAway);
 
 
--- Résultat : 
-    -- id : 41800233
-    -- nbRebonds : 101 
+-- Réponse à la Question 6 (Inspiration : Tony)
+-- Fonction pour calculer le total des points des joueurs d'une équipe pour un match donné
+CREATE OR REPLACE FUNCTION calculateTotalPointsForTeam(match GameDetail.idGame%TYPE, team Team.id%TYPE) RETURNS NUMERIC AS $$
+DECLARE
+    totalPoints NUMERIC;
+BEGIN
+    SELECT SUM(gd.points) INTO totalPoints
+    FROM GameDetail gd
+    WHERE gd.idGame = match AND gd.idTeam = team AND gd.points IS NOT NULL;
+    
+    RETURN totalPoints;
+END;
+$$ LANGUAGE plpgsql;
 
+-- Réponse à la Question 7 (Inspiration : Tony)
+-- Comparaison des points calculés avec les points de la table Game
+SELECT g.id AS GameID, (g.ptsHome + g.ptsAway) AS TotalPointsFromGame, (calculateTotalPointsForTeam(g.id, g.idHomeTeam) + calculateTotalPointsForTeam(g.id, g.idVisitorTeam)) AS TotalPointsCalculated
+FROM Game g
+WHERE (g.ptsHome + g.ptsAway) != (calculateTotalPointsForTeam(g.id, g.idHomeTeam) + calculateTotalPointsForTeam(g.id, g.idVisitorTeam));
 
--- Q.5 )
--------
--- SELECT DISTINCT gd.idGame, (g.reboundsHome + g.reboundsAway) AS tot_game, 
---        (nbRebondsDebute(gd.idGame) + nbRebondsPasDebute_SansCurseur(gd.idGame)) as tot_gamedetail
--- FROM Game g
--- JOIN GameDetail gd ON g.id = gd.idGame
--- WHERE nbRebondsDebute(gd.idGame) IS NOT NULL
--- AND nbRebondsPasDebute_SansCurseur(gd.idGame) IS NOT NULL
--- GROUP BY gd.idGame, g.reboundsAway, g.reboundsHome
--- hAVING (g.reboundsHome + g.reboundsAway) != (nbRebondsDebute(gd.idGame) + nbRebondsPasDebute_SansCurseur(gd.idGame));
+-- Réponse à la Question 8 (Inspiration : Tony)
+-- Comparaison détaillée des points entre Game et GameDetail pour chaque match
+SELECT g.id AS GameID, g.ptsHome AS GameHomePoints, g.ptsAway AS GameVisitorPoints, 
+       calculateTotalPointsForTeam(g.id, g.idHomeTeam) AS GameDetailHomePoints, 
+       calculateTotalPointsForTeam(g.id, g.idVisitorTeam) AS GameDetailVisitorPoints
+FROM Game g
+WHERE (g.ptsHome != calculateTotalPointsForTeam(g.id, g.idHomeTeam)) OR (g.ptsAway != calculateTotalPointsForTeam(g.id, g.idVisitorTeam));
 
+-- Réponse à la Question 9 (Inspiration : Tony)
+-- Fonction pour déterminer si une équipe a été meilleure à domicile qu'à l'extérieur la saison précédente
+CREATE OR REPLACE FUNCTION isBestAtHomePreviousSeason(team Team.id%TYPE) RETURNS BOOLEAN AS $$
+DECLARE
+    currentSeason NUMERIC;
+    previousSeason NUMERIC;
+    homeWins NUMERIC;
+    awayWins NUMERIC;
+    isBestAtHome BOOLEAN;
+BEGIN
+    SELECT MAX(season) INTO currentSeason FROM Game;
+    previousSeason := currentSeason - 1;
 
--- Q.6 )
--------
--- CREATE OR REPLACE FUNCTION totalPointsEquipe(game Game.id%TYPE, team Team.id%TYPE) RETURNS Integer AS $$
--- DECLARE
+    SELECT COUNT(*) INTO homeWins
+    FROM Game
+    WHERE idHomeTeam = team
+        AND season = previousSeason
+        AND homeTeamWins = TRUE;
 
--- BEGIN
---     cpt integer := 0;
---     curs cursor FOR SELECT gd.points
---                     FROM GameDetail gd 
---                     JOIN Game g ON g.id = idGame
---                     WHERE 
--- END;
+    SELECT COUNT(*) INTO awayWins
+    FROM Game
+    WHERE idVisitorTeam = team
+        AND season = previousSeason
+        AND homeTeamWins = FALSE;
 
--- $$LANGUAGE plpgsql;
+    IF homeWins >= awayWins THEN
+        isBestAtHome := TRUE;
+    ELSE
+        isBestAtHome := FALSE;
+    END IF;
 
+    RETURN isBestAtHome;
+END;
+$$ LANGUAGE plpgsql;
 
-
-
-
-
+-- Réponse à la Question 10 (Inspiration : Tony)
+-- Vérification si l'équipe des Spurs a été meilleure à domicile qu'à l'extérieur la saison précédente
+SELECT isBestAtHomePreviousSeason('1610612759') AS IsBestAtHome;
 
