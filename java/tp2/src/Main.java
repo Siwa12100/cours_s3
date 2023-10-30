@@ -7,11 +7,13 @@ public class Main {
 
     public static void test() {
 
-        Animal o1 = new Ours(11, 12 , new StringBuilder("Premier ours"), 777, 150);
-        System.out.println("\n" + o1 + "\n");
+        //Animal o1 = new Ours(11, 12 , new StringBuilder("Premier ours"), 777, 150);
+        //System.out.println("\n" + o1 + "\n");
 
         Animaltheque zoo = new Animaltheque();
-        zoo.afficherAnimal();
+        //zoo.saisirAnimal();
+        zoo.saisirAnimal();
+        zoo.afficherAnimaux();
     }
     public static void main(String[] args) {
         //System.out.println("Hello world!");

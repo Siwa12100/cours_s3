@@ -7,7 +7,6 @@ public class Animaltheque {
 
     private List<Animal> lAnimaux;
     private Afficheur afficheur;
-
     private Saisisseur saisisseur;
 
     public Animaltheque() {
@@ -17,11 +16,11 @@ public class Animaltheque {
         saisisseur = new Saisisseur();
     }
 
-    public void afficherAnimal() {
-        //afficheur.afficherAnimal(a);
-
-        saisisseur.saisirAnimal();
+    public void afficherAnimaux() {
+        afficheur.afficherAnimaux(lAnimaux);
     }
 
-    //public void afficher
+    public void saisirAnimal() {
+        lAnimaux.add(saisisseur.saisirAnimal());
+    }
 }

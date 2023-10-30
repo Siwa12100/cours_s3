@@ -9,10 +9,11 @@ public class Ours extends AnimalFourrure {
         super(id, age, nom, densitePoils);
         this.poids = poids;
     }
-
+    
     public String toString() {
 
         return "Ours : " + nom + " ( id : " + id + " ; age : " +
-                age + " ; densiteFourure : " + densiteFourrure + " ; poids " + poids + " ).";
+                age + " ; densiteFourure : " + densiteFourrure + " ; poids " + poids
+                + " ; en hivernation : " + enHibernation + " ).";
     }
 }
