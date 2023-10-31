@@ -12,7 +12,7 @@ public abstract class Animal {
     protected Animal(int id, int age, StringBuilder nom) {
         this.id =id;
         this.age = age;
-        this.nom =nom;
+        this.nom = new StringBuilder(nom);
         enHibernation = false;
     }
 

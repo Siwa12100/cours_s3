@@ -1,5 +1,8 @@
 package modele;
 
+import interfaces.Afficheur;
+import interfaces.Saisisseur;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,11 +12,11 @@ public class Animaltheque {
     private Afficheur afficheur;
     private Saisisseur saisisseur;
 
-    public Animaltheque() {
+    public Animaltheque(Saisisseur s, Afficheur a) {
 
         lAnimaux = new ArrayList<Animal>();
-        afficheur = new Afficheur();
-        saisisseur = new Saisisseur();
+        afficheur = a;
+        saisisseur = s;
     }
 
     public List<Animal> getAnimaux() {

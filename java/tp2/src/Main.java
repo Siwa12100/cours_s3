@@ -1,6 +1,7 @@
+import controler.Manager;
+import interfaces.Afficheur;
+import interfaces.Saisisseur;
 import modele.*;
-
-import javax.sound.midi.SysexMessage;
 
 
 public class Main {
@@ -10,8 +11,11 @@ public class Main {
         //Animal o1 = new Ours(11, 12 , new StringBuilder("Premier ours"), 777, 150);
         //System.out.println("\n" + o1 + "\n");
 
-        Animaltheque zoo = new Animaltheque();
-        zoo.saisirAnimal();
+        Saison saison = new Saison();
+        Saisisseur saisisseur = new Saisisseur(saison);
+        Afficheur afficheur = new Afficheur();
+        Animaltheque zoo = new Animaltheque(saisisseur, afficheur);
+        //zoo.saisirAnimal();
         zoo.saisirAnimal();
         zoo.afficherAnimaux();
 
@@ -19,9 +23,12 @@ public class Main {
         //Animal l = new Loup(111, 34, new StringBuilder("Loulou"), 300, 130);
         //System.out.println("\n" + l + "\n");
     }
+
     public static void main(String[] args) {
         //System.out.println("Hello world!");
-        test();
+        //test();
+        Manager manager = new Manager();
+        manager.lancement();
     }
 }
 

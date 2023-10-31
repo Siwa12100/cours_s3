@@ -5,9 +5,10 @@ public abstract class Oiseau extends Animal {
     protected int nbPlumes;
     protected Position position;
 
-    protected Oiseau(int id, int age, StringBuilder nom, int nbPlumes) {
-        super(id, age, new StringBuilder(nom));
+    protected Oiseau(int id, int age, StringBuilder nom, int nbPlumes, int numSaison) {
+        super(id, age, nom);
         this.nbPlumes = nbPlumes;
+        adapterComportementSaison(numSaison);
     }
 
     protected void voyager(int numSaison) {
@@ -28,9 +29,13 @@ public abstract class Oiseau extends Animal {
 
             case 4 :
                 position = Position.enVoyageVersSud;
+                break;
         }
     }
 
     @Override
-    protected adap
+    public void adapterComportementSaison(int saison) {
+        super.adapterComportementSaison(saison);
+        voyager(saison);
+    }
 }

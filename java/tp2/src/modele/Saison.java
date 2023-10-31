@@ -7,7 +7,6 @@ import java.util.HashMap;
 public class Saison {
 
     private static int numeroSaison;
-    private static List<Animal> lAnimaux;
     Saison instance = this;
     static final Map<Integer, StringBuilder> repertoireSaisons= new HashMap<>();
     public static void initialisationSaisons(){
@@ -17,15 +16,13 @@ public class Saison {
         repertoireSaisons.put(4, new StringBuilder("Devalada"));
     }
 
-    public Saison(Animaltheque zoo) {
+    public Saison() {
         initialisationSaisons();
-        lAnimaux = zoo.getAnimaux();
         numeroSaison = 1;
     }
 
-    public Saison(int s, Animaltheque zoo) {
+    public Saison(int s) {
         initialisationSaisons();
-        lAnimaux = zoo.getAnimaux();
         numeroSaison = s;
     }
 
@@ -33,20 +30,21 @@ public class Saison {
         return repertoireSaisons.get(numeroSaison);
     }
 
-    public static int passerSaisonSuivante() {
+    public static int passerSaisonSuivante(List<Animal> lAnimaux) {
         numeroSaison++;
         if (numeroSaison == 5){
             numeroSaison = 1;
         }
-        faireAdapterAnimaux();
+        faireAdapterAnimaux(lAnimaux);
         return numeroSaison;
     }
 
     public static int getNumSaison() {
+
         return numeroSaison;
     }
 
-    public static void faireAdapterAnimaux() {
+    public static void faireAdapterAnimaux(List<Animal> lAnimaux) {
         for (Animal a: lAnimaux) {
             a.adapterComportementSaison(numeroSaison);
         }
