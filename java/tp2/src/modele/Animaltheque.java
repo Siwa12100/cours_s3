@@ -16,11 +16,18 @@ public class Animaltheque {
         saisisseur = new Saisisseur();
     }
 
+    public List<Animal> getAnimaux() {
+        return this.lAnimaux;
+    }
+
     public void afficherAnimaux() {
         afficheur.afficherAnimaux(lAnimaux);
     }
 
     public void saisirAnimal() {
+
         lAnimaux.add(saisisseur.saisirAnimal());
     }
+
+
 }

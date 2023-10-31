@@ -22,6 +22,7 @@ public abstract class AnimalFourrure extends Animal {
         super.terminerHivernation();
         diminuerDensitePoils(CHANGEMENT_FOURRURE);
     }
+
     private void augmenterDensitePoils(int delta) {
         densiteFourrure = densiteFourrure + delta;
     }

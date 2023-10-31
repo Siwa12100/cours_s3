@@ -1,5 +1,7 @@
 package modele;
 
+import java.util.spi.AbstractResourceBundleProvider;
+
 public abstract class Animal {
 
     protected int id;
@@ -20,6 +22,20 @@ public abstract class Animal {
 
     protected void terminerHivernation(){
         enHibernation = false;
+    }
+
+    public void adapterComportementSaison(int saison) {
+
+        switch (saison) {
+
+            case 1 :
+                commencerHivernation();
+                break;
+
+            case 2 :
+                terminerHivernation();
+                break;
+        }
     }
 
     public int getId(){

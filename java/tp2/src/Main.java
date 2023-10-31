@@ -11,9 +11,13 @@ public class Main {
         //System.out.println("\n" + o1 + "\n");
 
         Animaltheque zoo = new Animaltheque();
-        //zoo.saisirAnimal();
+        zoo.saisirAnimal();
         zoo.saisirAnimal();
         zoo.afficherAnimaux();
+
+
+        //Animal l = new Loup(111, 34, new StringBuilder("Loulou"), 300, 130);
+        //System.out.println("\n" + l + "\n");
     }
     public static void main(String[] args) {
         //System.out.println("Hello world!");
