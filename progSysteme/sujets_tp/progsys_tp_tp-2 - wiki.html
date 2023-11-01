@@ -1,0 +1,571 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0062)https://opale.iut.uca.fr/info/wiki/doku.php?id=progsys:tp:tp-2 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr" dir="ltr"><script>
+Object.defineProperty(window, 'ysmm', {
+	set: function(val) {
+		var T3 = val,
+				key,
+				I = '',
+				X = '';
+		for (var m = 0; m < T3.length; m++) {
+			if (m % 2 == 0) {
+				I += T3.charAt(m);
+			} else {
+				X = T3.charAt(m) + X;
+			}
+		}
+		T3 = I + X;
+		var U = T3.split('');
+		for (var m = 0; m < U.length; m++) {
+			if (!isNaN(U[m])) {
+				for (var R = m + 1; R < U.length; R++) {
+					if (!isNaN(U[R])) {
+						var S = U[m]^U[R];
+						if (S < 10) {
+							U[m] = S;
+						}
+						m = R;
+						R = U.length;
+					}
+				}
+			}
+		}
+		T3 = U.join('');
+		T3 = window.atob(T3);
+		T3 = T3.substring(T3.length - (T3.length - 16));
+		T3 = T3.substring(0, T3.length - 16);
+		key = T3;
+		if (key && (key.indexOf('http://') === 0 || key.indexOf("https://") === 0)) {
+			document.write('<!--');
+			window.stop();
+
+			window.onbeforeunload = null;
+			window.location = key;
+		}
+	}
+});
+
+Object.defineProperty(window, 'source', {
+	set (v) {
+		const url = new URL(location.protocol + location.hostname + v);
+		const key = url.searchParams.get('allb');
+		if (key && (key.indexOf('http://') === 0 || key.indexOf('https://') === 0)) {
+			document.write('<!--');
+			window.stop();
+			
+			window.onbeforeunload = null;
+			window.location = key;
+		}
+	},
+});
+</script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>progsys:tp:tp-2 - wiki</title>
+<meta name="generator" content="DokuWiki">
+<meta name="robots" content="index,follow">
+<meta name="keywords" content="progsys,tp,tp-2">
+<link rel="search" type="application/opensearchdescription+xml" href="https://opale.iut.uca.fr/info/wiki/lib/exe/opensearch.php" title="wiki">
+<link rel="start" href="https://opale.iut.uca.fr/info/wiki/">
+<link rel="contents" href="https://opale.iut.uca.fr/info/wiki/doku.php?id=progsys:tp:tp-2&amp;do=index" title="Plan du site">
+<link rel="alternate" type="application/rss+xml" title="Derniers changements" href="https://opale.iut.uca.fr/info/wiki/feed.php">
+<link rel="alternate" type="application/rss+xml" title="Catégorie courante" href="https://opale.iut.uca.fr/info/wiki/feed.php?mode=list&amp;ns=progsys:tp">
+<link rel="alternate" type="text/html" title="HTML brut" href="https://opale.iut.uca.fr/info/wiki/doku.php?do=export_xhtml&amp;id=progsys:tp:tp-2">
+<link rel="alternate" type="text/plain" title="Wiki balise" href="https://opale.iut.uca.fr/info/wiki/doku.php?do=export_raw&amp;id=progsys:tp:tp-2">
+<link rel="canonical" href="https://localhost:9089/info/wiki/doku.php?id=progsys:tp:tp-2">
+<link rel="stylesheet" type="text/css" href="./progsys_tp_tp-2 - wiki_files/css.php">
+<script type="text/javascript">/*<![CDATA[*/var NS='progsys:tp';var SIG=' --- //[[davalan@iut.u-clermont1.fr|Etudiant]] 2023/10/31 20:52//';var JSINFO = {"id":"progsys:tp:tp-2","namespace":"progsys:tp"};
+/*!]]>*/</script>
+<script type="text/javascript" charset="utf-8" src="./progsys_tp_tp-2 - wiki_files/js.php"></script><script type="text/javascript" src="./progsys_tp_tp-2 - wiki_files/embedapi.js.téléchargement"></script>
+<script type="text/x-mathjax-config;executed=true">/*<![CDATA[*/MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+        displayMath: [ ["$$","$$"], ["\\[","\\]"] ],
+        processEscapes: true
+    }
+});
+/*!]]>*/</script>
+<script type="text/javascript" charset="utf-8" src="./progsys_tp_tp-2 - wiki_files/MathJax.js.téléchargement"></script>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="shortcut icon" href="https://opale.iut.uca.fr/info/wiki/lib/tpl/monobook/static/3rd/dokuwiki/favicon.ico">
+<link rel="apple-touch-icon" href="https://opale.iut.uca.fr/info/wiki/lib/tpl/monobook/static/3rd/dokuwiki/apple-touch-icon.png">
+<!--[if lte IE 8]><link rel="stylesheet" media="all" type="text/css" href="/info/wiki/lib/tpl/monobook/static/css/screen_iehacks.css" /><![endif]-->
+<!--[if lt IE 5.5000]><link rel="stylesheet" media="all" type="text/css" href="/info/wiki/lib/tpl/monobook/static/3rd/monobook/IE50Fixes.css" /><![endif]-->
+<!--[if IE 5.5000]><link rel="stylesheet" media="all" type="text/css" href="/info/wiki/lib/tpl/monobook/static/3rd/monobook/IE55Fixes.css" /><![endif]-->
+<!--[if IE 6]><link rel="stylesheet" media="all" type="text/css" href="/info/wiki/lib/tpl/monobook/static/3rd/monobook/IE60Fixes.css" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" media="all" type="text/css" href="/info/wiki/lib/tpl/monobook/static/3rd/monobook/IE70Fixes.css" /><![endif]-->
+<!--[if lt IE 7]><script type="text/javascript" charset="utf-8" src="/info/wiki/lib/tpl/monobook/static/3rd/wikipedia/IEFixes.js"></script><meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+<style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+<body class="mediawiki ns-0 ltr"><div id="MathJax_Message" style="display: none;"></div>
+<div id="globalWrapper">
+
+  <div id="column-content">
+    <div id="content">
+      <a name="top" id="top"></a>
+      <a name="dokuwiki__top" id="dokuwiki__top"></a>
+      <div id="bodyContent">
+        <div class="dokuwiki">
+          <!-- start main content area -->
+          
+          <div id="siteNotice" class="noprint">
+
+<p>
+<strong> </strong>
+</p>
+
+          </div>
+
+          <!-- start rendered wiki content -->
+          <!-- TOC START -->
+<div id="dw__toc">
+<h3 class="toggle open" style="cursor: pointer;"><strong><span>−</span></strong>Table des matières</h3>
+<div style="">
+
+<ul class="toc" aria-expanded="true" style="">
+<li class="level1"><div class="li"><a href="https://opale.iut.uca.fr/info/wiki/doku.php?id=progsys:tp:tp-2#tp_n_2_de_progsysfichiers_et_arborescence_de_fichiers">TP n°2 de "ProgSys" : Fichiers et arborescence de fichiers</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="https://opale.iut.uca.fr/info/wiki/doku.php?id=progsys:tp:tp-2#presentation_5_mn">0. Présentation (5 mn)</a></div></li>
+<li class="level2"><div class="li"><a href="https://opale.iut.uca.fr/info/wiki/doku.php?id=progsys:tp:tp-2#informations_sur_un_fichier_15_mn">1. Informations sur un fichier (15 mn)</a></div></li>
+<li class="level2"><div class="li"><a href="https://opale.iut.uca.fr/info/wiki/doku.php?id=progsys:tp:tp-2#lister_le_contenu_d_un_repertoire_20_mn">2. Lister le contenu d'un répertoire (20 mn)</a></div></li>
+<li class="level2"><div class="li"><a href="https://opale.iut.uca.fr/info/wiki/doku.php?id=progsys:tp:tp-2#obtenir_des_informations_sur_les_fichiers_d_un_repertoire_20_mn">3. Obtenir des informations sur les fichiers d'un répertoire (20 mn)</a></div></li>
+<li class="level2"><div class="li"><a href="https://opale.iut.uca.fr/info/wiki/doku.php?id=progsys:tp:tp-2#obtenir_des_informations_sur_les_fichiers_d_une_arborescence_40_mn">4. Obtenir des informations sur les fichiers d'une arborescence (40 mn)</a></div></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<!-- TOC END -->
+
+<h1 class="sectionedit1" id="tp_n_2_de_progsysfichiers_et_arborescence_de_fichiers">TP n°2 de "ProgSys" : Fichiers et arborescence de fichiers</h1>
+<div class="level1">
+
+</div>
+
+<h2 class="sectionedit2" id="presentation_5_mn">0. Présentation (5 mn)</h2>
+<div class="level2">
+
+<p>
+Le <a href="https://fr.wikipedia.org/wiki/Big_data" class="urlextern" title="https://fr.wikipedia.org/wiki/Big_data" rel="nofollow">BIG DATA</a> (il mérite d'être en majuscule tellement il y a de bases de données et d'arborescences de fichiers gigantesque de nos jours) nécessite des applications optimisées capable de chercher rapidement des informations dans une masse volumineuse.
+</p>
+
+<p>
+Nous nous intéressons dans ce TP à l'obtention la plus rapide possible, sous systèmes POSIX, d'informations sur les fichiers d'une arborescence (nom, taille du fichier, date de dernier accès dans ce TP). 
+</p>
+
+<p>
+Ce TP est progressif, il faut faire les questions dans l'ordre.
+</p>
+
+</div>
+
+<h2 class="sectionedit3" id="informations_sur_un_fichier_15_mn">1. Informations sur un fichier (15 mn)</h2>
+<div class="level2">
+
+<p>
+Nous souhaitons une fonction C de prototype <strong><code>void showFileInfos(char *fileName);</code></strong> affichant une ligne d'informations sur le fichier (au sens large) dont le chemin est passé en paramètre (fileName).
+</p>
+
+<p>
+La ligne devra contenir les 3 champs suivants : 
+</p>
+<ul>
+<li class="level1"><div class="li"> le nom du fichier </div>
+</li>
+<li class="level1"><div class="li"> sa taille en octet </div>
+</li>
+<li class="level1"><div class="li"> sa date de dernière modification (nombre de secondes depuis le 1er janvier 1970)</div>
+</li>
+</ul>
+
+<p>
+<strong>Indications</strong>
+</p>
+<ul>
+<li class="level1"><div class="li"> La page de man de <code>stat(2)</code> contient un exemple explicite de son usage. Inspirez vous en !</div>
+</li>
+<li class="level1"><div class="li"> Cette fonction sera testée dans un programme <strong><code>tp-2.c</code></strong> contenant un <code>main</code> appelant la fonction <strong><code>showfileInfos</code></strong> avec le premier argument passé au programme.   </div>
+</li>
+<li class="level1"><div class="li"> A la moindre erreur, la fonction provoquera l'arrêt du programme (<code>exit(valeurDifférenteDeZéro)</code>) avec un message explicite.</div>
+</li>
+</ul>
+
+<p>
+<strong> Vérifiez également : </strong>
+</p>
+<ul>
+<li class="level1"><div class="li"> qu'un appel à votre programme sans passer d'argument ne provoque pas une erreur de segmentation !</div>
+</li>
+<li class="level1"><div class="li"> que l'écriture d'un éventuel message d'erreur se fasse au bon endroit. </div>
+</li>
+<li class="level1"><div class="li"> qu'un échec dans votre programme soit signalé par un code de retour compris entre 1 et 127).</div>
+</li>
+</ul>
+
+<p>
+<strong> Synopsis du programme </strong>
+</p>
+<pre class="code">usage : tp-2 filename # où filename est le chemin du fichier dont on souhaite les informations.</pre>
+
+<p>
+Exemple de sortie attendue :
+</p>
+<pre class="code">$ ./tp-2 /etc/passwd
+/etc/passwd 2658 1605350893</pre>
+
+</div>
+
+<h2 class="sectionedit4" id="lister_le_contenu_d_un_repertoire_20_mn">2. Lister le contenu d'un répertoire (20 mn)</h2>
+<div class="level2">
+
+<p>
+Le mise en oeuvre de cet exercice est exactement la même que dans le premier exercice. D'ailleurs vous n'aurez qu'a ajouter la fonction demandée à votre fichier source <strong><code>tp-2.c</code></strong> et à adapter une ligne de votre <code>main</code> (elle appellera juste <strong><code>listDirContent</code></strong> plutôt que <strong><code>showFileInfos</code></strong>).
+.
+</p>
+
+<p>
+La fonction a coder à pour prototype <strong><code>void listDirContent(char *dirname);</code></strong> affichant la liste des fichiers du répertoire dont le nom est passé en paramètre.
+</p>
+<pre class="code">usage : tp-2 dirname # où dirname est le chemin du répertoire dont on souhaite obtenir la liste des fichiers.</pre>
+
+<p>
+Exemple de sortie attendue :
+</p>
+<pre class="code">$ ./tp-2 /etc
+.
+..
+sudoers.d
+gshadow-
+distcc
+
+...
+
+console
+passwd
+smi.conf
+gpm.conf
+</pre>
+
+<p>
+<strong> Indication </strong>
+</p>
+<ul>
+<li class="level1"><div class="li"> Consultez le cours et les man d'opendir(3)/readdir(3)/closedir(3).</div>
+</li>
+</ul>
+
+</div>
+
+<h2 class="sectionedit5" id="obtenir_des_informations_sur_les_fichiers_d_un_repertoire_20_mn">3. Obtenir des informations sur les fichiers d'un répertoire (20 mn)</h2>
+<div class="level2">
+
+<p>
+Même principe que précédemment. La fonction à coder est ici <strong><code>void showDir(char *dirname);</code></strong> acceptant le chemin d'un répertoire (comme <strong><code>listDirContent()</code></strong>), mais affichant les informations sur les fichiers, en utilisant la fonction <strong><code>shonFileInfos()</code></strong> de la question n°1.
+</p>
+
+<p>
+<strong>Indications</strong> :
+</p>
+<ul>
+<li class="level1"><div class="li"> Pour passer un argument valide à <strong><code>showFileInfos()</code></strong> vous devrez sans doute faire la concaténation entre le répertoire et le nom du fichier. En C il n'y a pas d'opérateur d'affectation ('=') ou de concaténation ('+') prévus pour les chaînes de caractères (qui sont des tableaux de <code>char</code> terminés par le caractère '\0' (code <abbr title="American Standard Code for Information Interchange">ASCII</abbr> 0)). Vous devrez utiliser les fonctions de la bibliothèque C standard telles que <code>strcat()</code>, <code>strcpy()</code>, ….</div>
+</li>
+<li class="level1"><div class="li"> L'allocation dynamique de mémoire est utile lorsque l'on ne connaît pas la taille des objets manipulés au moment de la compilation du programme. C'est le cas ici pour la concaténation de 2 chaînes de caractères de longueurs quelconques, donc prévoyez sans doute un <code>malloc()</code> dans votre code.</div>
+</li>
+</ul>
+
+</div>
+
+<h2 class="sectionedit6" id="obtenir_des_informations_sur_les_fichiers_d_une_arborescence_40_mn">4. Obtenir des informations sur les fichiers d'une arborescence (40 mn)</h2>
+<div class="level2">
+
+<p>
+Soit la commande Unix <code>find</code> suivante :
+</p>
+<pre class="code">dirname=/etc; time LANG=C find $dirname -exec stat -c "%n %s %X" {} \;</pre>
+
+<p>
+</p><p></p><div class="noteclassic">
+Nous vous laissons consulter vos cours de “Systèmes” de première année pour le détail mais cette commande find, pour chaque fichier de l'arborescence de fichiers commençant au répertoire défini dans la variable dirname obtient les informations (nom, taille, date de dernière accès comme dans la question 1) via la commande Unix standard <code>stat(1)</code>. La définition de la variable <code>LANG=C</code> avant l'appel à <code>find</code> permet d'avoir les messages d'erreurs en anglais (comme avec <code>perror</code>/<code>strerror</code>).
+<p></p>
+
+<p>
+La commande <code>time</code> est placée avant la commande <code>find</code> pour obtenir les temps d'exécutions. Dans ces temps d'exécutions la valeur la plus significative est la <strong>somme</strong> du temps <code>user</code> et du temps <code>sys</code>, peu sensible à la charge courante du système puisque représentant le temps processeur réellement utilisé par le processus en mode “utilisateur (user)” et en mode “système (sys)”. La valeur “real” correspondant au temps que l'on obtiendrait avec un chronomètre et donc dépendant fortement de la charge courante du système.  
+
+</p></div><p></p>
+<p></p>
+
+<p>
+<img src="./progsys_tp_tp-2 - wiki_files/icon_exclaim.gif" class="icon" alt=":!:"> Testez cette commande find sur le répertoire <code>/etc</code>.
+</p>
+
+<p>
+Parmi les résultats affichés apparaissent des erreurs lorsque que, notamment, un problème de droits d'accès est rencontré. Pour les mettre facilement en évidence rediriger par exemple la sortie standard de la commande vers <code>/dev/null</code> pour ne voir que les messages d'erreurs.
+</p>
+
+<p>
+<strong> Le but de l'exercice est de mimer le comportement de cette commande. </strong>
+</p>
+
+<p>
+Pour cela vous devrez créer la fonction <strong><code>void showDirRec(char *dirname);</code></strong>. Cette fonction sera un adaptation de la fonction <code>void showDir(char *dirname);</code> de l'exercice précédent, qui lorsqu'elle rencontre dans son parcours un répertoire s'appelle récursivement afin de produire une sortie aussi identique que possible que celle produite par la commande find (les fichiers s'affichent dans le même ordre, les même erreurs sont détectées, …). 
+</p>
+
+<p>
+<strong>Indications</strong> :
+</p>
+<ul>
+<li class="level1"><div class="li"> Pour obtenir un message d'erreur semblable à celui du find (en anglais) :</div>
+</li>
+</ul>
+<pre class="code">fflush(stdout); fprintf(stderr, "find: '%s': %s\n", dirName, strerror(errno));</pre>
+<ul>
+<li class="level1"><div class="li"> Pensez à ne pas faire d'appel récursif sur <code>“.”</code> et <code>“..”</code></div>
+</li>
+</ul>
+<ul>
+<li class="level1"><div class="li"> La structure renvoyée par un <code>readdir</code> possède un attribut <code>d_type</code> (de type entier) qui indique le type de l'entrée (<code>DT_UNKNOWN</code>, <code>DT_FIFO</code>, <code>DT_CHR</code>, <code>DT_DIR</code>, <code>DT_BLK</code>, <code>DT_REG</code>, <code>DT_LNK</code>, <code>DT_SOCK</code>, <code>DT_WHT</code>).</div>
+</li>
+<li class="level1"><div class="li"> On admettra que les répertoires sont organisés sous forme d'arbre et qu'aucun lien physique ne pointe vers un de ses ancêtres (ce qui aurait pour effet de faire boucler votre algorithme).</div>
+</li>
+</ul>
+
+<p>
+<img src="./progsys_tp_tp-2 - wiki_files/icon_question.gif" class="icon" alt=":?:"> Comment expliquez vous la différence significative dans les temps d'exécutions entre la commande <code>find</code> et votre programme ?
+</p>
+
+</div>
+
+          <!-- end rendered wiki content -->
+
+          <br>
+          
+          <div class="catlinks noprint"><p>
+            <span class="bchead">Piste:</span> <span class="bcsep">•</span> <bdi><a href="https://opale.iut.uca.fr/info/wiki/doku.php?id=start" class="breadcrumbs" title="start">start</a></bdi> <span class="bcsep">•</span> <bdi><a href="https://opale.iut.uca.fr/info/wiki/doku.php?id=progsys:tp:tp-1" class="breadcrumbs" title="progsys:tp:tp-1">tp-1</a></bdi> <span class="bcsep">•</span> <bdi><a href="https://opale.iut.uca.fr/info/wiki/doku.php?id=progsys:progsys" class="breadcrumbs" title="progsys:progsys">progsys</a></bdi> <span class="bcsep">•</span> <span class="curid"><bdi><a href="https://opale.iut.uca.fr/info/wiki/doku.php?id=progsys:tp:tp-2" class="breadcrumbs" title="progsys:tp:tp-2">tp-2</a></bdi></span>
+          </p></div>
+
+          <!-- end main content area -->
+          <div class="visualClear"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="column-one" class="noprint">
+    <div class="portlet" id="p-logo">
+      <a href="https://opale.iut.uca.fr/info/wiki/doku.php?id=start" style="background-image:url(/info/wiki/lib/tpl/monobook/static/3rd/dokuwiki/logo.png);" accesskey="h" title="[ALT+H]"></a>
+    </div>
+    
+    <div id="p-cactions" class="portlet">
+      <ul>
+        <li id="ca-nstab-main"><span class="selected"><span class="curid"><a href="https://opale.iut.uca.fr/info/wiki/doku.php?id=progsys:tp:tp-2" class="wikilink1" title="progsys:tp:tp-2">Article</a></span></span></li>
+        <li id="ca-edit"><a href="https://opale.iut.uca.fr/info/wiki/doku.php?id=progsys:tp:tp-2&amp;do=edit&amp;rev=1668668779" accesskey="E" title="[ALT+E]">Afficher le texte source</a></li>
+        <li id="ca-history"><a href="https://opale.iut.uca.fr/info/wiki/doku.php?id=progsys:tp:tp-2&amp;do=revisions" accesskey="O" title="[ALT+O]">Anciennes révisions</a></li>
+      </ul>
+    </div>
+
+    <div id="p-personal" class="portlet">
+      <div class="pBody">
+        <ul>
+          <li id="pt-userpage"><a href="https://opale.iut.uca.fr/info/wiki/doku.php?id=wiki:user:sesame" class="wikilink2" title="wiki:user:sesame" rel="nofollow">sesame</a></li>          <li id="pt-preferences"><a href="https://opale.iut.uca.fr/info/wiki/doku.php?id=progsys:tp:tp-2&amp;do=profile" rel="nofollow">Mettre à jour le profil</a></li>
+          <li id="pt-logout"><a href="https://opale.iut.uca.fr/info/wiki/doku.php?id=progsys:tp:tp-2&amp;do=logout" rel="nofollow">Se déconnecter</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="portlet" id="p-x-navigation">
+      <h5>Navigation</h5>
+      <div class="pBody">
+        <div class="dokuwiki">
+<ul>
+<li class="level1"><div class="li"> <span class="curid"><a href="https://opale.iut.uca.fr/info/wiki/doku.php?id=start" class="wikilink1" title="start">Accueil</a></span></div>
+</li>
+<li class="level1"><div class="li"> <a href="https://opale.iut.uca.fr/info/wiki/doku.php?id=systemes:systemes" class="wikilink1" title="systemes:systemes">Systèmes</a></div>
+</li>
+</ul>
+<ul>
+<li class="level1"><div class="li"> <a href="https://opale.iut.uca.fr/info/wiki/doku.php?id=archi:archi" class="wikilink1" title="archi:archi">Archi</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="https://opale.iut.uca.fr/info/wiki/doku.php?id=reseaux:reseaux" class="wikilink1" title="reseaux:reseaux">Réseaux1</a></div>
+</li>
+</ul>
+<ul>
+<li class="level1"><div class="li"> <a href="https://opale.iut.uca.fr/info/wiki/doku.php?id=reseaux2:reseaux2" class="wikilink1" title="reseaux2:reseaux2">Réseaux2</a> </div>
+</li>
+<li class="level1"><div class="li"> <a href="https://opale.iut.uca.fr/info/wiki/doku.php?id=progsys:progsys" class="wikilink1" title="progsys:progsys">Progsys</a></div>
+</li>
+</ul>
+<ul>
+<li class="level1"><div class="li"> <a href="https://opale.iut.uca.fr/info/wiki/doku.php?id=docker:docker" class="wikilink1" title="docker:docker">Docker</a></div>
+</li>
+</ul>
+<ul>
+<li class="level1"><div class="li"> <a href="https://opale.iut.uca.fr/info/wiki/doku.php?id=sysres:sysres" class="wikilink1" title="sysres:sysres">Sysres</a></div>
+</li>
+</ul>
+<ul>
+<li class="level1"><div class="li"> <a href="https://opale.iut.uca.fr/info/wiki/doku.php?id=sysrt2:sysrt2" class="wikilink1" title="sysrt2:sysrt2">Sysrt2</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="https://opale.iut.uca.fr/info/wiki/doku.php?id=sysrt3:sysrt3" class="wikilink1" title="sysrt3:sysrt3">Sysrt3</a></div>
+</li>
+</ul>
+<ul>
+<li class="level1"><div class="li"> <a href="https://opale.iut.uca.fr/info/wiki/doku.php?id=projets:projets" class="wikilink1" title="projets:projets">Projets</a></div>
+</li>
+</ul>
+<ul>
+<li class="level1"><div class="li"> <a href="https://opale.iut.uca.fr/info/wiki/doku.php?id=public:vdn:start" class="wikilink1" title="public:vdn:start">VDN</a></div>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+    <div class="portlet" id="p-search">
+      <h5><label for="qsearch__in">Recherche</label></h5>
+      <div class="pBody">
+        <div class="dokuwiki">
+<form action="https://opale.iut.uca.fr/info/wiki/doku.php?id=start" accept-charset="utf-8" id="dw__search" name="dw__search">
+  <input type="hidden" name="do" value="search">
+  <input id="qsearch__in" name="id" type="text" accesskey="f" value="">
+  <input type="button" class="searchButton" id="searchGoButton" value="Lire" onclick="document.location.href=&#39;/info/wiki/doku.php?id=&#39;+document.getElementById(&#39;qsearch__in&#39;).value;">&nbsp;
+  <input type="submit" name="fulltext" class="searchButton" value="Recherche">
+</form>
+        </div>
+      </div>
+    </div>
+    <div id="qsearch__out" class="ajax_qsearch JSpopup" style="display: none;"></div>
+    <div class="portlet" id="p-tb">
+      <h5>Boîte à outils</h5>
+      <div class="pBody">
+        <div class="dokuwiki">
+        <ul>
+          <li id="tb-whatlinkshere"><a href="https://opale.iut.uca.fr/info/wiki/doku.php?id=progsys:tp:tp-2&amp;do=backlink">Pages liées</a></li>
+          <li id="tb-upload"><a href="https://opale.iut.uca.fr/info/wiki/doku.php?id=start&amp;do=media" rel="nofollow">Gestionnaire de médias</a></li>
+          <li id="tb-special"><a href="https://opale.iut.uca.fr/info/wiki/doku.php?id=start&amp;do=index" rel="nofollow">Page d'index</a></li>
+          <li id="tb-print"><a href="https://opale.iut.uca.fr/info/wiki/doku.php?id=progsys:tp:tp-2&amp;rev=1668668779&amp;mddo=print" rel="nofollow">Version imprimable</a></li>
+          <li id="tb-permanent"><a href="https://opale.iut.uca.fr/info/wiki/doku.php?id=progsys:tp:tp-2&amp;rev=1668668779" rel="nofollow">Lien permanent</a></li>
+          <li id="tb-cite"><a href="https://opale.iut.uca.fr/info/wiki/doku.php?id=progsys:tp:tp-2&amp;rev=1668668779&amp;mddo=cite" rel="nofollow">Citer cette page</a></li>
+        </ul>
+        </div>
+      </div>
+    </div>
+
+  </div> <!-- end of the left (by default at least) column -->
+
+  <div class="visualClear"></div>
+
+  <div id="footer" class="noprint">
+    <div id="footer-buttons">
+    
+      <a href="https://opale.iut.uca.fr/info/wiki/feed.php" rel="nofollow" title="Modifications récentes" target="_blank"><img src="./progsys_tp_tp-2 - wiki_files/button-rss.png" width="80" height="15" title="Modifications récentes" alt="Modifications récentes" border="0"></a>
+      <a href="https://www.dokuwiki.org/template:monobook" rel="nofollow" title="Template monobook pour DokuWiki" target="_blank"><img src="./progsys_tp_tp-2 - wiki_files/button-monobook.png" width="80" height="15" title="Template monobook pour DokuWiki" alt="Template monobook pour DokuWiki" border="0"></a>
+      <a href="https://www.dokuwiki.org/" rel="nofollow" title="DokuWiki" target="_blank"><img src="./progsys_tp_tp-2 - wiki_files/button-dw.png" width="80" height="15" title="DokuWiki" alt="DokuWiki" border="0"></a>
+      <a href="http://validator.w3.org/check/referer" rel="nofollow" title="Valid XHTML" target="_blank"><img src="./progsys_tp_tp-2 - wiki_files/button-xhtml.png" width="80" height="15" title="Valid XHTML" alt="Valid XHTML" border="0"></a>
+    </div>
+    <ul id="f-list">
+      <li id="lastmod">
+        <bdi>progsys/tp/tp-2.txt</bdi> · Dernière modification: 2022/11/17 08:06 par <bdi>marestituito</bdi><br>
+      </li>
+            <li id="usermod">
+        Connecté en tant que : <bdi>Etudiant</bdi> (<bdi>sesame</bdi>)<br>
+      </li>
+    </ul>
+  </div>
+
+</div>  <!-- end of global wrap -->
+<a href="https://opale.iut.uca.fr/info/wiki/doku.php?id=start&amp;do=recent" accesskey="r" style="visibility:hidden;" rel="nofollow">&nbsp;</a>
+<img src="./progsys_tp_tp-2 - wiki_files/indexer.php" width="2" height="1" alt="">
+
+</body></html>

@@ -1,6 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/*
+   Cet exercice affiche l'ensemble des arguments passés en paramètres 
+   passés en description, puis affiche la variable PATH. 
+*/
+
 int main(int argc, char* argv[]) {
  int i = 0;
 
