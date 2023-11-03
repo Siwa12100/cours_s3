@@ -6,7 +6,7 @@ int main(void) {
 
 	// On exécute la commande ps 
 	system("ps -f");
-	printf("\n");
+	printf("\n\n");
 
 	// On remplace le code actuel par le ps, dont le chemin est le premier argument dans la commande 
 	// est le chemin (on met juste le nom car le path le connais déjà), et les autres argument sont les 
