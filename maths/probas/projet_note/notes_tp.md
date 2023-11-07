@@ -1,2 +1,0 @@
-# Notes tp Python - Probas
-
