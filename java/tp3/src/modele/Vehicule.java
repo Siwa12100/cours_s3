@@ -1,6 +1,8 @@
 package modele;
 
-public abstract class Vehicule {
+import java.io.Serializable;
+
+public abstract class Vehicule implements Serializable {
 
     protected StringBuilder nom;
     protected StringBuilder marque;

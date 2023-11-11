@@ -1,12 +1,13 @@
 package modele;
 
 import javax.swing.tree.VariableHeightLayoutCache;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Vehiculetheque {
+public class Vehiculetheque implements Serializable {
 
-    List<Vehicule> lVehicules;
+    private List<Vehicule> lVehicules;
 
     public Vehiculetheque() {
         this.lVehicules = new ArrayList<>();
@@ -17,7 +18,6 @@ public class Vehiculetheque {
     }
 
     public void ajouterVehicules(List<Vehicule> nvVehicules) {
-
         for (Vehicule v: nvVehicules) {
             this.lVehicules.add(v);
         }

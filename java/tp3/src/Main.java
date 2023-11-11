@@ -5,12 +5,18 @@ public class Main {
 
     public static void test() {
         Afficheur afficheur = new Afficheur();
-        VehiculesManager manager = new VehiculesManager(afficheur);
+        String chemin = "test.ser";
+        VehiculesManager manager = new VehiculesManager(afficheur, new StringBuilder(chemin));
+        //manager.chargerStub();
+
+        //manager.sauvegarderSerial();
+        manager.chargerSerial();
+
         manager.afficherVehicules();
     }
 
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        //System.out.println("Hello world!");
         test();
     }
 }
