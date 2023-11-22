@@ -1,0 +1,24 @@
+#!/bin/sh
+ 
+rdvn=$(semC 0)
+
+
+nbClients=10
+
+
+echo "Création du sémaphore d'exclusion mutuelle (id=$rdv)"
+
+for i in {1..$nbClients}; do   
+   ./mutex-clt $rdvn $i & # chaque processus client reçoit en argument:
+                      # - l'identificateur du sémaphore d'exclusion mutuelle
+                      # - son numéro
+
+
+   ./mutex-clt $rdvn $i &
+
+
+done
+wait          # Attente de la fin des processus clients
+semD $rdvn     # # Suppression du sémaphore 
+
+echo "Suppression du sémaphore d'exclusion mutuelle (id=$rdv)"

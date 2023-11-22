@@ -1,0 +1,13 @@
+#!/bin/sh
+
+
+pid=$$
+tempsAttente=$(($pid%10+1))
+ 
+echo "[`date +%M:%S`](client n°$3) Je serais au rdv dans $tempsAttente secondes."
+#semP $1 # opération P sur le sémaphore (obtention de la ressource)
+echo "[`date +%M:%S`](client n°$3) ---> Je suis au rdv !"
+sleep $tempsAttente  # simulation de l'utilisation de la ressource (section critique)
+echo "[`date +%M:%S`](client n°$3) Je repars..."
+semV $1 # opération V sur le sémaphore (libération de la ressource)
+semP $2 

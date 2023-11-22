@@ -1,0 +1,22 @@
+#!/bin/sh
+ 
+rdv1=$(semC 0)    # Création du sémaphore d'exclusion mutuelle avec initialisation
+             # de sa valeur à 1. L'identificateur du sémaphore est mémorisé
+             # dans la variable mutex.
+
+
+rdv2=$(semC 0)
+
+
+echo "Création du sémaphore d'exclusion mutuelle (id=$rdv)"
+for i in 1 2; do    # création de trois processus client
+   ./mutex-clt $rdv1 $rdv2 $i & # chaque processus client reçoit en argument:
+                      # - l'identificateur du sémaphore d'exclusion mutuelle
+                      # - son numéro
+   # On attend...
+   ./mutex-clt $rdv2 $rdv1 $i &
+
+done
+wait          # Attente de la fin des processus clients
+semD $rdv           # # Suppression du sémaphore d'exclusion mutuelle
+echo "Suppression du sémaphore d'exclusion mutuelle (id=$rdv)"

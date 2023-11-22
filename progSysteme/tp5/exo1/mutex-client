@@ -1,0 +1,8 @@
+#!/bin/sh
+ 
+echo "[`date +%M:%S`](client n°$2) Je demande la ressource."
+semP $1 # opération P sur le sémaphore (obtention de la ressource)
+echo "[`date +%M:%S`](client n°$2) J'utilise la ressource."
+sleep 2  # simulation de l'utilisation de la ressource (section critique)
+echo "[`date +%M:%S`](client n°$2) Je libère la ressource."
+semV $1 # opération V sur le sémaphore (libération de la ressource)
