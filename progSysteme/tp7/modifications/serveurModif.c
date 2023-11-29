@@ -30,12 +30,12 @@ int main(int argc, char **argv) {
   char request[REQUEST_MAX];
  
   /* Vérification des arguments */
-  if(argc!=2) {
+  if(argc!=3) {
     fprintf(stderr,"Erreur : Nb args !\n");
     usage();
   }
 
-    memset(&hints, 0, sizeof(struct addrinfo));
+  memset(&hints, 0, sizeof(struct addrinfo));
   hints.ai_flags = AI_PASSIVE; /* Equiv INADDR_ANY */
   hints.ai_family = AF_INET6; /* Allow IPv4 or IPv6 */
   hints.ai_socktype = SOCK_STREAM; /* Flux => TCP */
@@ -92,20 +92,38 @@ int main(int argc, char **argv) {
  
       /* traitement de la requête(passage en majuscule) */
       {
-        int i=0;
+        // int i=0;
  
-        while(request[i]) {
-          request[i]=toupper(request[i]);
-          ++i;
+        // while(request[i]) {
+        //   request[i]=toupper(request[i]);
+        //   ++i;
+        // }
+        char * nomfichier = argv[3];
+        FILE * fichier = fopen(nomfichier, "r"); 
+
+        if (fichier == NULL) {
+          exit(1);
         }
+
+        char * caractere;
+        while((caractere  = fgetc(fichier)) != NULL) {
+          
+          if(send(sock, request, strlen(caractere)+1,0) != 
+          strlen(caractere)+1) {
+        perror("send"); exit(1);
+      }	
+
+        }
+
+        fclose(fichier);
       }
 
             /* Émission de la réponse */
  
-      if(send(sock, request, strlen(request)+1,0) != 
-          strlen(request)+1) {
-        perror("send"); exit(1);
-      }	
+      // if(send(sock, request, strlen(request)+1,0) != 
+      //     strlen(request)+1) {
+      //   perror("send"); exit(1);
+      // }	
     }    /* fin de la boucle de traitement du client */
  
     if(close(sock)==-1) {
