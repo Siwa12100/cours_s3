@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jemarcilla\\Downloads\\projetBlazorSiwa\\projetBlazorSiwa\\projetBlazorSiwa.csproj": {}
+    "C:\\Users\\jeanm\\OneDrive\\Documents\\BUT\\cours_s3\\projetBlazorSiwa\\projetBlazorSiwa\\projetBlazorSiwa.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jemarcilla\\Downloads\\projetBlazorSiwa\\projetBlazorSiwa\\projetBlazorSiwa.csproj": {
+    "C:\\Users\\jeanm\\OneDrive\\Documents\\BUT\\cours_s3\\projetBlazorSiwa\\projetBlazorSiwa\\projetBlazorSiwa.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jemarcilla\\Downloads\\projetBlazorSiwa\\projetBlazorSiwa\\projetBlazorSiwa.csproj",
+        "projectUniqueName": "C:\\Users\\jeanm\\OneDrive\\Documents\\BUT\\cours_s3\\projetBlazorSiwa\\projetBlazorSiwa\\projetBlazorSiwa.csproj",
         "projectName": "projetBlazorSiwa",
-        "projectPath": "C:\\Users\\jemarcilla\\Downloads\\projetBlazorSiwa\\projetBlazorSiwa\\projetBlazorSiwa.csproj",
-        "packagesPath": "C:\\Users\\jemarcilla\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jemarcilla\\Downloads\\projetBlazorSiwa\\projetBlazorSiwa\\obj\\",
+        "projectPath": "C:\\Users\\jeanm\\OneDrive\\Documents\\BUT\\cours_s3\\projetBlazorSiwa\\projetBlazorSiwa\\projetBlazorSiwa.csproj",
+        "packagesPath": "C:\\Users\\jeanm\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jeanm\\OneDrive\\Documents\\BUT\\cours_s3\\projetBlazorSiwa\\projetBlazorSiwa\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\jemarcilla\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\jeanm\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -63,7 +63,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
