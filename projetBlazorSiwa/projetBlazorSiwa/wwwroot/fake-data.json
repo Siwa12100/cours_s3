@@ -1,0 +1,23 @@
+[
+  "{{repeat(15, 30)}}",
+  {
+    "id": "{{index(1)}}",
+    "displayname": "{{company()}}",
+    "name": "function",
+    "()" {
+      "return" "this.displayname.toLowerCase();"
+    },
+    "stacksize": "{{integer(1, 64)}}",
+    "maxdurability": "{{integer(1, 125)}}",
+    "enchantcategories": [
+      "{{repeat(0, 3)}}",
+      "{{random(\"armor\", \"armor_head\", \"armor_chest\", \"weapon\", \"digger\", \"breakable\", \"vanishable\")}}"
+    ],
+    "repairwith": [
+      "{{repeat(0, 2)}}",
+      "{{random(\"oak_planks\", \"spruce_planks\", \"birch_planks\", \"jungle_planks\", \"acacia_planks\", \"dark_oak_planks\", \"crimson_planks\", \"warped_planks\")}}"
+    ],
+    "createddate": "{{date(new Date(2014, 0, 1), new Date(), \"YYYY-MM-dd\")}}",
+    "updateddate": "{{random(date(new Date(2014, 0, 1), new Date(), \"YYYY-MM-dd\"), null)}}"
+  }
+]

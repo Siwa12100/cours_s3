@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("projetBlazorSiwa")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fe91726bdd87a462e479fdb7453d1c208962d8bb")]
 [assembly: System.Reflection.AssemblyProductAttribute("projetBlazorSiwa")]
 [assembly: System.Reflection.AssemblyTitleAttribute("projetBlazorSiwa")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

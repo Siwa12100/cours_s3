@@ -53,6 +53,10 @@
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
+      "Id": "C:\\Users\\jeanm\\OneDrive\\Documents\\BUT\\cours_s3\\projetBlazorSiwa\\projetBlazorSiwa\\wwwroot\\fake-data.json",
+      "PackagePath": "staticwebassets\\fake-data.json"
+    },
+    {
       "Id": "C:\\Users\\jeanm\\OneDrive\\Documents\\BUT\\cours_s3\\projetBlazorSiwa\\projetBlazorSiwa\\wwwroot\\favicon.png",
       "PackagePath": "staticwebassets\\favicon.png"
     },

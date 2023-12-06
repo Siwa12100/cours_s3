@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "WDQwZU9keZUnN1Xu8ZsMHemEA/kfI1xKjFrDCFMAHFI=",
+  "Hash": "Inmcs9IF29XJYu3mPx4YDf3A44HuQ04S7qzeGRWXUgM=",
   "Source": "projetBlazorSiwa",
   "BasePath": "_content/projetBlazorSiwa",
   "Mode": "Default",
@@ -281,6 +281,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "C:\\Users\\jeanm\\OneDrive\\Documents\\BUT\\cours_s3\\projetBlazorSiwa\\projetBlazorSiwa\\wwwroot\\fake-data.json",
+      "SourceId": "projetBlazorSiwa",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\jeanm\\OneDrive\\Documents\\BUT\\cours_s3\\projetBlazorSiwa\\projetBlazorSiwa\\wwwroot\\",
+      "BasePath": "_content/projetBlazorSiwa",
+      "RelativePath": "fake-data.json",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\fake-data.json"
     },
     {
       "Identity": "C:\\Users\\jeanm\\OneDrive\\Documents\\BUT\\cours_s3\\projetBlazorSiwa\\projetBlazorSiwa\\wwwroot\\favicon.png",
