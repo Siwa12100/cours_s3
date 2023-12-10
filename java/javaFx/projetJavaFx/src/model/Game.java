@@ -1,11 +1,29 @@
 package model;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.ReadOnlyIntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
     public static final int LOSE_DICE_VALUE = 1;
     public static final int SCORE_TO_WIN = 50;
+
+    private IntegerProperty valeurCouranteProperty;
+
+    public IntegerProperty getValeurCouranteProperty() {
+        return this.valeurCouranteProperty;
+    }
+
+    private void setValeurCouranteProperty(int val) {
+        this.valeurCouranteProperty.set(val);
+    }
+
+    public ReadOnlyIntegerProperty valeurCouranteProperty() {
+        return this.valeurCouranteProperty;
+    }
 
     private final Dice dice = new Dice();
 
@@ -26,9 +44,17 @@ public class Game {
         return players.get(currentPlayerIndex);
     }
 
+    public Game() {
+        this.valeurCouranteProperty = new SimpleIntegerProperty(-1);
+    }
+
     public void rollDice() {
         int rollValue = dice.roll();
         Player currentPlayer = players.get(currentPlayerIndex);
+
+        // ===
+        setValeurCouranteProperty(rollValue);
+        // ===
         if (rollValue != LOSE_DICE_VALUE) {
             currentPlayer.setCurrentScore(currentPlayer.getCurrentScore() + rollValue);
         } else {
@@ -63,5 +89,10 @@ public class Game {
 
     public int getDiceValue() throws IllegalAccessException {
         return dice.getValue();
+    }
+
+    public void changerValeurCourante() throws IllegalAccessException {
+        this.rollDice();
+        setValeurCouranteProperty(getDiceValue());
     }
 }

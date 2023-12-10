@@ -149,6 +149,9 @@ Create table if not exists BestScorer(
 -- Q.9)
 ------
 
+-- Pour info, on part de la table Gamedetail pour le trigger...
+
+
 -- Create Or Replace Function traceBestScorer() Returns trigger AS $$
 -- DECLARE
 --     infos varchar(200);
@@ -166,10 +169,11 @@ DECLARE
     infos varchar(200);
 BEGIN
     
-    
+
     RETURN OLD;    
 
 END;
 $$ LANGUAGE plpgsql;
 
 SELECT * from Log;
+

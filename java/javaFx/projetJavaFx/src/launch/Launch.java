@@ -14,8 +14,15 @@ public class Launch extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        primaryStage.show();
-
         //ConsoleGame.main(null);
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Index.fxml"));
+        Parent root = loader.load();
+
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+
+        primaryStage.setTitle("Adiu a totes ! ");
+        primaryStage.show();
     }
 }
