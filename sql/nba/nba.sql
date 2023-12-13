@@ -1,5 +1,57 @@
 DROP TABLE IF EXISTS GameDetail, Game, Team, Player CASCADE;
 
+--------------------------
+
+Create Or Replace Function traceBestScorer() Returns trigger AS $$
+DECLARE
+
+    ptsActuels numeric;
+    ptsMax numeric;
+    matchsCourant char(8);
+    nbLignes numeric;
+
+BEGIN
+
+    ptsActuels = NEW.points;
+    matchsCourant = NEW.idGame;
+    
+    SELECT INTO nbLignes COUNT(*)
+    FROM BestScorer
+    WHERE idGame = NEW.idGame;
+
+    IF nbLignes = 0 THEN
+        ptsMax = 0;
+    
+    ELSE
+        SELECT bt.points INTO STRICT ptsMax
+        FROM BestScorer bt
+        WHERE bt.idGame = matchsCourant;
+
+    END IF;  
+
+    IF ptsActuels > ptsMax THEN
+        IF nbLignes = 0 THEN
+            INSERT INTO BestScorer VALUES(ptsActuels, NEW.idPlayer, matchsCourant);
+        ELSE
+            UPDATE BestScorer 
+            SET points = ptsActuels,
+            idPlayer = NEW.idPlayer
+            WHERE idGame = NEW.idGame;
+        END IF;
+    END IF;
+
+    RETURN NEW;
+
+END;
+$$ LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS triggerBestScorer ON Gamedetail;
+CREATE TRIGGER triggerBestScorer BEFORE INSERT ON Gamedetail
+FOR EACH ROW
+EXECUTE FUNCTION traceBestScorer();
+
+-------------------------------------
+
 CREATE TABLE Player (
        id       varchar(10) PRIMARY KEY,
        name     varchar(50),
