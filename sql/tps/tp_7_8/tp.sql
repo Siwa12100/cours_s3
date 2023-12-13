@@ -137,43 +137,111 @@ Execute Function tracePlayer();
 -- Q.8)
 ------
 
+--DROP TABLE BestScorer;
 Create table if not exists BestScorer(
 
     points numeric,
     idPlayer varchar(10) REFERENCES Player(id),
-    idMatch char(8) REFERENCES Game(id),
-    PRIMARY KEY (idPlayer, idMatch)
+    idGame char(8) REFERENCES Game(id),
+    PRIMARY KEY (idGame)
 );
 
 
 -- Q.9)
 ------
 
--- Pour info, on part de la table Gamedetail pour le trigger...
-
-
--- Create Or Replace Function traceBestScorer() Returns trigger AS $$
--- DECLARE
---     infos varchar(200);
--- BEGIN
---     infos = 'Joueur ' || NEW.idPlayer || '( match : ' || NEW.idGame || ' et Score : ' || NEW.points || ')' || 'rajoute a BestScorer';
---     RAISE NOTICE '[Temporaire infos] : %', infos;
---     Insert Into Log Values (CURRENT_TIMESTAMP, current_role, infos, 'insertion');
---     RETURN OLD;    
-
--- END;
--- $$ LANGUAGE plpgsql;
-
 Create Or Replace Function traceBestScorer() Returns trigger AS $$
 DECLARE
-    infos varchar(200);
-BEGIN
-    
 
-    RETURN OLD;    
+    ptsActuels numeric;
+    ptsMax numeric;
+    matchsCourant char(8);
+    nbLignes numeric;
+
+BEGIN
+
+    ptsActuels = NEW.points;
+    matchsCourant = NEW.idGame;
+    
+    SELECT INTO nbLignes COUNT(*)
+    FROM BestScorer
+    WHERE idGame = NEW.idGame;
+
+    IF nbLignes = 0 THEN
+        ptsMax = 0;
+    
+    ELSE
+        SELECT bt.points INTO STRICT ptsMax
+        FROM BestScorer bt
+        WHERE bt.idGame = matchsCourant;
+
+    END IF;  
+
+    IF ptsActuels > ptsMax THEN
+        IF nbLignes = 0 THEN
+            INSERT INTO BestScorer VALUES(ptsActuels, NEW.idPlayer, matchsCourant);
+        ELSE
+            UPDATE BestScorer 
+            SET points = ptsActuels,
+            idPlayer = NEW.idPlayer
+            WHERE idGame = NEW.idGame;
+        END IF;
+    END IF;
+
+    RETURN NEW;
 
 END;
 $$ LANGUAGE plpgsql;
 
-SELECT * from Log;
+DROP TRIGGER IF EXISTS triggerBestScorer ON Gamedetail;
+CREATE TRIGGER triggerBestScorer BEFORE INSERT ON Gamedetail
+FOR EACH ROW
+EXECUTE FUNCTION traceBestScorer();
+
+-- SELECT * from Log;
+
+-- 10.)
+------
+
+DELETE FROM GameDetail
+WHERE idGame = '22101005';
+
+INSERT INTO GameDetail VALUES('22101005','1610612750','1630162','F',NULL,'0 0:36:22',4,10,0.4,3,8,0.375,4,4,1,0,8,8,5,3,1,1,1,15,5);
+INSERT INTO GameDetail VALUES('22101005','1610612750','1630183','F',NULL,'0 0:23:54',6,8,0.75,1,3,0.333,1,1,1,2,4,6,0,0,2,2,6,14,10);
+INSERT INTO GameDetail VALUES('22101005','1610612750','1626157','C',NULL,'0 0:25:17',4,9,0.444,1,3,0.333,6,8,0.75,1,9,10,0,0,0,3,4,15,14);
+INSERT INTO GameDetail VALUES('22101005','1610612750','1627736','G',NULL,'0 0:30:52',4,9,0.444,4,9,0.444,0,0,0,0,3,3,1,1,0,1,4,12,20);
+INSERT INTO GameDetail VALUES('22101005','1610612750','1626156','G',NULL,'0 0:33:46',3,13,0.231,1,6,0.167,7,7,1,0,6,6,9,1,0,5,0,14,17);
+INSERT INTO GameDetail VALUES('22101005','1610612750','1629675',NULL,NULL,'0 0:23:56',3,8,0.375,1,2,0.5,4,4,1,3,7,10,1,3,2,1,1,11,-7);
+INSERT INTO GameDetail VALUES('22101005','1610612750','1629162',NULL,NULL,'0 0:21:00',2,5,0.4,0,1,0,1,1,1,0,1,1,3,3,0,0,1,5,-10);
+INSERT INTO GameDetail VALUES('22101005','1610612750','1629669',NULL,NULL,'0 0:21:35',6,13,0.462,2,5,0.4,2,2,1,0,0,0,1,0,0,0,0,16,-5);
+INSERT INTO GameDetail VALUES('22101005','1610612750','1627752',NULL,NULL,'0 0:22:53',3,8,0.375,2,5,0.4,3,5,0.6,0,2,2,1,1,0,1,2,11,1);
+INSERT INTO GameDetail VALUES('22101005','1610612750','1629006',NULL,NULL,'0 0:0:25',0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+INSERT INTO GameDetail VALUES('22101005','1610612750','1630195',NULL,'DNP - Coach''s Decision',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO GameDetail VALUES('22101005','1610612750','1630233',NULL,'DNP - Coach''s Decision',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO GameDetail VALUES('22101005','1610612750','1627774',NULL,'DNP - Coach''s Decision',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO GameDetail VALUES('22101005','1610612748','1629130','F',NULL,'0 0:16:31',1,6,0.167,1,6,0.167,0,0,0,0,0,0,4,0,0,0,3,3,-21);
+INSERT INTO GameDetail VALUES('22101005','1610612748','200782','F',NULL,'0 0:23:17',3,7,0.429,0,1,0,0,0,0,4,3,7,0,0,0,3,4,6,-25);
+INSERT INTO GameDetail VALUES('22101005','1610612748','1628389','C',NULL,'0 0:33:28',7,12,0.583,0,0,0,5,9,0.556,2,10,12,4,3,0,4,2,19,0);
+INSERT INTO GameDetail VALUES('22101005','1610612748','1629216','G',NULL,'0 0:25:23',1,8,0.125,0,5,0,0,0,0,0,1,1,3,2,0,1,2,2,-22);
+INSERT INTO GameDetail VALUES('22101005','1610612748','200768','G',NULL,'0 0:37:24',4,12,0.333,2,8,0.25,4,6,0.667,2,5,7,7,0,0,3,2,14,-7);
+INSERT INTO GameDetail VALUES('22101005','1610612748','1629639',NULL,NULL,'0 0:36:30',8,19,0.421,6,10,0.6,8,8,1,0,7,7,2,2,0,1,1,30,11);
+INSERT INTO GameDetail VALUES('22101005','1610612748','1629622',NULL,NULL,'0 0:31:18',6,12,0.5,5,11,0.455,2,2,1,1,6,7,2,0,0,1,5,19,14);
+INSERT INTO GameDetail VALUES('22101005','1610612748','202693',NULL,NULL,'0 0:17:02',3,7,0.429,0,2,0,0,0,0,0,4,4,1,0,0,4,2,6,6);
+INSERT INTO GameDetail VALUES('22101005','1610612748','203473',NULL,NULL,'0 0:14:32',1,4,0.25,0,1,0,0,0,0,2,6,8,0,0,1,1,3,2,-9);
+INSERT INTO GameDetail VALUES('22101005','1610612748','1629312',NULL,NULL,'0 0:4:36',1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,3,8);
+INSERT INTO GameDetail VALUES('22101005','1610612748','2617',NULL,'DNP - Coach''s Decision',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO GameDetail VALUES('22101005','1610612748','1630209',NULL,'DNP - Coach''s Decision',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+
+
+SELECT * FROM BestScorer;
+
+
+-- 11.)
+------
+
+
+
+
+
+
 
