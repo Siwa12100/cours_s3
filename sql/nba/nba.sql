@@ -7,36 +7,38 @@ DECLARE
 
     ptsActuels numeric;
     ptsMax numeric;
-    matchsCourant char(8);
     nbLignes numeric;
 
 BEGIN
 
     ptsActuels = NEW.points;
-    matchsCourant = NEW.idGame;
     
     SELECT INTO nbLignes COUNT(*)
     FROM BestScorer
     WHERE idGame = NEW.idGame;
 
     IF nbLignes = 0 THEN
+        RAISE NOTICE '[Temporaire] : La game % a % lignes dans BestScorer !', NEW.idGame, nbLignes;
         ptsMax = 0;
     
     ELSE
+        RAISE NOTICE '[Temporaire] : La game % a % lignes dans BestScorer !', NEW.idGame, nbLignes;
         SELECT bt.points INTO STRICT ptsMax
         FROM BestScorer bt
-        WHERE bt.idGame = matchsCourant;
+        WHERE bt.idGame = NEW.idGame;
 
     END IF;  
 
     IF ptsActuels > ptsMax THEN
         IF nbLignes = 0 THEN
-            INSERT INTO BestScorer VALUES(ptsActuels, NEW.idPlayer, matchsCourant);
+            INSERT INTO BestScorer VALUES(ptsActuels, NEW.idPlayer, NEW.idGame);
+            RAISE NOTICE 'INSERT Dans % ...', NEW.idGame;
         ELSE
             UPDATE BestScorer 
             SET points = ptsActuels,
             idPlayer = NEW.idPlayer
             WHERE idGame = NEW.idGame;
+            RAISE NOTICE 'UPDATE Dans % ...', NEW.idGame;
         END IF;
     END IF;
 
