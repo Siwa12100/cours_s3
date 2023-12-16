@@ -124,3 +124,4 @@ void insererEnFeuille(Abr * pta, int val) {
         insererEnFeuille(&(*pta) -> fd, val);
     }
 }
+
