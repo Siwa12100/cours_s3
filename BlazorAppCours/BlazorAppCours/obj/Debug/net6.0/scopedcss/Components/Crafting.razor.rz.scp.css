@@ -1,0 +1,19 @@
+.css-grid[b-a59vjbv559] {
+    grid-template-columns: repeat(4,minmax(0,1fr));
+    gap: 10px;
+    display: grid;
+    width: 286px;
+}
+
+.css-recipe[b-a59vjbv559] {
+    grid-template-columns: repeat(3,minmax(0,1fr));
+    gap: 10px;
+    display: grid;
+    width: 212px;
+}
+
+.actions[b-a59vjbv559] {
+    border: 1px solid black;
+    height: 250px;
+    overflow: scroll;
+}

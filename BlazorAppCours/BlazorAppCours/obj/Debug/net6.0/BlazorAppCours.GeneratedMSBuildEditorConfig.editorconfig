@@ -1,0 +1,191 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = BlazorAppCours
+build_property.RootNamespace = BlazorAppCours
+build_property.ProjectDir = C:\Users\jeanm\OneDrive\Documents\BUT\temporaire\Blazor_App_Cours\BlazorAppCours\BlazorAppCours\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\jeanm\OneDrive\Documents\BUT\temporaire\Blazor_App_Cours\BlazorAppCours\BlazorAppCours
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/jeanm/OneDrive/Documents/BUT/temporaire/Blazor_App_Cours/BlazorAppCours/BlazorAppCours/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeanm/OneDrive/Documents/BUT/temporaire/Blazor_App_Cours/BlazorAppCours/BlazorAppCours/Components/Card.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xDYXJkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeanm/OneDrive/Documents/BUT/temporaire/Blazor_App_Cours/BlazorAppCours/BlazorAppCours/Components/MyFirstChildComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xNeUZpcnN0Q2hpbGRDb21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeanm/OneDrive/Documents/BUT/temporaire/Blazor_App_Cours/BlazorAppCours/BlazorAppCours/Components/MyRootComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xNeVJvb3RDb21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeanm/OneDrive/Documents/BUT/temporaire/Blazor_App_Cours/BlazorAppCours/BlazorAppCours/Components/MySecondChildComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xNeVNlY29uZENoaWxkQ29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeanm/OneDrive/Documents/BUT/temporaire/Blazor_App_Cours/BlazorAppCours/BlazorAppCours/Components/ShowItems.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTaG93SXRlbXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeanm/OneDrive/Documents/BUT/temporaire/Blazor_App_Cours/BlazorAppCours/BlazorAppCours/Components/TestRenderFragment.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xUZXN0UmVuZGVyRnJhZ21lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeanm/OneDrive/Documents/BUT/temporaire/Blazor_App_Cours/BlazorAppCours/BlazorAppCours/Modals/DeleteConfirmation.razor]
+build_metadata.AdditionalFiles.TargetPath = TW9kYWxzXERlbGV0ZUNvbmZpcm1hdGlvbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeanm/OneDrive/Documents/BUT/temporaire/Blazor_App_Cours/BlazorAppCours/BlazorAppCours/Pages/Add.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeanm/OneDrive/Documents/BUT/temporaire/Blazor_App_Cours/BlazorAppCours/BlazorAppCours/Pages/BlazorRoute.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQmxhem9yUm91dGUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeanm/OneDrive/Documents/BUT/temporaire/Blazor_App_Cours/BlazorAppCours/BlazorAppCours/Pages/Counter.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeanm/OneDrive/Documents/BUT/temporaire/Blazor_App_Cours/BlazorAppCours/BlazorAppCours/Pages/Edit.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeanm/OneDrive/Documents/BUT/temporaire/Blazor_App_Cours/BlazorAppCours/BlazorAppCours/Pages/Episodes.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXBpc29kZXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeanm/OneDrive/Documents/BUT/temporaire/Blazor_App_Cours/BlazorAppCours/BlazorAppCours/Pages/EventHandlerExample1.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRIYW5kbGVyRXhhbXBsZTEucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeanm/OneDrive/Documents/BUT/temporaire/Blazor_App_Cours/BlazorAppCours/BlazorAppCours/Pages/EventHandlerExample2.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRIYW5kbGVyRXhhbXBsZTIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeanm/OneDrive/Documents/BUT/temporaire/Blazor_App_Cours/BlazorAppCours/BlazorAppCours/Pages/EventHandlerExample3.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRIYW5kbGVyRXhhbXBsZTMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeanm/OneDrive/Documents/BUT/temporaire/Blazor_App_Cours/BlazorAppCours/BlazorAppCours/Pages/ExampleTabSet.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXhhbXBsZVRhYlNldC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeanm/OneDrive/Documents/BUT/temporaire/Blazor_App_Cours/BlazorAppCours/BlazorAppCours/Pages/FetchData.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmV0Y2hEYXRhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeanm/OneDrive/Documents/BUT/temporaire/Blazor_App_Cours/BlazorAppCours/BlazorAppCours/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeanm/OneDrive/Documents/BUT/temporaire/Blazor_App_Cours/BlazorAppCours/BlazorAppCours/Pages/List.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGlzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeanm/OneDrive/Documents/BUT/temporaire/Blazor_App_Cours/BlazorAppCours/BlazorAppCours/Pages/ParameterParent2.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFyYW1ldGVyUGFyZW50Mi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeanm/OneDrive/Documents/BUT/temporaire/Blazor_App_Cours/BlazorAppCours/BlazorAppCours/Pages/ParameterParent3.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFyYW1ldGVyUGFyZW50My5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeanm/OneDrive/Documents/BUT/temporaire/Blazor_App_Cours/BlazorAppCours/BlazorAppCours/Pages/Pets1.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGV0czEucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeanm/OneDrive/Documents/BUT/temporaire/Blazor_App_Cours/BlazorAppCours/BlazorAppCours/Pages/Pets2.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGV0czIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeanm/OneDrive/Documents/BUT/temporaire/Blazor_App_Cours/BlazorAppCours/BlazorAppCours/Pages/Pets3.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGV0czMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeanm/OneDrive/Documents/BUT/temporaire/Blazor_App_Cours/BlazorAppCours/BlazorAppCours/Pages/Pets4.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGV0czQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeanm/OneDrive/Documents/BUT/temporaire/Blazor_App_Cours/BlazorAppCours/BlazorAppCours/Pages/RouteParameter.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUm91dGVQYXJhbWV0ZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeanm/OneDrive/Documents/BUT/temporaire/Blazor_App_Cours/BlazorAppCours/BlazorAppCours/Pages/ThemedCounter.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGhlbWVkQ291bnRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeanm/OneDrive/Documents/BUT/temporaire/Blazor_App_Cours/BlazorAppCours/BlazorAppCours/Pages/User.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeanm/OneDrive/Documents/BUT/temporaire/Blazor_App_Cours/BlazorAppCours/BlazorAppCours/Shared/CultureSelector.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXEN1bHR1cmVTZWxlY3Rvci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeanm/OneDrive/Documents/BUT/temporaire/Blazor_App_Cours/BlazorAppCours/BlazorAppCours/Shared/DoctorWhoLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXERvY3Rvcldob0xheW91dC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeanm/OneDrive/Documents/BUT/temporaire/Blazor_App_Cours/BlazorAppCours/BlazorAppCours/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeanm/OneDrive/Documents/BUT/temporaire/Blazor_App_Cours/BlazorAppCours/BlazorAppCours/Shared/Tab.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFRhYi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeanm/OneDrive/Documents/BUT/temporaire/Blazor_App_Cours/BlazorAppCours/BlazorAppCours/Shared/TableTemplate.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFRhYmxlVGVtcGxhdGUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeanm/OneDrive/Documents/BUT/temporaire/Blazor_App_Cours/BlazorAppCours/BlazorAppCours/Shared/TabSet.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFRhYlNldC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeanm/OneDrive/Documents/BUT/temporaire/Blazor_App_Cours/BlazorAppCours/BlazorAppCours/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeanm/OneDrive/Documents/BUT/temporaire/Blazor_App_Cours/BlazorAppCours/BlazorAppCours/Components/Crafting.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xDcmFmdGluZy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-a59vjbv559
+
+[C:/Users/jeanm/OneDrive/Documents/BUT/temporaire/Blazor_App_Cours/BlazorAppCours/BlazorAppCours/Components/CraftingItem.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xDcmFmdGluZ0l0ZW0ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-4a8kb050y5
+
+[C:/Users/jeanm/OneDrive/Documents/BUT/temporaire/Blazor_App_Cours/BlazorAppCours/BlazorAppCours/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-3qsxmrraj5
+
+[C:/Users/jeanm/OneDrive/Documents/BUT/temporaire/Blazor_App_Cours/BlazorAppCours/BlazorAppCours/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-gu2d7o8uqs
+
+[C:/Users/jeanm/OneDrive/Documents/BUT/temporaire/Blazor_App_Cours/BlazorAppCours/BlazorAppCours/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeanm/OneDrive/Documents/BUT/temporaire/Blazor_App_Cours/BlazorAppCours/BlazorAppCours/Pages/_Host.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeanm/OneDrive/Documents/BUT/temporaire/Blazor_App_Cours/BlazorAppCours/BlazorAppCours/Pages/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0xheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

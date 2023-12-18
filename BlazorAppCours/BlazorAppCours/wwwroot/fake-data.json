@@ -1,0 +1,243 @@
+[
+  {
+    "id": 1,
+    "displayname": "Gushkool",
+    "name": "gushkool",
+    "stacksize": 40,
+    "maxdurability": 83,
+    "enchantcategories": [
+      "armor_chest",
+      "digger"
+    ],
+    "repairwith": [
+      "spruce_planks",
+      "warped_planks"
+    ],
+    "createddate": "2018-06-02",
+    "updateddate": null
+  },
+  {
+    "id": 2,
+    "displayname": "Liquicom",
+    "name": "liquicom",
+    "stacksize": 62,
+    "maxdurability": 88,
+    "enchantcategories": [
+      "weapon",
+      "armor_head",
+      "armor_head"
+    ],
+    "repairwith": [
+      "warped_planks"
+    ],
+    "createddate": "2019-05-25",
+    "updateddate": "2022-08-12"
+  },
+  {
+    "id": 3,
+    "displayname": "Endipine",
+    "name": "endipine",
+    "stacksize": 62,
+    "maxdurability": 33,
+    "enchantcategories": [
+      "armor_head",
+      "armor_chest",
+      "armor_chest"
+    ],
+    "repairwith": [
+      "crimson_planks",
+      "acacia_planks"
+    ],
+    "createddate": "2015-03-14",
+    "updateddate": "2016-12-22"
+  },
+  {
+    "id": 4,
+    "displayname": "Spherix",
+    "name": "spherix",
+    "stacksize": 52,
+    "maxdurability": 97,
+    "enchantcategories": [
+      "armor_chest",
+      "vanishable"
+    ],
+    "repairwith": [
+      "warped_planks"
+    ],
+    "createddate": "2017-05-16",
+    "updateddate": "2023-06-01"
+  },
+  {
+    "id": 5,
+    "displayname": "Qnekt",
+    "name": "qnekt",
+    "stacksize": 25,
+    "maxdurability": 105,
+    "enchantcategories": [
+      "armor"
+    ],
+    "repairwith": [
+      "spruce_planks",
+      "dark_oak_planks"
+    ],
+    "createddate": "2014-10-01",
+    "updateddate": "2017-02-16"
+  },
+  {
+    "id": 6,
+    "displayname": "Sarasonic",
+    "name": "sarasonic",
+    "stacksize": 16,
+    "maxdurability": 60,
+    "enchantcategories": [
+      "digger",
+      "breakable",
+      "armor"
+    ],
+    "repairwith": [],
+    "createddate": "2023-09-21",
+    "updateddate": null
+  },
+  {
+    "id": 7,
+    "displayname": "Interloo",
+    "name": "interloo",
+    "stacksize": 42,
+    "maxdurability": 30,
+    "enchantcategories": [
+      "armor",
+      "vanishable"
+    ],
+    "repairwith": [
+      "crimson_planks",
+      "crimson_planks"
+    ],
+    "createddate": "2018-06-23",
+    "updateddate": null
+  },
+  {
+    "id": 8,
+    "displayname": "Oronoko",
+    "name": "oronoko",
+    "stacksize": 17,
+    "maxdurability": 28,
+    "enchantcategories": [
+      "digger",
+      "armor_head"
+    ],
+    "repairwith": [
+      "dark_oak_planks",
+      "warped_planks"
+    ],
+    "createddate": "2019-05-17",
+    "updateddate": null
+  },
+  {
+    "id": 9,
+    "displayname": "Corporana",
+    "name": "corporana",
+    "stacksize": 13,
+    "maxdurability": 102,
+    "enchantcategories": [],
+    "repairwith": [],
+    "createddate": "2019-03-01",
+    "updateddate": null
+  },
+  {
+    "id": 10,
+    "displayname": "Cuizine",
+    "name": "cuizine",
+    "stacksize": 49,
+    "maxdurability": 81,
+    "enchantcategories": [
+      "vanishable",
+      "breakable",
+      "armor_head"
+    ],
+    "repairwith": [
+      "crimson_planks",
+      "jungle_planks"
+    ],
+    "createddate": "2019-10-21",
+    "updateddate": null
+  },
+  {
+    "id": 11,
+    "displayname": "Multiflex",
+    "name": "multiflex",
+    "stacksize": 54,
+    "maxdurability": 106,
+    "enchantcategories": [],
+    "repairwith": [
+      "acacia_planks",
+      "crimson_planks"
+    ],
+    "createddate": "2019-04-24",
+    "updateddate": null
+  },
+  {
+    "id": 12,
+    "displayname": "Cosmosis",
+    "name": "cosmosis",
+    "stacksize": 34,
+    "maxdurability": 76,
+    "enchantcategories": [
+      "armor",
+      "armor_chest",
+      "armor_chest"
+    ],
+    "repairwith": [
+      "birch_planks",
+      "warped_planks"
+    ],
+    "createddate": "2022-09-22",
+    "updateddate": "2023-07-09"
+  },
+  {
+    "id": 13,
+    "displayname": "Extragen",
+    "name": "extragen",
+    "stacksize": 55,
+    "maxdurability": 112,
+    "enchantcategories": [],
+    "repairwith": [
+      "spruce_planks",
+      "warped_planks"
+    ],
+    "createddate": "2022-12-15",
+    "updateddate": "2018-07-14"
+  },
+  {
+    "id": 14,
+    "displayname": "Ceprene",
+    "name": "ceprene",
+    "stacksize": 44,
+    "maxdurability": 64,
+    "enchantcategories": [
+      "armor_head",
+      "vanishable",
+      "armor_head"
+    ],
+    "repairwith": [
+      "dark_oak_planks",
+      "birch_planks"
+    ],
+    "createddate": "2017-04-07",
+    "updateddate": "2016-10-01"
+  },
+  {
+    "id": 15,
+    "displayname": "Xylar",
+    "name": "xylar",
+    "stacksize": 60,
+    "maxdurability": 125,
+    "enchantcategories": [
+      "armor_head"
+    ],
+    "repairwith": [
+      "oak_planks"
+    ],
+    "createddate": "2020-03-28",
+    "updateddate": null
+  }
+]
