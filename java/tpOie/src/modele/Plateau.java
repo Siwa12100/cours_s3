@@ -7,8 +7,13 @@ public class Plateau {
 
     private List<Case> lCases;
 
-    public Plateau() {
+    public Plateau(int nbCases) {
         this.lCases = new ArrayList<>();
+
+        for (int i = 0; i < nbCases; i++) {
+            Case c = new Case();
+            this.lCases.add(c);
+        }
     }
 
     public List<Case> getlCases() {
@@ -19,9 +24,13 @@ public class Plateau {
         return this.lCases.size();
     }
 
-    public void ajouterCase(Case c) {
-        this.lCases.add(c);
-        c.setId(this.lCases.indexOf(c));
-        // System.out.println("[Temp] : case ajoutée id : " + c.getId() + " ; " + this.lCases.indexOf(c));
+    public Case getCase(int position) {
+        return this.lCases.get(position);
     }
+
+//    public void ajouterCase(Case c) {
+//        this.lCases.add(c);
+//        c.setJoueur(this.lCases.indexOf(c));
+//        // System.out.println("[Temp] : case ajoutée id : " + c.getId() + " ; " + this.lCases.indexOf(c));
+//    }
 }

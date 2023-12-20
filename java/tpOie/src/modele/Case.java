@@ -2,35 +2,41 @@ package modele;
 
 public class Case {
 
-    private boolean presence;
-    private int id;
+    //private boolean presence;
+    private int joueur;
 
     public Case() {
-        this.presence = false;
+        this.joueur = (-1);
+        //this.presence = false;
     }
 
-    public Case(boolean presence) {
-        this.presence = presence;
-        this.id = -1;
+//    public Case(boolean presence) {
+//        this.presence = presence;
+//        this.id = -1;
+//    }
+
+    public boolean isOccupee() {
+
+        if (this.joueur == (-1)) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
-    public boolean isPresent() {
-        return this.presence;
+//    public void setPresence(boolean val) {
+//        this.presence = val;
+//    }
+
+//    public void changerPresence() {
+//        this.presence = !this.presence;
+//    }
+
+    public  int getJoueur() {
+        return this.joueur;
     }
 
-    public void setPresence(boolean val) {
-        this.presence = val;
-    }
-
-    public void changerPresence() {
-        this.presence = !this.presence;
-    }
-
-    public  int getId() {
-        return this.id;
-    }
-
-    public void setId(int val) {
-        this.id = val;
+    public void setJoueur(int joueur) {
+        this.joueur = joueur;
     }
 }
