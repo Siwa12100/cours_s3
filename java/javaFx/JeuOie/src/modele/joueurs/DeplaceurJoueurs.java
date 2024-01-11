@@ -21,7 +21,7 @@ public class DeplaceurJoueurs {
 
         AfficheurInfos.afficherInfo("[Info jeu] : " + joueurCourant.getPseudo() + " a obtenu " + distance + " en lancant le de !");
 
-        if ((joueurCourant .getPosition() + distance) > plateau.getNbCases() - 1) {
+        if ((joueurCourant.getPosition() + distance) > plateau.getNbCases() - 1) {
 
             int futureDistance = (joueurCourant.getPosition() + distance);
             int dernierIndexPlateau = plateau.getNbCases() - 1;
