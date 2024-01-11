@@ -28,7 +28,7 @@ public class DeplaceurJoueurs {
             distance = dernierIndexPlateau - joueurCourant.getPosition();
         }
 
-        if (joueurCourant .getPosition() + distance < 0) {
+        if (joueurCourant.getPosition() + distance < 0) {
             distance = joueurCourant .getPosition() * (-1);
         }
 
