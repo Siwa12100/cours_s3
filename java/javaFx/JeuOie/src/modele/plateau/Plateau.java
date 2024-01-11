@@ -9,7 +9,6 @@ import java.util.List;
 public class Plateau {
 
     private int nbCases;
-
     private List<Case> lesCases;
 
     public Plateau(int nbCases) {
@@ -19,7 +18,6 @@ public class Plateau {
         }
 
         this.lesCases = new ArrayList<>();
-
         for (int i = 0; i < this.nbCases; i++) {
             Case nvCase = new Case();
             this.lesCases.add(nvCase);
@@ -29,7 +27,6 @@ public class Plateau {
     }
 
     public String toString() {
-
         StringBuilder result = new StringBuilder("Plateau (nb Cases = " + this.nbCases + " ) : \n\n");
 
         for (int i = 0; i < nbCases; i++) {

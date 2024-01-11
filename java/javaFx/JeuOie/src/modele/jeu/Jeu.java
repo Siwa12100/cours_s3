@@ -40,7 +40,6 @@ public class Jeu {
             AfficheurInfos.afficherInfo("\n" + this.plateau + "\n");
         }
 
-        //System.out.println("Passage à la fin !");
         System.out.println("Le vainqueur est : " + this.plateau.getJoueurCase(this.plateau.getNbCases() - 1).getPseudo());
     }
 }

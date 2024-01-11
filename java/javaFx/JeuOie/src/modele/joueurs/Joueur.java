@@ -8,7 +8,6 @@ public class Joueur {
     private int position;
 
     public Joueur(StringBuilder pseudo) {
-
         this.pseudo = pseudo;
         this.position = -1;
     }
@@ -19,7 +18,6 @@ public class Joueur {
 
     public void setPosition(int val) {
         this.position = val;
-        //AfficheurInfos.afficherInfo("[Info joueur] : Le joueur " + this.pseudo + " est mtn sur la case " + this.position + ".");
     }
 
     public StringBuilder getPseudo() {

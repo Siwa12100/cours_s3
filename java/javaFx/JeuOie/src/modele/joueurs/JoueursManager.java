@@ -9,7 +9,6 @@ public class JoueursManager {
 
     private List<Joueur> lesJoueurs;
     private Joueur joueurCourant;
-
     private int nbJoueurs;
 
     public JoueursManager() {
@@ -32,10 +31,6 @@ public class JoueursManager {
 
     public Joueur getJoueurCourant() {
         return this.joueurCourant;
-    }
-
-    public void deplacerPositionJoueur(Joueur j) {
-
     }
 
     public void setPositionJoueur(Joueur j, int distance) {

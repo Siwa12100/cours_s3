@@ -23,8 +23,6 @@ public class Case {
     public void affecterJoueur(Joueur j) {
         this.joueur = j;
         this.possedeJoueur = true;
-        //AfficheurInfos.afficherInfo("[info case] : Le joueur " + j.getPseudo() + " arrive mtn case " + j.getPosition());
-
     }
 
     public void retirerJoueur() {
