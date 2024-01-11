@@ -11,9 +11,7 @@ public class Jeu {
 
     private JoueursManager joueursManager;
     private DeplaceurJoueurs deplaceurJoueurs;
-
     private Plateau plateau;
-
     private IDe de;
 
     public Jeu(JoueursManager joueursManager, IDe de, Plateau plateau) {
