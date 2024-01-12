@@ -1,52 +1,61 @@
 package modele.joueurs;
 
 import Infos.AfficheurInfos;
+import modele.actions.GestionnaireActions;
 import modele.plateau.Plateau;
 
 public class DeplaceurJoueurs {
 
     private JoueursManager joueursManager;
     private Plateau plateau;
+    private GestionnaireActions gestionnaireActions;
 
-    public DeplaceurJoueurs(JoueursManager joueursManager, Plateau plateau) {
+    public DeplaceurJoueurs(JoueursManager joueursManager, Plateau plateau, GestionnaireActions gestionnaireActions) {
 
         this.joueursManager = joueursManager;
         this.plateau = plateau;
+        this.gestionnaireActions = gestionnaireActions;
     }
 
     public void deplacerJoueurCourant(int distance) {
 
-        this.joueursManager.passerJoueurSuivant();
         Joueur joueurCourant = this.joueursManager.getJoueurCourant();
+        this.deplacerJoueur(joueurCourant, distance);
+    }
 
-        AfficheurInfos.afficherInfo("[Info jeu] : " + joueurCourant.getPseudo() + " a obtenu " + distance + " en lancant le de !");
+    public void deplacerJoueur(Joueur joueur, int distance) {
 
-        if ((joueurCourant.getPosition() + distance) > plateau.getNbCases() - 1) {
+        AfficheurInfos.afficherInfo("[Info jeu] : " + joueur.getPseudo() + " a obtenu " + distance + " en lancant le de !");
 
-            int futureDistance = (joueurCourant.getPosition() + distance);
+        if ((joueur.getPosition() + distance) > plateau.getNbCases() - 1) {
+
+            int futureDistance = (joueur.getPosition() + distance);
             int dernierIndexPlateau = plateau.getNbCases() - 1;
-            distance = dernierIndexPlateau - joueurCourant.getPosition();
+            distance = dernierIndexPlateau - joueur.getPosition();
         }
 
-        if (joueurCourant.getPosition() + distance < 0) {
-            distance = joueurCourant .getPosition() * (-1);
+        if (joueur.getPosition() + distance < 0) {
+            distance = joueur .getPosition() * (-1);
         }
 
-        if (this.plateau.isCaseContientJoueur(joueurCourant.getPosition() + distance)) {
+        if (this.plateau.isCaseContientJoueur(joueur.getPosition() + distance)) {
 
-            Joueur joueurADeplacer = this.plateau.getJoueurCase(joueurCourant.getPosition() + distance);
+            Joueur joueurADeplacer = this.plateau.getJoueurCase(joueur.getPosition() + distance);
 
             this.joueursManager.setPositionJoueur(joueurADeplacer, distance * (-1));
             this.plateau.setJoueurCase(joueurADeplacer);
 
         } else {
 
-            if (joueurCourant.getPosition() != -1) {
-                this.plateau.getCase(joueurCourant.getPosition()).retirerJoueur();
+            if (joueur.getPosition() != -1) {
+                this.plateau.getCase(joueur.getPosition()).retirerJoueur();
             }
         }
 
-        this.joueursManager.setPositionJoueur(joueurCourant, distance);
-        this.plateau.setJoueurCase(joueurCourant);
+        this.joueursManager.setPositionJoueur(joueur, distance);
+        this.plateau.setJoueurCase(joueur);
+
+        this.gestionnaireActions.executerAction(joueur);
+
     }
 }

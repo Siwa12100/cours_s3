@@ -1,6 +1,8 @@
 package modele.plateau;
 
 import Infos.AfficheurInfos;
+import modele.actions.ActionFactice;
+import modele.actions.ActionVide;
 import modele.joueurs.Joueur;
 
 import java.util.ArrayList;
@@ -19,7 +21,15 @@ public class Plateau {
 
         this.lesCases = new ArrayList<>();
         for (int i = 0; i < this.nbCases; i++) {
+
             Case nvCase = new Case();
+
+            if (i == 0) {
+                nvCase.setAction(new ActionFactice());
+            } else {
+                nvCase.setAction(new ActionVide());
+            }
+
             this.lesCases.add(nvCase);
         }
 
@@ -30,7 +40,11 @@ public class Plateau {
         StringBuilder result = new StringBuilder("Plateau (nb Cases = " + this.nbCases + " ) : \n\n");
 
         for (int i = 0; i < nbCases; i++) {
-            result.append("\t - Case ").append(i).append(" -> ");
+            result.append("\t - Case " + i + "( ");
+
+            result.append(this.lesCases.get(i).getAction().getClass().toString());
+
+            result.append(i).append(" ) -> ");
 
             if (this.lesCases.get(i).contientJoueur()) {
                 result.append(this.lesCases.get(i).getJoueur().getPseudo());
@@ -74,5 +88,9 @@ public class Plateau {
 
     public boolean isUnVainqueur() {
         return this.lesCases.get(this.nbCases - 1).contientJoueur();
+    }
+
+    public List<Case> getLesCases() {
+        return this.lesCases;
     }
 }

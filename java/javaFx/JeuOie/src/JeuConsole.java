@@ -1,3 +1,4 @@
+import modele.actions.GestionnaireActions;
 import modele.de.De;
 import modele.jeu.Jeu;
 import modele.joueurs.DeplaceurJoueurs;

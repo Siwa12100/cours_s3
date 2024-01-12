@@ -1,6 +1,7 @@
 package modele.jeu;
 
 import Infos.AfficheurInfos;
+import modele.actions.GestionnaireActions;
 import modele.de.IDe;
 import modele.joueurs.DeplaceurJoueurs;
 import modele.joueurs.Joueur;
@@ -13,11 +14,16 @@ public class Jeu {
     private DeplaceurJoueurs deplaceurJoueurs;
     private Plateau plateau;
     private IDe de;
+    private GestionnaireActions gestionnaireActions;
 
     public Jeu(JoueursManager joueursManager, IDe de, Plateau plateau) {
         this.joueursManager = joueursManager;
         this.plateau = plateau;
-        this.deplaceurJoueurs = new DeplaceurJoueurs(this.joueursManager, this.plateau);
+        this.gestionnaireActions = new GestionnaireActions(this);
+
+        this.gestionnaireActions.initialiserActions(this.plateau);
+
+        this.deplaceurJoueurs = new DeplaceurJoueurs(this.joueursManager, this.plateau, this.gestionnaireActions);
         this.de = de;
     }
 
@@ -30,14 +36,49 @@ public class Jeu {
         this.joueursManager.ajouterJoueur(new Joueur(new StringBuilder("Louis")));
         this.joueursManager.ajouterJoueur(new Joueur(new StringBuilder("Jules")));
 
-        while (!this.plateau.isUnVainqueur()) {
+        while (!this.verifSiVainqueur()) {
 
-            int distance = this.de.getValeurRandom();
-            this.deplaceurJoueurs.deplacerJoueurCourant(distance);
+            this.passerJoueurSuivant();
+
+            int valeurDe = this.lancerDe();
+
+            this.deplacerJoueurCourant(valeurDe);
 
             AfficheurInfos.afficherInfo("\n" + this.plateau + "\n");
         }
 
         System.out.println("Le vainqueur est : " + this.plateau.getJoueurCase(this.plateau.getNbCases() - 1).getPseudo());
+    }
+
+    public void passerJoueurSuivant() {
+        this.joueursManager.passerJoueurSuivant();
+    }
+
+    public int lancerDe() {
+        return this.de.getValeurRandom();
+    }
+
+    public void deplacerJoueurCourant(int de) {
+        this.deplaceurJoueurs.deplacerJoueurCourant(de);
+    }
+
+    public boolean verifSiVainqueur() {
+        return this.plateau.isUnVainqueur();
+    }
+
+    public Plateau getPlateau() {
+        return plateau;
+    }
+
+    public IDe getDe() {
+        return this.de;
+    }
+
+    public DeplaceurJoueurs getDeplaceurJoueurs() {
+        return deplaceurJoueurs;
+    }
+
+    public JoueursManager getJoueursManager() {
+        return joueursManager;
     }
 }
